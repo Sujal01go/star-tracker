@@ -1,0 +1,1078 @@
+// GENERATED CURATED DEEP-SKY CATALOGUE DATA
+const String allDeepSkyObjectsJson = r'''
+[
+    {
+        "id": "NGC 4755",
+        "name": "Jewel Box Cluster",
+        "catalogueIds": [
+            "NGC 4755"
+        ],
+        "aliases": [
+            "NGC 4755",
+            "Kappa Crucis Cluster"
+        ],
+        "type": "Open cluster",
+        "ra": 193.4045,
+        "dec": -60.356306,
+        "mag": null,
+        "distanceLy": null,
+        "sizeMajorArcmin": 7.8,
+        "sizeMinorArcmin": null,
+        "constellation": "Cru",
+        "description": "A compact open cluster in Crux.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M11",
+        "name": "Wild Duck Cluster",
+        "catalogueIds": [
+            "M11",
+            "NGC 6705"
+        ],
+        "aliases": [
+            "M11",
+            "NGC 6705"
+        ],
+        "type": "Open cluster",
+        "ra": 282.774958,
+        "dec": -6.270028,
+        "mag": 5.8,
+        "distanceLy": null,
+        "sizeMajorArcmin": 9,
+        "sizeMinorArcmin": null,
+        "constellation": "Sct",
+        "description": "A rich open cluster in Scutum.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M6",
+        "name": "Butterfly Cluster",
+        "catalogueIds": [
+            "M6",
+            "NGC 6405"
+        ],
+        "aliases": [
+            "M6",
+            "NGC 6405"
+        ],
+        "type": "Open cluster",
+        "ra": 265.086458,
+        "dec": -32.254167,
+        "mag": 4.2,
+        "distanceLy": null,
+        "sizeMajorArcmin": 15.6,
+        "sizeMinorArcmin": null,
+        "constellation": "Sco",
+        "description": "An open cluster in Scorpius.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M13",
+        "name": "Hercules Cluster",
+        "catalogueIds": [
+            "M13",
+            "NGC 6205"
+        ],
+        "aliases": [
+            "M13",
+            "NGC 6205"
+        ],
+        "type": "Globular cluster",
+        "ra": 250.423458,
+        "dec": 36.461306,
+        "mag": 5.8,
+        "distanceLy": null,
+        "sizeMajorArcmin": 16.5,
+        "sizeMinorArcmin": null,
+        "constellation": "Her",
+        "description": "A prominent globular cluster in Hercules.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M7",
+        "name": "Ptolemy Cluster",
+        "catalogueIds": [
+            "M7",
+            "NGC 6475"
+        ],
+        "aliases": [
+            "M7",
+            "NGC 6475"
+        ],
+        "type": "Open cluster",
+        "ra": 268.46325,
+        "dec": -34.792833,
+        "mag": 3.3,
+        "distanceLy": null,
+        "sizeMajorArcmin": 22.2,
+        "sizeMinorArcmin": null,
+        "constellation": "Sco",
+        "description": "A bright open cluster in Scorpius.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M44",
+        "name": "Beehive Cluster",
+        "catalogueIds": [
+            "M44",
+            "NGC 2632"
+        ],
+        "aliases": [
+            "M44",
+            "NGC 2632",
+            "Praesepe"
+        ],
+        "type": "Open cluster",
+        "ra": 130.0925,
+        "dec": 19.672056,
+        "mag": 3.1,
+        "distanceLy": null,
+        "sizeMajorArcmin": 108.6,
+        "sizeMinorArcmin": null,
+        "constellation": "Cnc",
+        "description": "A nearby open cluster in Cancer.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "NGC 5128",
+        "name": "Centaurus A",
+        "catalogueIds": [
+            "NGC 5128"
+        ],
+        "aliases": [
+            "NGC 5128"
+        ],
+        "type": "Galaxy",
+        "ra": 201.365083,
+        "dec": -43.019111,
+        "mag": 7.22,
+        "distanceLy": null,
+        "sizeMajorArcmin": 25.88,
+        "sizeMinorArcmin": 19.77,
+        "constellation": "Cen",
+        "description": "A nearby radio galaxy in Centaurus.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M64",
+        "name": "Black Eye Galaxy",
+        "catalogueIds": [
+            "M64",
+            "NGC 4826"
+        ],
+        "aliases": [
+            "M64",
+            "NGC 4826"
+        ],
+        "type": "Galaxy",
+        "ra": 194.181833,
+        "dec": 21.682972,
+        "mag": 8.52,
+        "distanceLy": null,
+        "sizeMajorArcmin": 10.52,
+        "sizeMinorArcmin": 5.33,
+        "constellation": "Com",
+        "description": "A spiral galaxy with a prominent dark dust feature in Coma Berenices.",
+        "visibility": "telescopic",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "NGC 0104",
+        "name": "47 Tucanae",
+        "catalogueIds": [
+            "NGC 0104",
+            "NGC 104"
+        ],
+        "aliases": [
+            "NGC 104",
+            "47 Tuc"
+        ],
+        "type": "Globular cluster",
+        "ra": 6.022333,
+        "dec": -72.081444,
+        "mag": 4.09,
+        "distanceLy": null,
+        "sizeMajorArcmin": 31.8,
+        "sizeMinorArcmin": null,
+        "constellation": "Tuc",
+        "description": "A bright globular cluster in Tucana.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "NGC 0884",
+        "name": "Double Cluster (NGC 884)",
+        "catalogueIds": [
+            "NGC 0884",
+            "NGC 884"
+        ],
+        "aliases": [
+            "NGC 884",
+            "Double Cluster",
+            "chi Persei"
+        ],
+        "type": "Open cluster",
+        "ra": 35.63375,
+        "dec": 57.144111,
+        "mag": 3.8,
+        "distanceLy": null,
+        "sizeMajorArcmin": 10.5,
+        "sizeMinorArcmin": null,
+        "constellation": "Per",
+        "description": "The eastern cluster in the Perseus Double Cluster.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "NGC 0869",
+        "name": "Double Cluster (NGC 869)",
+        "catalogueIds": [
+            "NGC 0869",
+            "NGC 869"
+        ],
+        "aliases": [
+            "NGC 869",
+            "Double Cluster",
+            "h Persei"
+        ],
+        "type": "Open cluster",
+        "ra": 34.744,
+        "dec": 57.11725,
+        "mag": 3.7,
+        "distanceLy": null,
+        "sizeMajorArcmin": 14.4,
+        "sizeMinorArcmin": null,
+        "constellation": "Per",
+        "description": "The western cluster in the Perseus Double Cluster.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "LMC",
+        "name": "Large Magellanic Cloud",
+        "catalogueIds": [
+            "LMC",
+            "ESO 56-115"
+        ],
+        "aliases": [
+            "Large Magellanic Cloud"
+        ],
+        "type": "Galaxy",
+        "ra": 80.894167,
+        "dec": -69.756111,
+        "mag": null,
+        "distanceLy": null,
+        "sizeMajorArcmin": null,
+        "sizeMinorArcmin": null,
+        "constellation": "Dor",
+        "description": "A satellite galaxy of the Milky Way in Dorado and Mensa.",
+        "visibility": "featured",
+        "source": "SIMBAD (J2000)",
+        "epoch": 2000
+    },
+    {
+        "id": "Melotte 25",
+        "name": "Hyades",
+        "catalogueIds": [
+            "Melotte 25",
+            "Collinder 50"
+        ],
+        "aliases": [
+            "Hyades Cluster"
+        ],
+        "type": "Open cluster",
+        "ra": 67.447083,
+        "dec": 16.948056,
+        "mag": null,
+        "distanceLy": 155,
+        "sizeMajorArcmin": null,
+        "sizeMinorArcmin": null,
+        "constellation": "Tau",
+        "description": "A nearby open cluster forming the V-shaped head of Taurus.",
+        "visibility": "featured",
+        "source": "SIMBAD (J2000)",
+        "epoch": 2000
+    },
+    {
+        "id": "SMC",
+        "name": "Small Magellanic Cloud",
+        "catalogueIds": [
+            "SMC",
+            "NGC 292"
+        ],
+        "aliases": [
+            "Small Magellanic Cloud"
+        ],
+        "type": "Galaxy",
+        "ra": 13.158333,
+        "dec": -72.800278,
+        "mag": 2.2,
+        "distanceLy": null,
+        "sizeMajorArcmin": 158.113,
+        "sizeMinorArcmin": 93.105,
+        "constellation": "Tuc",
+        "description": "A satellite galaxy of the Milky Way in Tucana.",
+        "visibility": "featured",
+        "source": "SIMBAD (J2000)",
+        "epoch": 2000
+    },
+    {
+        "id": "SGR-A-STAR",
+        "name": "Galactic Center (Sagittarius A*)",
+        "catalogueIds": [
+            "Sagittarius A*",
+            "Sgr A*"
+        ],
+        "aliases": [
+            "Galactic Center",
+            "Sgr A"
+        ],
+        "type": "Informational marker",
+        "ra": 266.416817,
+        "dec": -29.007825,
+        "mag": null,
+        "distanceLy": null,
+        "sizeMajorArcmin": null,
+        "sizeMinorArcmin": null,
+        "constellation": "Sgr",
+        "description": "The radio position of Sagittarius A*, the compact source associated with the Milky Way central black hole.",
+        "visibility": "marker",
+        "source": "SIMBAD (J2000; 2011AJ....142...35P)",
+        "epoch": 2000
+    },
+    {
+        "id": "M24",
+        "name": "Sagittarius Star Cloud",
+        "catalogueIds": [
+            "M24",
+            "IC 4715"
+        ],
+        "aliases": [
+            "Small Sagittarius Star Cloud"
+        ],
+        "type": "Star cloud",
+        "ra": 274.2,
+        "dec": -18.55,
+        "mag": null,
+        "distanceLy": null,
+        "sizeMajorArcmin": 120,
+        "sizeMinorArcmin": 60,
+        "constellation": "Sgr",
+        "description": "A rich Milky Way star cloud, not a single physical cluster.",
+        "visibility": "featured",
+        "source": "SIMBAD (J2000)",
+        "epoch": 2000
+    },
+    {
+        "id": "M45",
+        "name": "Pleiades",
+        "catalogueIds": [
+            "M45",
+            "Melotte 22"
+        ],
+        "aliases": [
+            "Seven Sisters"
+        ],
+        "type": "Open cluster",
+        "ra": 56.600833,
+        "dec": 24.113889,
+        "mag": 1.6,
+        "distanceLy": null,
+        "sizeMajorArcmin": null,
+        "sizeMinorArcmin": null,
+        "constellation": "Tau",
+        "description": "A nearby open cluster also known as the Seven Sisters.",
+        "visibility": "featured",
+        "source": "SIMBAD (J2000)",
+        "epoch": 2000
+    },
+    {
+        "id": "M3",
+        "name": "M3",
+        "catalogueIds": [
+            "M3",
+            "NGC 5272"
+        ],
+        "aliases": [
+            "NGC 5272"
+        ],
+        "type": "Globular cluster",
+        "ra": 205.546792,
+        "dec": 28.375444,
+        "mag": 6.39,
+        "distanceLy": null,
+        "sizeMajorArcmin": 16.2,
+        "sizeMinorArcmin": null,
+        "constellation": "CVn",
+        "description": "A bright globular cluster in Canes Venatici.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "NGC 5139",
+        "name": "Omega Centauri",
+        "catalogueIds": [
+            "NGC 5139"
+        ],
+        "aliases": [
+            "NGC 5139",
+            "Omega Cen"
+        ],
+        "type": "Globular cluster",
+        "ra": 201.691208,
+        "dec": -47.476861,
+        "mag": 5.33,
+        "distanceLy": null,
+        "sizeMajorArcmin": 27,
+        "sizeMinorArcmin": null,
+        "constellation": "Cen",
+        "description": "The most massive known globular cluster in the Milky Way.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M22",
+        "name": "M22",
+        "catalogueIds": [
+            "M22",
+            "NGC 6656"
+        ],
+        "aliases": [
+            "NGC 6656"
+        ],
+        "type": "Globular cluster",
+        "ra": 279.100833,
+        "dec": -23.903417,
+        "mag": null,
+        "distanceLy": null,
+        "sizeMajorArcmin": 12.6,
+        "sizeMinorArcmin": null,
+        "constellation": "Sgr",
+        "description": "A bright globular cluster in Sagittarius.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "B 33",
+        "name": "Horsehead Nebula",
+        "catalogueIds": [
+            "B 33"
+        ],
+        "aliases": [
+            "Barnard 33"
+        ],
+        "type": "Dark nebula",
+        "ra": 85.245833,
+        "dec": -2.458333,
+        "mag": null,
+        "distanceLy": null,
+        "sizeMajorArcmin": null,
+        "sizeMinorArcmin": null,
+        "constellation": "Ori",
+        "description": "A dark nebula silhouetted against the IC 434 emission nebula.",
+        "visibility": "telescopic",
+        "source": "SIMBAD (J2000)",
+        "epoch": 2000
+    },
+    {
+        "id": "M5",
+        "name": "M5",
+        "catalogueIds": [
+            "M5",
+            "NGC 5904"
+        ],
+        "aliases": [
+            "NGC 5904"
+        ],
+        "type": "Globular cluster",
+        "ra": 229.640625,
+        "dec": 2.082694,
+        "mag": 5.95,
+        "distanceLy": null,
+        "sizeMajorArcmin": 15,
+        "sizeMinorArcmin": null,
+        "constellation": "Se1",
+        "description": "A bright globular cluster in Serpens.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M63",
+        "name": "Sunflower Galaxy",
+        "catalogueIds": [
+            "M63",
+            "NGC 5055"
+        ],
+        "aliases": [
+            "M63",
+            "NGC 5055"
+        ],
+        "type": "Galaxy",
+        "ra": 198.955542,
+        "dec": 42.029278,
+        "mag": 8.61,
+        "distanceLy": null,
+        "sizeMajorArcmin": 11.83,
+        "sizeMinorArcmin": 7.16,
+        "constellation": "CVn",
+        "description": "A spiral galaxy in Canes Venatici.",
+        "visibility": "telescopic",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "NGC 7293",
+        "name": "Helix Nebula",
+        "catalogueIds": [
+            "NGC 7293"
+        ],
+        "aliases": [
+            "NGC 7293"
+        ],
+        "type": "Planetary nebula",
+        "ra": 337.410708,
+        "dec": -20.837333,
+        "mag": 7.3,
+        "distanceLy": null,
+        "sizeMajorArcmin": 16.33,
+        "sizeMinorArcmin": null,
+        "constellation": "Aqr",
+        "description": "A large nearby planetary nebula in Aquarius.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M27",
+        "name": "Dumbbell Nebula",
+        "catalogueIds": [
+            "M27",
+            "NGC 6853"
+        ],
+        "aliases": [
+            "M27"
+        ],
+        "type": "Planetary nebula",
+        "ra": 299.901583,
+        "dec": 22.721028,
+        "mag": 7.4,
+        "distanceLy": null,
+        "sizeMajorArcmin": 6.7,
+        "sizeMinorArcmin": null,
+        "constellation": "Vul",
+        "description": "A bright planetary nebula in Vulpecula.",
+        "visibility": "telescopic",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "NGC 2237",
+        "name": "Rosette Nebula",
+        "catalogueIds": [
+            "NGC 2237"
+        ],
+        "aliases": [],
+        "type": "Emission nebula",
+        "ra": 97.727542,
+        "dec": 5.049167,
+        "mag": null,
+        "distanceLy": null,
+        "sizeMajorArcmin": 80,
+        "sizeMinorArcmin": 50,
+        "constellation": "Mon",
+        "description": "A broad emission nebula in Monoceros; its apparent visual magnitude is not listed in the source catalogue.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "NGC 7000",
+        "name": "North America Nebula",
+        "catalogueIds": [
+            "NGC 7000"
+        ],
+        "aliases": [
+            "NGC 7000"
+        ],
+        "type": "Emission nebula",
+        "ra": 314.821417,
+        "dec": 44.528778,
+        "mag": null,
+        "distanceLy": null,
+        "sizeMajorArcmin": 120,
+        "sizeMinorArcmin": 30,
+        "constellation": "Cyg",
+        "description": "A broad emission nebula in Cygnus.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "NGC 3372",
+        "name": "Carina Nebula",
+        "catalogueIds": [
+            "NGC 3372"
+        ],
+        "aliases": [
+            "NGC 3372"
+        ],
+        "type": "Emission nebula",
+        "ra": 161.285542,
+        "dec": -59.866694,
+        "mag": null,
+        "distanceLy": null,
+        "sizeMajorArcmin": 120,
+        "sizeMinorArcmin": 120,
+        "constellation": "Car",
+        "description": "A very large star-forming nebula in Carina.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M57",
+        "name": "Ring Nebula",
+        "catalogueIds": [
+            "M57",
+            "NGC 6720"
+        ],
+        "aliases": [
+            "M57"
+        ],
+        "type": "Planetary nebula",
+        "ra": 283.395875,
+        "dec": 33.028583,
+        "mag": 8.8,
+        "distanceLy": null,
+        "sizeMajorArcmin": 1.27,
+        "sizeMinorArcmin": null,
+        "constellation": "Lyr",
+        "description": "A compact planetary nebula in Lyra.",
+        "visibility": "telescopic",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M1",
+        "name": "Crab Nebula",
+        "catalogueIds": [
+            "M1",
+            "NGC 1952"
+        ],
+        "aliases": [
+            "M1"
+        ],
+        "type": "Supernova remnant",
+        "ra": 83.633208,
+        "dec": 22.014472,
+        "mag": 8.4,
+        "distanceLy": null,
+        "sizeMajorArcmin": 8,
+        "sizeMinorArcmin": 4,
+        "constellation": "Tau",
+        "description": "The expanding remnant of the supernova observed in 1054.",
+        "visibility": "telescopic",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M42",
+        "name": "Orion Nebula",
+        "catalogueIds": [
+            "M42",
+            "NGC 1976"
+        ],
+        "aliases": [
+            "M42",
+            "Great Orion Nebula"
+        ],
+        "type": "Nebula",
+        "ra": 83.818667,
+        "dec": -5.389667,
+        "mag": 4,
+        "distanceLy": null,
+        "sizeMajorArcmin": 90,
+        "sizeMinorArcmin": 60,
+        "constellation": "Ori",
+        "description": "A bright stellar nursery in Orion, also catalogued as Messier 42.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M16",
+        "name": "Eagle Nebula",
+        "catalogueIds": [
+            "M16",
+            "IC 4703"
+        ],
+        "aliases": [
+            "M16",
+            "NGC 6611"
+        ],
+        "type": "Emission nebula",
+        "ra": 274.73425,
+        "dec": -13.845389,
+        "mag": 6,
+        "distanceLy": null,
+        "sizeMajorArcmin": 5.05,
+        "sizeMinorArcmin": 5.05,
+        "constellation": "Se2",
+        "description": "An emission nebula in Serpens surrounding the young open cluster NGC 6611.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M20",
+        "name": "Trifid Nebula",
+        "catalogueIds": [
+            "M20",
+            "NGC 6514"
+        ],
+        "aliases": [
+            "M20"
+        ],
+        "type": "Emission nebula",
+        "ra": 270.675458,
+        "dec": -22.971889,
+        "mag": 8.5,
+        "distanceLy": null,
+        "sizeMajorArcmin": 28,
+        "sizeMinorArcmin": 28,
+        "constellation": "Sgr",
+        "description": "A nebula divided by prominent dark dust lanes in Sagittarius.",
+        "visibility": "telescopic",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M8",
+        "name": "Lagoon Nebula",
+        "catalogueIds": [
+            "M8",
+            "NGC 6523"
+        ],
+        "aliases": [
+            "M8"
+        ],
+        "type": "Emission nebula",
+        "ra": 270.921958,
+        "dec": -24.380167,
+        "mag": 5.8,
+        "distanceLy": null,
+        "sizeMajorArcmin": 45,
+        "sizeMinorArcmin": 30,
+        "constellation": "Sgr",
+        "description": "A large star-forming nebula in Sagittarius.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M104",
+        "name": "Sombrero Galaxy",
+        "catalogueIds": [
+            "M104",
+            "NGC 4594"
+        ],
+        "aliases": [
+            "M104",
+            "NGC 4594"
+        ],
+        "type": "Galaxy",
+        "ra": 189.997625,
+        "dec": -11.623056,
+        "mag": 8.59,
+        "distanceLy": null,
+        "sizeMajorArcmin": 8.45,
+        "sizeMinorArcmin": 4.91,
+        "constellation": "Vir",
+        "description": "An edge-on galaxy with a prominent dust lane in Virgo.",
+        "visibility": "telescopic",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M51",
+        "name": "Whirlpool Galaxy",
+        "catalogueIds": [
+            "M51",
+            "NGC 5194"
+        ],
+        "aliases": [
+            "M51",
+            "NGC 5194"
+        ],
+        "type": "Galaxy",
+        "ra": 202.469625,
+        "dec": 47.195167,
+        "mag": 8.36,
+        "distanceLy": null,
+        "sizeMajorArcmin": 13.71,
+        "sizeMinorArcmin": 11.67,
+        "constellation": "CVn",
+        "description": "A face-on interacting spiral galaxy in Canes Venatici.",
+        "visibility": "telescopic",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M101",
+        "name": "Pinwheel Galaxy",
+        "catalogueIds": [
+            "M101",
+            "NGC 5457"
+        ],
+        "aliases": [
+            "M101",
+            "NGC 5457"
+        ],
+        "type": "Galaxy",
+        "ra": 210.80225,
+        "dec": 54.348944,
+        "mag": 7.9,
+        "distanceLy": null,
+        "sizeMajorArcmin": 23.99,
+        "sizeMinorArcmin": 23.07,
+        "constellation": "UMa",
+        "description": "A large face-on spiral galaxy in Ursa Major.",
+        "visibility": "telescopic",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M82",
+        "name": "Cigar Galaxy",
+        "catalogueIds": [
+            "M82",
+            "NGC 3034"
+        ],
+        "aliases": [
+            "M82",
+            "NGC 3034"
+        ],
+        "type": "Galaxy",
+        "ra": 148.969708,
+        "dec": 69.679389,
+        "mag": 8.3,
+        "distanceLy": null,
+        "sizeMajorArcmin": 10.99,
+        "sizeMinorArcmin": 5.11,
+        "constellation": "UMa",
+        "description": "An edge-on starburst galaxy near M81.",
+        "visibility": "telescopic",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M81",
+        "name": "Bode's Galaxy",
+        "catalogueIds": [
+            "M81",
+            "NGC 3031"
+        ],
+        "aliases": [
+            "M81",
+            "NGC 3031"
+        ],
+        "type": "Galaxy",
+        "ra": 148.888208,
+        "dec": 69.065306,
+        "mag": 6.92,
+        "distanceLy": null,
+        "sizeMajorArcmin": 21.63,
+        "sizeMinorArcmin": 11.25,
+        "constellation": "UMa",
+        "description": "A bright spiral galaxy in Ursa Major.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M33",
+        "name": "Triangulum Galaxy",
+        "catalogueIds": [
+            "M33",
+            "NGC 598"
+        ],
+        "aliases": [
+            "M33",
+            "NGC 598"
+        ],
+        "type": "Galaxy",
+        "ra": 23.462042,
+        "dec": 30.660222,
+        "mag": 5.79,
+        "distanceLy": null,
+        "sizeMajorArcmin": 62.09,
+        "sizeMinorArcmin": 36.73,
+        "constellation": "Tri",
+        "description": "A nearby spiral galaxy in Triangulum.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "NGC 6992",
+        "name": "Veil Nebula (Eastern Veil)",
+        "catalogueIds": [
+            "NGC 6992"
+        ],
+        "aliases": [
+            "NGC 6992",
+            "Veil Nebula"
+        ],
+        "type": "Supernova remnant",
+        "ra": 314.079458,
+        "dec": 31.74275,
+        "mag": null,
+        "distanceLy": null,
+        "sizeMajorArcmin": 60,
+        "sizeMinorArcmin": 8,
+        "constellation": "Cyg",
+        "description": "The eastern arc of the Veil supernova remnant.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "NGC 6960",
+        "name": "Veil Nebula (Western Veil)",
+        "catalogueIds": [
+            "NGC 6960"
+        ],
+        "aliases": [
+            "NGC 6960",
+            "Veil Nebula"
+        ],
+        "type": "Supernova remnant",
+        "ra": 311.492417,
+        "dec": 30.595139,
+        "mag": null,
+        "distanceLy": null,
+        "sizeMajorArcmin": 210,
+        "sizeMinorArcmin": 160,
+        "constellation": "Cyg",
+        "description": "The western arc of the Veil supernova remnant.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M97",
+        "name": "Owl Nebula",
+        "catalogueIds": [
+            "M97",
+            "NGC 3587"
+        ],
+        "aliases": [
+            "M97"
+        ],
+        "type": "Planetary nebula",
+        "ra": 168.698792,
+        "dec": 55.019028,
+        "mag": 9.9,
+        "distanceLy": null,
+        "sizeMajorArcmin": 3.58,
+        "sizeMinorArcmin": null,
+        "constellation": "UMa",
+        "description": "A planetary nebula in Ursa Major.",
+        "visibility": "telescopic",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "M31",
+        "name": "Andromeda Galaxy",
+        "catalogueIds": [
+            "M31",
+            "NGC 224"
+        ],
+        "aliases": [
+            "M31",
+            "NGC 224"
+        ],
+        "type": "Galaxy",
+        "ra": 10.684792,
+        "dec": 41.269056,
+        "mag": 3.44,
+        "distanceLy": null,
+        "sizeMajorArcmin": 177.83,
+        "sizeMinorArcmin": 69.66,
+        "constellation": "And",
+        "description": "The nearest large spiral galaxy to the Milky Way.",
+        "visibility": "featured",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "NGC 2024",
+        "name": "Flame Nebula",
+        "catalogueIds": [
+            "NGC 2024"
+        ],
+        "aliases": [
+            "NGC 2024"
+        ],
+        "type": "Emission nebula",
+        "ra": 85.427375,
+        "dec": -1.856278,
+        "mag": null,
+        "distanceLy": null,
+        "sizeMajorArcmin": 30,
+        "sizeMinorArcmin": 30,
+        "constellation": "Ori",
+        "description": "An emission nebula near Alnitak in Orion.",
+        "visibility": "telescopic",
+        "source": "OpenNGC (CC BY-SA 4.0)",
+        "epoch": 2000
+    },
+    {
+        "id": "Cygnus Rift",
+        "name": "Cygnus Rift",
+        "catalogueIds": [
+            "NAME Cygnus Rift",
+            "NAME Northern Coalsack"
+        ],
+        "aliases": [
+            "Northern Coalsack",
+            "Cyg Rift"
+        ],
+        "type": "Dark nebula",
+        "ra": 305.25,
+        "dec": 37.0,
+        "mag": null,
+        "distanceLy": null,
+        "sizeMajorArcmin": 1410,
+        "sizeMinorArcmin": 480,
+        "constellation": "Cygnus",
+        "description": "A dark molecular cloud that obscures background stars along the Milky Way; its center and angular extent are approximate.",
+        "visibility": "feature",
+        "source": "SIMBAD (Cygnus Rift / Northern Coalsack; approximate J2000 center and angular size)",
+        "epoch": 2000
+    }
+]
+''';
