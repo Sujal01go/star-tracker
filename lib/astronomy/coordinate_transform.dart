@@ -5,6 +5,72 @@ import 'spherical_geometry.dart';
 /// Rigorous transformations between Equatorial (RA, Dec) and Horizontal (Az, Alt) coordinate frames,
 /// plus astronomical corrections (precession, proper motion, atmospheric refraction).
 class CoordinateTransform {
+  /// Converts geocentric equatorial coordinates into the direction seen from
+  /// a location on Earth's surface, including diurnal parallax.
+  ///
+  /// [rightAscensionDeg] and [declinationDeg] must use the same equator and
+  /// equinox as [lstDeg]. [distanceAu] is the geocentric distance.
+  static ({double rightAscension, double declination})
+  geocentricToTopocentricEquatorial({
+    required double rightAscensionDeg,
+    required double declinationDeg,
+    required double distanceAu,
+    required double latitudeDeg,
+    required double altitudeMeters,
+    required double lstDeg,
+  }) {
+    const equatorialEarthRadiusMeters = 6378137.0;
+    const metersPerAu = 149597870700.0;
+    const earthFlatteningFactor = 0.99664719;
+
+    final latitude = SphericalGeometry.toRadians(latitudeDeg);
+    final lst = SphericalGeometry.toRadians(lstDeg);
+    final u = math.atan(earthFlatteningFactor * math.tan(latitude));
+    final elevationRatio = altitudeMeters / equatorialEarthRadiusMeters;
+    final rhoSinLatitude =
+        (earthFlatteningFactor * math.sin(u)) +
+        (elevationRatio * math.sin(latitude));
+    final rhoCosLatitude = math.cos(u) + (elevationRatio * math.cos(latitude));
+    final earthRadiusAu = equatorialEarthRadiusMeters / metersPerAu;
+
+    // Observer position in equatorial axes of date (x toward RA 0, y toward
+    // RA 90 degrees, z toward the north celestial pole).
+    final observerX = earthRadiusAu * rhoCosLatitude * math.cos(lst);
+    final observerY = earthRadiusAu * rhoCosLatitude * math.sin(lst);
+    final observerZ = earthRadiusAu * rhoSinLatitude;
+
+    final ra = SphericalGeometry.toRadians(rightAscensionDeg);
+    final dec = SphericalGeometry.toRadians(declinationDeg);
+    final cosDec = math.cos(dec);
+    final objectX = distanceAu * cosDec * math.cos(ra);
+    final objectY = distanceAu * cosDec * math.sin(ra);
+    final objectZ = distanceAu * math.sin(dec);
+
+    final topocentricX = objectX - observerX;
+    final topocentricY = objectY - observerY;
+    final topocentricZ = objectZ - observerZ;
+    final topocentricDistance = math.sqrt(
+      (topocentricX * topocentricX) +
+          (topocentricY * topocentricY) +
+          (topocentricZ * topocentricZ),
+    );
+
+    return (
+      rightAscension: SphericalGeometry.normalizeDegrees360(
+        SphericalGeometry.toDegrees(math.atan2(topocentricY, topocentricX)),
+      ),
+      declination: SphericalGeometry.toDegrees(
+        math.asin(
+          SphericalGeometry.clamp(
+            topocentricZ / topocentricDistance,
+            -1.0,
+            1.0,
+          ),
+        ),
+      ),
+    );
+  }
+
   /// Converts Equatorial coordinates ([raDeg], [decDeg]) into Horizontal coordinates ([SkyPosition])
   /// for an observer at [latitudeDeg] and local sidereal time [lstDeg].
   ///

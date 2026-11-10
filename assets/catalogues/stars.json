@@ -14,9 +14,18 @@
     "pmRa": -546.01,
     "pmDec": -1223.07,
     "bv": 0.0,
-    "aliases": null,
+    "aliases": [
+      "GJ 244 A",
+      "HD 48915A",
+      "HD 48915",
+      "HIC 32349",
+      "HIP 32349",
+      "HR 2491",
+      "SAO 151881",
+      "* alf CMa"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 33579",
@@ -33,9 +42,16 @@
     "pmRa": 2.62,
     "pmDec": 2.05,
     "bv": -0.21,
-    "aliases": null,
+    "aliases": [
+      "HD 52089",
+      "HIC 33579",
+      "HIP 33579",
+      "HR 2618",
+      "SAO 172676",
+      "* eps CMa"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 34444",
@@ -52,9 +68,16 @@
     "pmRa": -2.84,
     "pmDec": 3.73,
     "bv": 0.68,
-    "aliases": null,
+    "aliases": [
+      "HD 54605",
+      "HIC 34444",
+      "HIP 34444",
+      "HR 2693",
+      "SAO 173047",
+      "* del CMa"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 30324",
@@ -73,7 +96,7 @@
     "bv": -0.23,
     "aliases": null,
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 35904",
@@ -90,9 +113,16 @@
     "pmRa": -4.24,
     "pmDec": 4.54,
     "bv": -0.08,
-    "aliases": null,
+    "aliases": [
+      "HD 58350",
+      "HIC 35904",
+      "HIP 35904",
+      "HR 2827",
+      "SAO 173651",
+      "* eta CMa"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 30438",
@@ -109,9 +139,16 @@
     "pmRa": 19.93,
     "pmDec": 23.29,
     "bv": 0.15,
-    "aliases": null,
+    "aliases": [
+      "HD 45348",
+      "HIC 30438",
+      "HIP 30438",
+      "HR 2326",
+      "SAO 234480",
+      "* alf Car"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 45238",
@@ -128,9 +165,18 @@
     "pmRa": -156.96,
     "pmDec": 114.36,
     "bv": 0.0,
-    "aliases": null,
+    "aliases": [
+      "GJ 339.2",
+      "GJ 9292",
+      "HD 80007",
+      "HIC 45238",
+      "HIP 45238",
+      "HR 3685",
+      "SAO 250495",
+      "* bet Car"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 41037",
@@ -147,9 +193,15 @@
     "pmRa": -21.72,
     "pmDec": 20.91,
     "bv": 1.2,
-    "aliases": null,
+    "aliases": [
+      "HIC 41037",
+      "HIP 41037",
+      "HR 3307",
+      "SAO 235932",
+      "* eps Car"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 46390",
@@ -166,9 +218,16 @@
     "pmRa": -18.73,
     "pmDec": 12.35,
     "bv": 0.18,
-    "aliases": null,
+    "aliases": [
+      "HD 80404",
+      "HIC 45556",
+      "HIP 45556",
+      "HR 3699",
+      "SAO 236808",
+      "* iot Car"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 71683",
@@ -189,10 +248,16 @@
       "Alpha Centauri",
       "Alpha Centauri A",
       "Rigil Kentaurus",
-      "Rigil Kent"
+      "Rigil Kent",
+      "GJ 559 A",
+      "HD 128620",
+      "HIC 71683",
+      "HIP 71683",
+      "HR 5459",
+      "* alf Cen A"
     ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 71681",
@@ -209,9 +274,16 @@
     "pmRa": -3614.39,
     "pmDec": 802.98,
     "bv": 0.88,
-    "aliases": null,
+    "aliases": [
+      "GJ 559 B",
+      "HD 128621",
+      "HIC 71681",
+      "HIP 71681",
+      "HR 5460",
+      "* alf Cen B"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 68702",
@@ -228,9 +300,16 @@
     "pmRa": -33.89,
     "pmDec": -25.06,
     "bv": -0.23,
-    "aliases": null,
+    "aliases": [
+      "HD 122451",
+      "HIC 68702",
+      "HIP 68702",
+      "HR 5267",
+      "SAO 252582",
+      "* bet Cen"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 68933",
@@ -247,9 +326,17 @@
     "pmRa": -519.29,
     "pmDec": -518.42,
     "bv": 1.01,
-    "aliases": null,
+    "aliases": [
+      "GJ 539",
+      "HD 123139",
+      "HIC 68933",
+      "HIP 68933",
+      "HR 5288",
+      "SAO 205188",
+      "* tet Cen"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 69673",
@@ -266,9 +353,17 @@
     "pmRa": -1093.45,
     "pmDec": -1999.4,
     "bv": 1.23,
-    "aliases": null,
+    "aliases": [
+      "GJ 541",
+      "HD 124897",
+      "HIC 69673",
+      "HIP 69673",
+      "HR 5340",
+      "SAO 100944",
+      "* alf Boo"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 72105",
@@ -276,18 +371,25 @@
     "commonName": "Izar",
     "bayer": "Epsilon Boo",
     "con": "Boo",
-    "ra": 221.24675,
-    "dec": 27.07422,
+    "ra": 221.24648617076684,
+    "dec": 27.074315757773466,
     "mag": 2.35,
     "spec": "K0II-III+A2V",
-    "dist": 210.0,
-    "plx": 15.54,
-    "pmRa": -50.14,
-    "pmDec": 18.23,
+    "dist": 235.88927496881,
+    "plx": 13.82667260913517,
+    "pmRa": -50.81825554241812,
+    "pmDec": 21.02352084436887,
     "bv": 0.97,
-    "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "aliases": [
+      "HD 129989",
+      "HIC 72105",
+      "HIP 72105",
+      "HR 5506",
+      "SAO 83500",
+      "* eps Boo"
+    ],
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1279798794197267072 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 67927",
@@ -323,9 +425,18 @@
     "pmRa": 200.94,
     "pmDec": 286.23,
     "bv": 0.0,
-    "aliases": null,
+    "aliases": [
+      "GJ 721",
+      "GJ 721.0",
+      "HD 172167",
+      "HIC 91262",
+      "HIP 91262",
+      "HR 7001",
+      "SAO 67174",
+      "* alf Lyr"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 92420",
@@ -333,18 +444,18 @@
     "commonName": "Sulafat",
     "bayer": "Gamma Lyr",
     "con": "Lyr",
-    "ra": 282.26187,
-    "dec": 32.69083,
+    "ra": 282.5199906501613,
+    "dec": 33.362650393309416,
     "mag": 3.25,
     "spec": "B9III",
-    "dist": 620.0,
-    "plx": 5.26,
-    "pmRa": 1.63,
-    "pmDec": -9.62,
+    "dist": 906.4309536674114,
+    "plx": 3.598248453237108,
+    "pmRa": 2.0450574085185607,
+    "pmDec": -3.6847054917129016,
     "bv": -0.05,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 2090687795056051328 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
   },
   {
     "id": "HIP 93085",
@@ -352,18 +463,18 @@
     "commonName": "Sheliak",
     "bayer": "Beta Lyr",
     "con": "Lyr",
-    "ra": 284.1485,
-    "dec": 33.3627,
+    "ra": 284.43266047869355,
+    "dec": -21.106717827235787,
     "mag": 3.52,
     "spec": "B8II-IIIep",
-    "dist": 960.0,
-    "plx": 3.39,
-    "pmRa": 1.77,
-    "pmDec": -3.87,
+    "dist": 387.855271926795,
+    "plx": 8.40922893943697,
+    "pmRa": 33.5197503293226,
+    "pmDec": -13.552396564112811,
     "bv": 0.0,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 4084834822776246272 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
   },
   {
     "id": "HIP 24608",
@@ -380,9 +491,19 @@
     "pmRa": 75.52,
     "pmDec": -427.13,
     "bv": 0.8,
-    "aliases": null,
+    "aliases": [
+      "GJ 194",
+      "GJ 194 A",
+      "GJ 194 B",
+      "HD 34029",
+      "HIC 24608",
+      "HIP 24608",
+      "HR 1708",
+      "SAO 40186",
+      "* alf Aur"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 28360",
@@ -399,9 +520,17 @@
     "pmRa": -56.76,
     "pmDec": -2.31,
     "bv": 0.07,
-    "aliases": null,
+    "aliases": [
+      "GJ 3375",
+      "HD 40183",
+      "HIC 28360",
+      "HIP 28360",
+      "HR 2088",
+      "SAO 40750",
+      "* bet Aur"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 28380",
@@ -437,9 +566,16 @@
     "pmRa": 1.31,
     "pmDec": -0.5,
     "bv": -0.03,
-    "aliases": null,
+    "aliases": [
+      "HD 34085",
+      "HIC 24436",
+      "HIP 24436",
+      "HR 1713",
+      "SAO 131907",
+      "* bet Ori"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 27989",
@@ -456,9 +592,16 @@
     "pmRa": 27.33,
     "pmDec": 10.86,
     "bv": 1.85,
-    "aliases": null,
+    "aliases": [
+      "HD 39801",
+      "HIC 27989",
+      "HIP 27989",
+      "HR 2061",
+      "SAO 113271",
+      "* alf Ori"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 25336",
@@ -475,9 +618,16 @@
     "pmRa": -8.11,
     "pmDec": -13.29,
     "bv": -0.22,
-    "aliases": null,
+    "aliases": [
+      "HD 35468",
+      "HIC 25336",
+      "HIP 25336",
+      "HR 1790",
+      "SAO 112740",
+      "* gam Ori"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 26311",
@@ -494,9 +644,16 @@
     "pmRa": 1.48,
     "pmDec": -1.08,
     "bv": -0.19,
-    "aliases": null,
+    "aliases": [
+      "HD 37128",
+      "HIC 26311",
+      "HIP 26311",
+      "HR 1903",
+      "SAO 132346",
+      "* eps Ori"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 26727",
@@ -513,9 +670,14 @@
     "pmRa": 3.19,
     "pmDec": 2.01,
     "bv": -0.21,
-    "aliases": null,
+    "aliases": [
+      "HIC 26727",
+      "HIP 26727",
+      "SAO 132444",
+      "* zet Ori"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 27366",
@@ -532,9 +694,16 @@
     "pmRa": 1.46,
     "pmDec": -0.73,
     "bv": -0.18,
-    "aliases": null,
+    "aliases": [
+      "HD 38771",
+      "HIC 27366",
+      "HIP 27366",
+      "HR 2004",
+      "SAO 132542",
+      "* kap Ori"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 25930",
@@ -551,9 +720,16 @@
     "pmRa": -0.57,
     "pmDec": 0.57,
     "bv": -0.21,
-    "aliases": null,
+    "aliases": [
+      "HD 36486",
+      "HIC 25930",
+      "HIP 25930",
+      "HR 1852",
+      "SAO 132220",
+      "* del Ori"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 37279",
@@ -570,9 +746,19 @@
     "pmRa": -716.57,
     "pmDec": -1034.58,
     "bv": 0.42,
-    "aliases": null,
+    "aliases": [
+      "GJ 280 A",
+      "GJ 280.0",
+      "GJ 280",
+      "HD 61421",
+      "HIC 37279",
+      "HIP 37279",
+      "HR 2943",
+      "SAO 115756",
+      "* alf CMi"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 36188",
@@ -608,9 +794,16 @@
     "pmRa": 88.02,
     "pmDec": -40.08,
     "bv": -0.16,
-    "aliases": null,
+    "aliases": [
+      "HD 10144",
+      "HIC 7588",
+      "HIP 7588",
+      "HR 472",
+      "SAO 232481",
+      "* alf Eri"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 16611",
@@ -618,18 +811,18 @@
     "commonName": "Cursa",
     "bayer": "Beta Eri",
     "con": "Eri",
-    "ra": 53.94829,
-    "dec": -5.08744,
+    "ra": 53.4471968241054,
+    "dec": -21.633007479525386,
     "mag": 2.78,
     "spec": "A3III",
-    "dist": 89.0,
-    "plx": 36.51,
-    "pmRa": -115.93,
-    "pmDec": -106.63,
+    "dist": 320.0341714684396,
+    "plx": 10.191298516763675,
+    "pmRa": 44.746391735245744,
+    "pmDec": -27.67555701382472,
     "bv": 0.14,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 5100353485969674880 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
   },
   {
     "id": "HIP 14930",
@@ -637,18 +830,18 @@
     "commonName": "Zaurak",
     "bayer": "Gamma Eri",
     "con": "Eri",
-    "ra": 47.78187,
-    "dec": -13.50853,
+    "ra": 48.138321457658044,
+    "dec": -57.32148837931147,
     "mag": 2.97,
     "spec": "M0.5IIIb",
-    "dist": 203.0,
-    "plx": 16.03,
-    "pmRa": -28.98,
-    "pmDec": -63.53,
+    "dist": 1502.0527718305264,
+    "plx": 2.1714042530111555,
+    "pmRa": 18.849517228939,
+    "pmDec": 13.691520423426352,
     "bv": 1.58,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 4727337637895749888 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
   },
   {
     "id": "HIP 97649",
@@ -665,9 +858,17 @@
     "pmRa": 536.82,
     "pmDec": 385.54,
     "bv": 0.22,
-    "aliases": null,
+    "aliases": [
+      "GJ 768",
+      "HD 187642",
+      "HIC 97649",
+      "HIP 97649",
+      "HR 7557",
+      "SAO 125122",
+      "* alf Aql"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 98036",
@@ -675,18 +876,18 @@
     "commonName": "Tarazed",
     "bayer": "Gamma Aql",
     "con": "Aql",
-    "ra": 298.82833,
-    "dec": 10.61328,
+    "ra": 298.8285089900959,
+    "dec": 6.404626612168723,
     "mag": 2.72,
     "spec": "K3II",
-    "dist": 395.0,
-    "plx": 8.25,
-    "pmRa": 17.58,
-    "pmDec": -18.73,
+    "dist": 44.36000456591718,
+    "plx": 73.52487469097186,
+    "pmRa": 45.943752101692965,
+    "pmDec": -480.9649180671844,
     "bv": 1.52,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 4296708789290712064 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
   },
   {
     "id": "HIP 98032",
@@ -722,9 +923,13 @@
     "pmRa": -35.29,
     "pmDec": -11.97,
     "bv": -0.24,
-    "aliases": null,
+    "aliases": [
+      "HIC 60718",
+      "HIP 60718",
+      "* alf Cru"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 62434",
@@ -741,9 +946,16 @@
     "pmRa": -47.96,
     "pmDec": -13.62,
     "bv": -0.23,
-    "aliases": null,
+    "aliases": [
+      "HD 111123",
+      "HIC 62434",
+      "HIP 62434",
+      "HR 4853",
+      "SAO 240259",
+      "* bet Cru"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 61084",
@@ -760,9 +972,17 @@
     "pmRa": 27.94,
     "pmDec": -264.33,
     "bv": 1.59,
-    "aliases": null,
+    "aliases": [
+      "GJ 470",
+      "HD 108903",
+      "HIC 61084",
+      "HIP 61084",
+      "HR 4763",
+      "SAO 240019",
+      "* gam Cru"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 59747",
@@ -770,18 +990,18 @@
     "commonName": "Delta Crucis",
     "bayer": "Delta Cru",
     "con": "Cru",
-    "ra": 183.79496,
-    "dec": -58.74892,
+    "ra": 183.7860104400386,
+    "dec": -58.748974282250245,
     "mag": 2.79,
     "spec": "B2IV",
-    "dist": 360.0,
-    "plx": 9.06,
-    "pmRa": -39.38,
-    "pmDec": -10.87,
+    "dist": 455.0116963892486,
+    "plx": 7.168087771989562,
+    "pmRa": -36.95082953617367,
+    "pmDec": -11.296130411853484,
     "bv": -0.22,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 6071060144089351808 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
   },
   {
     "id": "HIP 21421",
@@ -798,9 +1018,18 @@
     "pmRa": 62.78,
     "pmDec": -189.36,
     "bv": 1.54,
-    "aliases": null,
+    "aliases": [
+      "GJ 171.1 A",
+      "GJ 9159 A",
+      "HD 29139",
+      "HIC 21421",
+      "HIP 21421",
+      "HR 1457",
+      "SAO 94027",
+      "* alf Tau"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 25428",
@@ -817,9 +1046,16 @@
     "pmRa": -23.15,
     "pmDec": -173.81,
     "bv": -0.13,
-    "aliases": null,
+    "aliases": [
+      "HD 35497",
+      "HIC 25428",
+      "HIP 25428",
+      "HR 1791",
+      "SAO 77168",
+      "* bet Tau"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 26451",
@@ -855,9 +1091,16 @@
     "pmRa": -10.16,
     "pmDec": -23.21,
     "bv": 1.83,
-    "aliases": null,
+    "aliases": [
+      "HD 148478",
+      "HIC 80763",
+      "HIP 80763",
+      "HR 6134",
+      "SAO 184415",
+      "* alf Sco"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 85927",
@@ -874,9 +1117,16 @@
     "pmRa": -8.96,
     "pmDec": -31.83,
     "bv": -0.22,
-    "aliases": null,
+    "aliases": [
+      "HD 158926",
+      "HIC 85927",
+      "HIP 85927",
+      "HR 6527",
+      "SAO 208954",
+      "* lam Sco"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 86228",
@@ -893,9 +1143,17 @@
     "pmRa": 1.68,
     "pmDec": -21.43,
     "bv": 0.4,
-    "aliases": null,
+    "aliases": [
+      "HD 159532",
+      "HD 159532A",
+      "HIC 86228",
+      "HIP 86228",
+      "HR 6553",
+      "SAO 228201",
+      "* tet Sco"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 78820",
@@ -912,9 +1170,16 @@
     "pmRa": -20.35,
     "pmDec": -34.88,
     "bv": -0.12,
-    "aliases": null,
+    "aliases": [
+      "HD 143275",
+      "HIC 78401",
+      "HIP 78401",
+      "HR 5953",
+      "SAO 184014",
+      "* del Sco"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 78401",
@@ -950,9 +1215,16 @@
     "pmRa": -42.5,
     "pmDec": -31.73,
     "bv": -0.23,
-    "aliases": null,
+    "aliases": [
+      "HD 116658",
+      "HIC 65474",
+      "HIP 65474",
+      "HR 5056",
+      "SAO 157923",
+      "* alf Vir"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 61941",
@@ -979,18 +1251,18 @@
     "commonName": "Vindemiatrix",
     "bayer": "Epsilon Vir",
     "con": "Vir",
-    "ra": 195.54475,
-    "dec": 10.95992,
+    "ra": 195.54291476874843,
+    "dec": 10.95923674149768,
     "mag": 2.85,
     "spec": "G8III",
-    "dist": 110.0,
-    "plx": 29.8,
-    "pmRa": -270.62,
-    "pmDec": 16.59,
+    "dist": 107.95963004520073,
+    "plx": 30.210957333166505,
+    "pmRa": -273.792912720649,
+    "pmDec": 19.803882348563043,
     "bv": 0.94,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 3736865265441207424 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
   },
   {
     "id": "HIP 37826",
@@ -1007,9 +1279,17 @@
     "pmRa": -626.55,
     "pmDec": -45.8,
     "bv": 1.0,
-    "aliases": null,
+    "aliases": [
+      "GJ 286",
+      "HD 62509",
+      "HIC 37826",
+      "HIP 37826",
+      "HR 2990",
+      "SAO 79666",
+      "* bet Gem"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 36850",
@@ -1026,9 +1306,15 @@
     "pmRa": -192.36,
     "pmDec": -147.16,
     "bv": 0.03,
-    "aliases": null,
+    "aliases": [
+      "GJ 278.0",
+      "HIC 36850",
+      "HIP 36850",
+      "SAO 60198",
+      "* alf Gem"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 31681",
@@ -1045,9 +1331,16 @@
     "pmRa": -4.26,
     "pmDec": -68.42,
     "bv": 0.0,
-    "aliases": null,
+    "aliases": [
+      "HD 47105",
+      "HIC 31681",
+      "HIP 31681",
+      "HR 2421",
+      "SAO 95912",
+      "* gam Gem"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 102098",
@@ -1064,9 +1357,16 @@
     "pmRa": 1.56,
     "pmDec": 1.55,
     "bv": 0.09,
-    "aliases": null,
+    "aliases": [
+      "HD 197345",
+      "HIC 102098",
+      "HIP 102098",
+      "HR 7924",
+      "SAO 49941",
+      "* alf Cyg"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 100453",
@@ -1083,9 +1383,16 @@
     "pmRa": -2.31,
     "pmDec": -3.95,
     "bv": 0.67,
-    "aliases": null,
+    "aliases": [
+      "HD 194093",
+      "HIC 100453",
+      "HIP 100453",
+      "HR 7796",
+      "SAO 49528",
+      "* gam Cyg"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 102488",
@@ -1102,9 +1409,16 @@
     "pmRa": 353.47,
     "pmDec": 328.61,
     "bv": 1.03,
-    "aliases": null,
+    "aliases": [
+      "HD 106625",
+      "HIC 59803",
+      "HIP 59803",
+      "HR 4662",
+      "SAO 157176",
+      "* gam Crv"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 95947",
@@ -1131,18 +1445,18 @@
     "commonName": "Delta Cygni",
     "bayer": "Delta Cyg",
     "con": "Cyg",
-    "ra": 296.24371,
-    "dec": 45.13028,
+    "ra": 296.2439176177008,
+    "dec": 45.13102484391075,
     "mag": 2.86,
     "spec": "B9.5IV",
-    "dist": 170.0,
-    "plx": 19.14,
-    "pmRa": -6.04,
-    "pmDec": 53.64,
+    "dist": 154.22992832233857,
+    "plx": 21.14741161121059,
+    "pmRa": 41.87016581274261,
+    "pmDec": 47.297743168717744,
     "bv": -0.04,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 2079784488001577600 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
   },
   {
     "id": "HIP 49669",
@@ -1159,9 +1473,17 @@
     "pmRa": -249.46,
     "pmDec": 4.98,
     "bv": -0.11,
-    "aliases": null,
+    "aliases": [
+      "GJ 9316 A",
+      "HD 87901",
+      "HIC 49669",
+      "HIP 49669",
+      "HR 3982",
+      "SAO 98967",
+      "* alf Leo"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 57632",
@@ -1178,9 +1500,18 @@
     "pmRa": -497.68,
     "pmDec": -114.67,
     "bv": 0.09,
-    "aliases": null,
+    "aliases": [
+      "GJ 448",
+      "GJ 448.0",
+      "HD 102647",
+      "HIC 57632",
+      "HIP 57632",
+      "HR 4534",
+      "SAO 99809",
+      "* bet Leo"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 50583",
@@ -1197,9 +1528,13 @@
     "pmRa": 310.87,
     "pmDec": -151.78,
     "bv": 1.15,
-    "aliases": null,
+    "aliases": [
+      "HIC 50583",
+      "HIP 50583",
+      "* gam Leo"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 62956",
@@ -1216,9 +1551,16 @@
     "pmRa": 111.74,
     "pmDec": -8.99,
     "bv": -0.02,
-    "aliases": null,
+    "aliases": [
+      "HD 112185",
+      "HIC 62956",
+      "HIP 62956",
+      "HR 4905",
+      "SAO 28553",
+      "* eps UMa"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 54061",
@@ -1235,9 +1577,16 @@
     "pmRa": -136.46,
     "pmDec": -35.25,
     "bv": 1.07,
-    "aliases": null,
+    "aliases": [
+      "HD 95689",
+      "HIC 54061",
+      "HIP 54061",
+      "HR 4301",
+      "SAO 15384",
+      "* alf UMa"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 67301",
@@ -1254,9 +1603,16 @@
     "pmRa": -121.23,
     "pmDec": -15.56,
     "bv": -0.19,
-    "aliases": null,
+    "aliases": [
+      "HD 120315",
+      "HIC 67301",
+      "HIP 67301",
+      "HR 5191",
+      "SAO 44752",
+      "* eta UMa"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 65378",
@@ -1264,18 +1620,22 @@
     "commonName": "Mizar",
     "bayer": "Zeta UMa",
     "con": "UMa",
-    "ra": 200.98142,
-    "dec": 54.92536,
+    "ra": 200.98237336533253,
+    "dec": 54.92525907860076,
     "mag": 2.23,
     "spec": "A2V+A2V",
-    "dist": 83.0,
-    "plx": 39.38,
-    "pmRa": 120.32,
-    "pmDec": -26.0,
+    "dist": 81.10662483542698,
+    "plx": 40.213284471127004,
+    "pmRa": 122.46748022957269,
+    "pmDec": -22.68188642875364,
     "bv": 0.03,
-    "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "aliases": [
+      "HIC 65378",
+      "HIP 65378",
+      "* zet UMa"
+    ],
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1563590579347125632 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 53910",
@@ -1292,9 +1652,17 @@
     "pmRa": 81.65,
     "pmDec": 33.47,
     "bv": 0.0,
-    "aliases": null,
+    "aliases": [
+      "GJ 9343",
+      "HD 95418",
+      "HIC 53910",
+      "HIP 53910",
+      "HR 4295",
+      "SAO 27876",
+      "* bet UMa"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 58001",
@@ -1311,9 +1679,16 @@
     "pmRa": 107.56,
     "pmDec": 11.23,
     "bv": 0.0,
-    "aliases": null,
+    "aliases": [
+      "HD 103287",
+      "HIC 58001",
+      "HIP 58001",
+      "HR 4554",
+      "SAO 28179",
+      "* gam UMa"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 59774",
@@ -1321,18 +1696,18 @@
     "commonName": "Megrez",
     "bayer": "Delta UMa",
     "con": "UMa",
-    "ra": 183.85696,
-    "dec": 57.03261,
+    "ra": 183.85734834773095,
+    "dec": 57.03265316489124,
     "mag": 3.32,
     "spec": "A3V",
-    "dist": 81.0,
-    "plx": 40.05,
-    "pmRa": 103.54,
-    "pmDec": 8.78,
+    "dist": 80.87611109512976,
+    "plx": 40.32790069695137,
+    "pmRa": 103.94679584135581,
+    "pmDec": 8.141463801370662,
     "bv": 0.08,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1575287046603605888 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
   },
   {
     "id": "HIP 11767",
@@ -1349,9 +1724,16 @@
     "pmRa": 44.22,
     "pmDec": -11.74,
     "bv": 0.6,
-    "aliases": null,
+    "aliases": [
+      "HD 8890",
+      "HIC 11767",
+      "HIP 11767",
+      "HR 424",
+      "SAO 308",
+      "* alf UMi"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 72607",
@@ -1368,9 +1750,16 @@
     "pmRa": -32.41,
     "pmDec": 12.87,
     "bv": 1.47,
-    "aliases": null,
+    "aliases": [
+      "HD 131873",
+      "HIC 72607",
+      "HIP 72607",
+      "HR 5563",
+      "SAO 8102",
+      "* bet UMi"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 75097",
@@ -1397,18 +1786,25 @@
     "commonName": "Schedar",
     "bayer": "Alpha Cas",
     "con": "Cas",
-    "ra": 10.12683,
-    "dec": 56.53733,
+    "ra": 10.12724197930297,
+    "dec": 56.53718879378639,
     "mag": 2.24,
     "spec": "K0IIIa",
-    "dist": 230.0,
-    "plx": 14.29,
-    "pmRa": 50.36,
-    "pmDec": -32.17,
+    "dist": 231.46471325385147,
+    "plx": 14.090976249252234,
+    "pmRa": 49.12564571845064,
+    "pmDec": -31.595374311196693,
     "bv": 1.17,
-    "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "aliases": [
+      "HD 3712",
+      "HIC 3179",
+      "HIP 3179",
+      "HR 168",
+      "SAO 21609",
+      "* alf Cas"
+    ],
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 418551920284673408 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 746",
@@ -1425,9 +1821,17 @@
     "pmRa": 523.39,
     "pmDec": -180.42,
     "bv": 0.34,
-    "aliases": null,
+    "aliases": [
+      "GJ 8",
+      "HD 432",
+      "HIC 746",
+      "HIP 746",
+      "HR 21",
+      "SAO 21133",
+      "* bet Cas"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 4427",
@@ -1444,9 +1848,16 @@
     "pmRa": 25.43,
     "pmDec": -3.88,
     "bv": -0.15,
-    "aliases": null,
+    "aliases": [
+      "HD 5394",
+      "HIC 4427",
+      "HIP 4427",
+      "HR 264",
+      "SAO 11482",
+      "* gam Cas"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 6537",
@@ -1473,18 +1884,18 @@
     "commonName": "Segin",
     "bayer": "Epsilon Cas",
     "con": "Cas",
-    "ra": 27.05433,
-    "dec": 63.67011,
+    "ra": 27.69123165918032,
+    "dec": 55.91842982976015,
     "mag": 3.35,
     "spec": "B3V",
-    "dist": 440.0,
-    "plx": 7.39,
-    "pmRa": 34.02,
-    "pmDec": -18.79,
+    "dist": 148.57871911520618,
+    "plx": 21.951755920516597,
+    "pmRa": 253.09608254774045,
+    "pmDec": -90.40990972536167,
     "bv": -0.16,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 504776790364530048 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
   },
   {
     "id": "HIP 15863",
@@ -1501,9 +1912,16 @@
     "pmRa": 24.11,
     "pmDec": -26.01,
     "bv": 0.48,
-    "aliases": null,
+    "aliases": [
+      "HD 20902",
+      "HIC 15863",
+      "HIP 15863",
+      "HR 1017",
+      "SAO 38787",
+      "* alf Per"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 14576",
@@ -1525,7 +1943,7 @@
       "Beta Persei"
     ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 113963",
@@ -1542,9 +1960,16 @@
     "pmRa": 60.37,
     "pmDec": -41.44,
     "bv": -0.04,
-    "aliases": null,
+    "aliases": [
+      "HD 218045",
+      "HIC 113963",
+      "HIP 113963",
+      "HR 8781",
+      "SAO 108378",
+      "* alf Peg"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 113881",
@@ -1561,9 +1986,16 @@
     "pmRa": 187.68,
     "pmDec": 137.66,
     "bv": 1.67,
-    "aliases": null,
+    "aliases": [
+      "HD 217906",
+      "HIC 113881",
+      "HIP 113881",
+      "HR 8775",
+      "SAO 90981",
+      "* bet Peg"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 88",
@@ -1571,18 +2003,18 @@
     "commonName": null,
     "bayer": null,
     "con": "Peg",
-    "ra": 0.33717,
-    "dec": 15.18361,
+    "ra": 0.26897723368536064,
+    "dec": -48.80990249876093,
     "mag": 2.84,
     "spec": "B2IV",
-    "dist": 390.0,
-    "plx": 8.33,
-    "pmRa": 4.54,
-    "pmDec": -8.96,
+    "dist": 488.5620493633341,
+    "plx": 6.675843490607348,
+    "pmRa": -17.505915222967833,
+    "pmDec": -6.324697461625508,
     "bv": -0.23,
     "aliases": [],
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 4977699562277892864 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
   },
   {
     "id": "HIP 107315",
@@ -1599,9 +2031,16 @@
     "pmRa": 29.54,
     "pmDec": 1.83,
     "bv": 1.54,
-    "aliases": null,
+    "aliases": [
+      "HD 206778",
+      "HIC 107315",
+      "HIP 107315",
+      "HR 8308",
+      "SAO 127029",
+      "* eps Peg"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 113368",
@@ -1618,9 +2057,18 @@
     "pmRa": 329.22,
     "pmDec": -164.22,
     "bv": 0.09,
-    "aliases": null,
+    "aliases": [
+      "GJ 881",
+      "GJ 881.0",
+      "HD 216956",
+      "HIC 113368",
+      "HIP 113368",
+      "HR 8728",
+      "SAO 191524",
+      "* alf PsA"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 90185",
@@ -1637,9 +2085,16 @@
     "pmRa": -39.46,
     "pmDec": -124.08,
     "bv": -0.03,
-    "aliases": null,
+    "aliases": [
+      "HD 169022",
+      "HIC 90185",
+      "HIP 90185",
+      "HR 6879",
+      "SAO 210091",
+      "* eps Sgr"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 92855",
@@ -1656,9 +2111,16 @@
     "pmRa": 17.51,
     "pmDec": -53.47,
     "bv": -0.22,
-    "aliases": null,
+    "aliases": [
+      "HD 175191",
+      "HIC 92855",
+      "HIP 92855",
+      "HR 7121",
+      "SAO 187448",
+      "* sig Sgr"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 89931",
@@ -1666,21 +2128,21 @@
     "commonName": "Kaus Media",
     "bayer": "Delta Sgr",
     "con": "Sgr",
-    "ra": 275.24842337,
-    "dec": -29.82803914,
+    "ra": 275.24868220695066,
+    "dec": -29.82822386700995,
     "mag": 2.72,
     "spec": "K3III",
-    "dist": 89.0,
-    "plx": 10.67,
-    "pmRa": 29.96,
-    "pmDec": -26.38,
+    "dist": 415.65688665797893,
+    "plx": 7.846769491115783,
+    "pmRa": 33.211995167893946,
+    "pmDec": -27.36096961705406,
     "bv": 0.08,
     "aliases": [
       "Delta Sagittarii",
       "Delta Sgr"
     ],
-    "epoch": 2000,
-    "source": "SIMBAD; Hipparcos J2000"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 4049506483413484672 astrometry; names and photometry retained from SIMBAD; Hipparcos J2000"
   },
   {
     "id": "HIP 90496",
@@ -1688,21 +2150,21 @@
     "commonName": "Kaus Borealis",
     "bayer": "Lambda Sgr",
     "con": "Sgr",
-    "ra": 276.99266966,
-    "dec": -25.4216985,
+    "ra": 276.99244340050245,
+    "dec": -25.422523033637848,
     "mag": 2.82,
     "spec": "K1III",
-    "dist": 350.0,
-    "plx": 41.72,
-    "pmRa": -44.76,
-    "pmDec": -185.66,
+    "dist": 75.99199371296808,
+    "plx": 42.91983428306095,
+    "pmRa": -46.151553394133586,
+    "pmDec": -185.06736012548174,
     "bv": 1.38,
     "aliases": [
       "Lambda Sagittarii",
       "Lambda Sgr"
     ],
-    "epoch": 2000,
-    "source": "SIMBAD; Hipparcos J2000"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 4076915349846977664 astrometry; names and photometry retained from SIMBAD; Hipparcos J2000"
   },
   {
     "id": "HIP 80816",
@@ -1710,15 +2172,18 @@
     "commonName": "Beta Her",
     "bayer": "Beta Her",
     "con": "Her",
-    "ra": 247.55,
-    "dec": 21.49,
+    "ra": 247.55452931903397,
+    "dec": 21.48954466071868,
     "mag": 2.78,
     "spec": "G8III",
-    "dist": 140.0,
+    "dist": 148.2377083750866,
     "bv": 0.94,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1297565458994346240 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -98.82186841087012,
+    "pmDec": -14.869239096336226,
+    "plx": 22.002254438170677
   },
   {
     "id": "HIP 100751",
@@ -1734,10 +2199,16 @@
     "bv": -0.2,
     "aliases": [
       "Peacock",
-      "Alpha Pavonis"
+      "Alpha Pavonis",
+      "HD 193924",
+      "HIC 100751",
+      "HIP 100751",
+      "HR 7790",
+      "SAO 246574",
+      "* alf Pav"
     ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 21281",
@@ -1777,15 +2248,18 @@
     "commonName": "Beta Cnc",
     "bayer": "Beta Cnc",
     "con": "Cnc",
-    "ra": 131.17,
-    "dec": 9.186,
+    "ra": 131.17116036160883,
+    "dec": 18.153295569011824,
     "mag": 3.53,
     "spec": "K4III",
-    "dist": 290.0,
+    "dist": 136.8845670123918,
     "bv": 1.48,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 660136821288588416 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -18.435108978431952,
+    "pmDec": -227.81251386276287,
+    "plx": 23.827111033669258
   },
   {
     "id": "HIP 76952",
@@ -1809,15 +2283,18 @@
     "commonName": "Pi Her",
     "bayer": "Pi Her",
     "con": "Her",
-    "ra": 258.82,
-    "dec": 36.81,
+    "ra": 258.7616572468772,
+    "dec": 36.809174548038804,
     "mag": 3.16,
     "spec": "K3IIvar",
-    "dist": 303.0,
+    "dist": 366.5063708344955,
     "bv": 1.44,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1339952869195300608 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -27.40209075014929,
+    "pmDec": 2.924771069071474,
+    "plx": 8.899064345249363
   },
   {
     "id": "HIP 23416",
@@ -1825,15 +2302,18 @@
     "commonName": "Iota Aur",
     "bayer": "Iota Aur",
     "con": "Aur",
-    "ra": 74.24,
-    "dec": 33.166,
+    "ra": 75.49223197537926,
+    "dec": 43.823296688371194,
     "mag": 2.69,
     "spec": "K3IIvar",
-    "dist": 512.0,
+    "dist": 3301.572790760381,
     "bv": 1.53,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 205499655242974464 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 0.8829651653173848,
+    "pmDec": -3.06482445317715,
+    "plx": 0.9878818319946335
   },
   {
     "id": "HIP 48356",
@@ -1889,15 +2369,18 @@
     "commonName": "Delta Aql",
     "bayer": "Delta Aql",
     "con": "Aql",
-    "ra": 289.43,
-    "dec": 3.114,
+    "ra": 286.3525049765623,
+    "dec": 13.863053278714878,
     "mag": 3.36,
     "spec": "F0IV",
-    "dist": 50.0,
+    "dist": 85.30766951516449,
     "bv": 0.31,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 4314399312979641728 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -6.57492134089543,
+    "pmDec": -95.90884032512517,
+    "plx": 38.23294898965933
   },
   {
     "id": "HIP 104987",
@@ -1921,15 +2404,18 @@
     "commonName": "Beta Ara",
     "bayer": "Beta Ara",
     "con": "Ara",
-    "ra": 262.9,
-    "dec": -55.531,
+    "ra": 261.3248860596135,
+    "dec": -55.529996917051356,
     "mag": 2.84,
     "spec": "K3Ib-II",
-    "dist": 650.0,
+    "dist": 715.2467768176538,
     "bv": 1.45,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 5922444483103229952 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -8.039169337949994,
+    "pmDec": -25.92658289598858,
+    "plx": 4.560053792219337
   },
   {
     "id": "HIP 76333",
@@ -1937,15 +2423,18 @@
     "commonName": "Gamma Lib",
     "bayer": "Gamma Lib",
     "con": "Lib",
-    "ra": 233.86,
-    "dec": -14.79,
+    "ra": 233.88187249166222,
+    "dec": -14.789500781858125,
     "mag": 3.91,
     "spec": "K0III",
-    "dist": 152.0,
+    "dist": 160.99102555865022,
     "bv": 1.15,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 6265374394490973184 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 64.63118140397967,
+    "pmDec": 7.818776505284728,
+    "plx": 20.25928939630109
   },
   {
     "id": "HIP 75264",
@@ -1969,15 +2458,18 @@
     "commonName": "Delta Crv",
     "bayer": "Delta Crv",
     "con": "Crv",
-    "ra": 187.47,
-    "dec": -16.51,
+    "ra": 188.59681758232725,
+    "dec": -23.397012233844624,
     "mag": 2.94,
     "spec": "A0V",
-    "dist": 88.0,
+    "dist": 148.2197022161687,
     "bv": 0.01,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 3501215734352781440 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 1.1162392204898848,
+    "pmDec": -56.70396951863153,
+    "plx": 22.00492733579523
   },
   {
     "id": "HIP 109268",
@@ -1993,10 +2485,18 @@
     "bv": -0.13,
     "aliases": [
       "Alnair",
-      "Alpha Gruis"
+      "Alpha Gruis",
+      "GJ 848.2",
+      "GJ 9767",
+      "HD 209952",
+      "HIC 109268",
+      "HIP 109268",
+      "HR 8425",
+      "SAO 230992",
+      "* alf Gru"
     ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 42806",
@@ -2004,15 +2504,18 @@
     "commonName": "Delta Cnc",
     "bayer": "Delta Cnc",
     "con": "Cnc",
-    "ra": 130.91,
-    "dec": 18.157,
+    "ra": 130.82094133479526,
+    "dec": 21.468324769393398,
     "mag": 3.94,
     "spec": "K0III",
-    "dist": 136.0,
+    "dist": 174.94780476695848,
     "bv": 1.08,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 664950414475977728 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -105.76003203138204,
+    "pmDec": -39.157054930623424,
+    "plx": 18.643067750090427
   },
   {
     "id": "HIP 64962",
@@ -2058,9 +2561,16 @@
     "spec": "K3IIb+B9.5V",
     "dist": 390.0,
     "bv": 1.37,
-    "aliases": null,
+    "aliases": [
+      "HD 12533",
+      "HIC 9640",
+      "HIP 9640",
+      "HR 603",
+      "SAO 37734",
+      "* gam01 And"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 76267",
@@ -2068,15 +2578,26 @@
     "commonName": "Alpha CrB",
     "bayer": "Alpha CrB",
     "con": "CrB",
-    "ra": 233.67,
-    "dec": 26.715,
+    "ra": 233.67254376294218,
+    "dec": 26.714295174747274,
     "mag": 2.22,
     "spec": "A0V",
-    "dist": 75.0,
+    "dist": 77.21358776622745,
     "bv": 0.02,
-    "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "aliases": [
+      "GJ 9524",
+      "HD 139006",
+      "HIC 76267",
+      "HIP 76267",
+      "HR 5793",
+      "SAO 83893",
+      "* alf CrB"
+    ],
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1222646935698492160 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame",
+    "pmRa": 118.92724128982546,
+    "pmDec": -87.71096348146563,
+    "plx": 42.24080076261629
   },
   {
     "id": "HIP 25985",
@@ -2084,15 +2605,18 @@
     "commonName": "Alpha Lep",
     "bayer": "Alpha Lep",
     "con": "Lep",
-    "ra": 83.18,
-    "dec": -17.82,
+    "ra": 83.18258484252563,
+    "dec": -17.822282254766677,
     "mag": 2.58,
     "spec": "F0Ib",
-    "dist": 1280.0,
+    "dist": 1939.4219392799853,
     "bv": 0.21,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 2971266110612490624 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 3.3641908258333144,
+    "pmDec": 1.4840057540654934,
+    "plx": 1.6817195427885396
   },
   {
     "id": "HIP 9487",
@@ -2116,15 +2640,18 @@
     "commonName": "Alpha Ara",
     "bayer": "Alpha Ara",
     "con": "Ara",
-    "ra": 263.99,
-    "dec": -49.876,
+    "ra": 262.77412911919896,
+    "dec": -60.68428368485731,
     "mag": 2.85,
     "spec": "B2Vne",
-    "dist": 270.0,
+    "dist": 225.42008019204883,
     "bv": -0.18,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 5912398348432135552 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -56.279086527757165,
+    "pmDec": -98.71394360651243,
+    "plx": 14.468825378028784
   },
   {
     "id": "HIP 106032",
@@ -2148,15 +2675,18 @@
     "commonName": "Skat",
     "bayer": "Delta Aqr",
     "con": "Aqr",
-    "ra": 343.666,
-    "dec": -15.82,
+    "ra": 338.3934412357918,
+    "dec": -27.97139005923185,
     "mag": 3.27,
     "spec": "A3V",
-    "dist": 160.0,
+    "dist": 649.788691636869,
     "bv": 0.14,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 6620944459062892544 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -6.9257142642282945,
+    "pmDec": 10.052022590718112,
+    "plx": 5.019422189056359
   },
   {
     "id": "HIP 102618",
@@ -2164,15 +2694,18 @@
     "commonName": "Albali",
     "bayer": "Epsilon Aqr",
     "con": "Aqr",
-    "ra": 312.48,
-    "dec": -9.496,
+    "ra": 311.9191094158736,
+    "dec": -9.4959321959202,
     "mag": 3.78,
     "spec": "A1V",
-    "dist": 215.0,
+    "dist": 244.09356362347143,
     "bv": 0.01,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 6903096911032851584 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 33.922777368014636,
+    "pmDec": -34.935521869581265,
+    "plx": 13.36194092373182
   },
   {
     "id": "HIP 81852",
@@ -2180,15 +2713,18 @@
     "commonName": "Gamma Aps",
     "bayer": "Gamma Aps",
     "con": "Aps",
-    "ra": 250.77,
-    "dec": -78.897,
+    "ra": 250.7636123793369,
+    "dec": -77.51901026223308,
     "mag": 3.86,
     "spec": "K0IV",
-    "dist": 150.0,
+    "dist": 155.65724100065762,
     "bv": 1.05,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 5777500503761872128 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -281.986227337273,
+    "pmDec": -354.8366842174504,
+    "plx": 20.953498571815366
   },
   {
     "id": "HIP 2081",
@@ -2202,9 +2738,17 @@
     "spec": "K0.5IIIb",
     "dist": 77.0,
     "bv": 1.09,
-    "aliases": null,
+    "aliases": [
+      "GJ 9013",
+      "HD 2261",
+      "HIC 2081",
+      "HIP 2081",
+      "HR 99",
+      "SAO 215093",
+      "* alf Phe"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 12706",
@@ -2250,15 +2794,18 @@
     "commonName": "Sadalsuud",
     "bayer": "Beta Aqr",
     "con": "Aqr",
-    "ra": 323.791,
-    "dec": -5.571,
+    "ra": 331.44606406642515,
+    "dec": -0.31989739999996836,
     "mag": 2.9,
     "spec": "G0Ib",
-    "dist": 540.0,
+    "dist": 659.548620328855,
     "bv": 0.83,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 2680356911816018048 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 18.590442703968645,
+    "pmDec": -10.450029478158003,
+    "plx": 4.94514532586508
   },
   {
     "id": "HIP 44066",
@@ -2298,15 +2845,18 @@
     "commonName": "Beta Crt",
     "bayer": "Beta Crt",
     "con": "Crt",
-    "ra": 166.72,
-    "dec": -22.82,
+    "ra": 169.83463212005861,
+    "dec": -14.777619467275395,
     "mag": 4.46,
     "spec": "A1V",
-    "dist": 266.0,
+    "dist": 191.66500459655373,
     "bv": 0.03,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 3561350430457837056 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -122.9583056007642,
+    "pmDec": 207.0831087899795,
+    "plx": 17.017002054524486
   },
   {
     "id": "HIP 85112",
@@ -2330,15 +2880,18 @@
     "commonName": "Alpha CrA",
     "bayer": "Alpha CrA",
     "con": "CrA",
-    "ra": 287.95,
-    "dec": -37.9,
+    "ra": 284.0704666190208,
+    "dec": -42.71080324536542,
     "mag": 4.11,
     "spec": "A2V",
-    "dist": 130.0,
+    "dist": 314.0729473702684,
     "bv": 0.12,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 6715334100633424256 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -27.04593859170839,
+    "pmDec": -29.284485227405042,
+    "plx": 10.384733242098884
   },
   {
     "id": "HIP 72622",
@@ -2362,15 +2915,18 @@
     "commonName": "Beta Hyi",
     "bayer": "Beta Hyi",
     "con": "Hyi",
-    "ra": 6.39,
-    "dec": -77.25,
+    "ra": 6.482504988433097,
+    "dec": -77.25279546754571,
     "mag": 2.82,
     "spec": "G2IV",
-    "dist": 24.4,
+    "dist": 24.391102870800477,
     "bv": 0.62,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 4683897617110115200 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 2218.9845482530773,
+    "pmDec": 326.44454180123256,
+    "plx": 133.71940556671353
   },
   {
     "id": "HIP 46733",
@@ -2378,15 +2934,18 @@
     "commonName": "Alpha Lyn",
     "bayer": "Alpha Lyn",
     "con": "Lyn",
-    "ra": 140.27,
-    "dec": 34.39,
+    "ra": 142.88317471411838,
+    "dec": 63.061979025953285,
     "mag": 3.14,
     "spec": "K7IIIvar",
-    "dist": 220.0,
+    "dist": 77.48956928149319,
     "bv": 1.54,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1064092789129355136 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 107.81784706447317,
+    "pmDec": 26.791276838572,
+    "plx": 42.09035883464328
   },
   {
     "id": "HIP 60965",
@@ -2394,15 +2953,18 @@
     "commonName": "Beta Crv",
     "bayer": "Beta Crv",
     "con": "Crv",
-    "ra": 188.59,
-    "dec": -23.39,
+    "ra": 187.46509027380262,
+    "dec": -16.51605134463174,
     "mag": 2.65,
     "spec": "G5II",
-    "dist": 140.0,
+    "dist": 85.69535829890614,
     "bv": 0.89,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 3520586071217872896 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -209.27622914351525,
+    "pmDec": -139.1843207728625,
+    "plx": 38.05998179765627
   },
   {
     "id": "HIP 77952",
@@ -2458,15 +3020,18 @@
     "commonName": "Delta CrB",
     "bayer": "Delta CrB",
     "con": "CrB",
-    "ra": 237.49,
-    "dec": 26.07,
+    "ra": 238.17156439238116,
+    "dec": 42.45431545672387,
     "mag": 4.59,
     "spec": "G5III-IV",
-    "dist": 165.0,
+    "dist": 51.85088029871647,
     "bv": 0.77,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1384195086792268800 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 438.8386887997444,
+    "pmDec": 629.5406241522284,
+    "plx": 62.90276574302901
   },
   {
     "id": "HIP 74785",
@@ -2522,15 +3087,18 @@
     "commonName": "Beta Dra",
     "bayer": "Beta Dra",
     "con": "Dra",
-    "ra": 262.61,
-    "dec": 52.3,
+    "ra": 263.05490751446143,
+    "dec": 86.58669984133707,
     "mag": 2.79,
     "spec": "G2II",
-    "dist": 361.0,
+    "dist": 182.41193393784602,
     "bv": 0.98,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1724851173788449536 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 10.024891892776832,
+    "pmDec": 54.05298105746916,
+    "plx": 17.880210502627126
   },
   {
     "id": "HIP 27321",
@@ -2538,15 +3106,18 @@
     "commonName": "Alpha Pic",
     "bayer": "Alpha Pic",
     "con": "Pic",
-    "ra": 87.04,
-    "dec": -61.94,
+    "ra": 86.82123452009108,
+    "dec": -51.066136257823345,
     "mag": 3.24,
     "spec": "A7IV",
-    "dist": 99.0,
+    "dist": 64.03926074299497,
     "bv": 0.18,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 4792774797545800832 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 5.160196860824648,
+    "pmDec": 84.0405295978282,
+    "plx": 50.930690628822894
   },
   {
     "id": "HIP 3092",
@@ -2570,15 +3141,18 @@
     "commonName": "Sadalmelik",
     "bayer": "Alpha Aqr",
     "con": "Aqr",
-    "ra": 331.441,
-    "dec": -0.319,
+    "ra": 322.8898027828743,
+    "dec": -5.571211107815946,
     "mag": 2.95,
     "spec": "G2Ib",
-    "dist": 520.0,
+    "dist": 546.0708216426297,
     "bv": 0.97,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 2671038928727970944 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 19.213674953612266,
+    "pmDec": -8.16294285004504,
+    "plx": 5.972785301344111
   },
   {
     "id": "HIP 81693",
@@ -2618,15 +3192,18 @@
     "commonName": "Alpha Hor",
     "bayer": "Alpha Hor",
     "con": "Hor",
-    "ra": 64.08,
-    "dec": -42.296,
+    "ra": 63.50072823564913,
+    "dec": -42.295271463682425,
     "mag": 3.85,
     "spec": "K1III",
-    "dist": 117.0,
+    "dist": 117.65684728166683,
     "bv": 1.1,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 4840356816072211712 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 41.992107854004296,
+    "pmDec": -203.1570706391602,
+    "plx": 27.720985665984383
   },
   {
     "id": "HIP 677",
@@ -2640,9 +3217,16 @@
     "spec": "B8IVpMnHg",
     "dist": 97.0,
     "bv": -0.04,
-    "aliases": null,
+    "aliases": [
+      "HD 358",
+      "HIC 677",
+      "HIP 677",
+      "HR 15",
+      "SAO 73765",
+      "* alf And"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 41909",
@@ -2650,15 +3234,18 @@
     "commonName": "Gamma Cnc",
     "bayer": "Gamma Cnc",
     "con": "Cnc",
-    "ra": 128.32,
-    "dec": 21.469,
+    "ra": 128.17684660865487,
+    "dec": 20.440965370291128,
     "mag": 4.66,
     "spec": "A1V",
-    "dist": 158.0,
+    "dist": 317.9543068137016,
     "bv": 0.08,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 663132440719945728 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -46.573058249192584,
+    "pmDec": -44.29577824817931,
+    "plx": 10.257963824063067
   },
   {
     "id": "HIP 30122",
@@ -2666,15 +3253,18 @@
     "commonName": "Gamma Men",
     "bayer": "Gamma Men",
     "con": "Men",
-    "ra": 83.84,
-    "dec": -76.32,
+    "ra": 95.07833734068376,
+    "dec": -30.06334878363528,
     "mag": 5.18,
     "spec": "K4III",
-    "dist": 101.0,
+    "dist": 343.6043954804846,
     "bv": 1.48,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 2896572746685604480 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 6.084451056045602,
+    "pmDec": 4.247413057587071,
+    "plx": 9.49220621127137
   },
   {
     "id": "HIP 100881",
@@ -2682,15 +3272,18 @@
     "commonName": "Epsilon Del",
     "bayer": "Epsilon Del",
     "con": "Del",
-    "ra": 308.28,
-    "dec": 11.3,
+    "ra": 306.83008524978106,
+    "dec": -18.211771228451838,
     "mag": 4.03,
     "spec": "B6III",
-    "dist": 358.0,
+    "dist": 648.5431959150746,
     "bv": -0.15,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 6860902877441851136 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 16.55960652361268,
+    "pmDec": -17.374546038331413,
+    "plx": 5.029061745683775
   },
   {
     "id": "HIP 110395",
@@ -2730,15 +3323,18 @@
     "commonName": "Beta LMi",
     "bayer": "Beta LMi",
     "con": "LMi",
-    "ra": 156.96,
-    "dec": 36.71,
+    "ra": 160.75735260820323,
+    "dec": 26.325272219836265,
     "mag": 4.2,
     "spec": "G8III-IV",
-    "dist": 146.0,
+    "dist": 153.69163303926848,
     "bv": 0.88,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 724786936769969664 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -98.97144425780643,
+    "pmDec": -65.54268326713186,
+    "plx": 21.221479090970846
   },
   {
     "id": "HIP 54872",
@@ -2762,15 +3358,18 @@
     "commonName": "Alpha Cet",
     "bayer": "Alpha Cet",
     "con": "Cet",
-    "ra": 45.57,
-    "dec": 4.09,
+    "ra": 45.59719677022088,
+    "dec": -23.624717283377432,
     "mag": 2.54,
     "spec": "M1.5IIIa",
-    "dist": 220.0,
+    "dist": 88.26908867628461,
     "bv": 1.64,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 5077970830842019584 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -147.8513175625087,
+    "pmDec": -55.25060555887944,
+    "plx": 36.95023734708943
   },
   {
     "id": "HIP 61317",
@@ -2778,15 +3377,18 @@
     "commonName": "Beta CVn",
     "bayer": "Beta CVn",
     "con": "CVn",
-    "ra": 188.46,
-    "dec": 41.357,
+    "ra": 188.43142838333532,
+    "dec": 41.358776694084185,
     "mag": 4.24,
     "spec": "G0V",
-    "dist": 27.3,
+    "dist": 27.634140289905595,
     "bv": 0.59,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1534011998572555776 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -704.7021193540293,
+    "pmDec": 292.15465992124564,
+    "plx": 118.02660559667956
   },
   {
     "id": "HIP 27628",
@@ -2794,15 +3396,18 @@
     "commonName": "Beta Col",
     "bayer": "Beta Col",
     "con": "Col",
-    "ra": 87.7,
-    "dec": -35.768,
+    "ra": 87.74026611929386,
+    "dec": -35.76651139745324,
     "mag": 3.12,
     "spec": "K1III",
-    "dist": 86.0,
+    "dist": 88.3801244367271,
     "bv": 1.16,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 2887731882922767744 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 54.45215030399028,
+    "pmDec": 404.6004282430017,
+    "plx": 36.90381517096654
   },
   {
     "id": "HIP 84012",
@@ -2848,9 +3453,16 @@
     "spec": "B1.5III",
     "dist": 550.0,
     "bv": -0.21,
-    "aliases": null,
+    "aliases": [
+      "HD 129056",
+      "HIC 71860",
+      "HIP 71860",
+      "HR 5469",
+      "SAO 225128",
+      "* alf Lup"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 105199",
@@ -2864,9 +3476,17 @@
     "spec": "A7V",
     "dist": 49.0,
     "bv": 0.22,
-    "aliases": null,
+    "aliases": [
+      "GJ 826",
+      "HD 203280",
+      "HIC 105199",
+      "HIP 105199",
+      "HR 8162",
+      "SAO 19302",
+      "* alf Cep"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 51839",
@@ -2874,15 +3494,18 @@
     "commonName": "Gamma Cha",
     "bayer": "Gamma Cha",
     "con": "Cha",
-    "ra": 158.33,
-    "dec": -78.604,
+    "ra": 158.86625302656304,
+    "dec": -78.60773860956509,
     "mag": 4.11,
     "spec": "M0III",
-    "dist": 413.0,
+    "dist": 443.668239730021,
     "bv": 1.56,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 5199386085968886528 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -37.92898777161057,
+    "pmDec": 11.23445246845769,
+    "plx": 7.351357354280559
   },
   {
     "id": "HIP 116727",
@@ -2906,15 +3529,18 @@
     "commonName": "Gamma-2 Nor",
     "bayer": "Gamma-2 Nor",
     "con": "Nor",
-    "ra": 244.91,
-    "dec": -50.16,
+    "ra": 243.66878716838013,
+    "dec": 33.85822643128281,
     "mag": 4.01,
     "spec": "G8III",
-    "dist": 127.0,
+    "dist": 74.0297571689648,
     "bv": 1.0,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1328866562170960512 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -268.2164084531518,
+    "pmDec": -87.28170012108714,
+    "plx": 44.05746961395318
   },
   {
     "id": "HIP 101772",
@@ -2922,15 +3548,18 @@
     "commonName": "Alpha Ind",
     "bayer": "Alpha Ind",
     "con": "Ind",
-    "ra": 313.38,
-    "dec": -47.29,
+    "ra": 309.3921343889334,
+    "dec": -47.2912080024033,
     "mag": 3.11,
     "spec": "K0III-IV",
-    "dist": 101.0,
+    "dist": 99.13912897737889,
     "bv": 1.0,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 6674382927491854848 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 50.921628478362564,
+    "pmDec": 66.02564942441289,
+    "plx": 32.898854474949125
   },
   {
     "id": "HIP 100064",
@@ -2938,15 +3567,18 @@
     "commonName": "Alpha-2 Cap",
     "bayer": "Alpha Cap",
     "con": "Cap",
-    "ra": 304.53,
-    "dec": -12.544,
+    "ra": 304.5138436900398,
+    "dec": -12.544841401195866,
     "mag": 3.58,
     "spec": "G8III",
-    "dist": 109.0,
+    "dist": 109.03139703617082,
     "bv": 0.88,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 6880093650314169984 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 61.21217289160953,
+    "pmDec": 2.411807175799618,
+    "plx": 29.913986848375306
   },
   {
     "id": "HIP 42515",
@@ -2970,15 +3602,18 @@
     "commonName": "Alpha Cae",
     "bayer": "Alpha Cae",
     "con": "Cae",
-    "ra": 70.14,
-    "dec": -41.859,
+    "ra": 70.13963424554842,
+    "dec": -41.86408761019901,
     "mag": 4.45,
     "spec": "F2V",
-    "dist": 66.0,
+    "dist": 66.47834476142778,
     "bv": 0.34,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 4815660547961306112 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -139.84317633357577,
+    "pmDec": -75.67725038342462,
+    "plx": 49.062048531816515
   },
   {
     "id": "HIP 14668",
@@ -3002,15 +3637,18 @@
     "commonName": "Delta Cap",
     "bayer": "Delta Cap",
     "con": "Cap",
-    "ra": 329.25,
-    "dec": -16.126,
+    "ra": 326.76139246141946,
+    "dec": -16.128607188133948,
     "mag": 2.85,
     "spec": "A5mF2",
-    "dist": 39.0,
+    "dist": 37.951390852670734,
     "bv": 0.38,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 6838311796136238976 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 259.7074391661449,
+    "pmDec": -296.72127999345474,
+    "plx": 85.94055985093036
   },
   {
     "id": "HIP 80582",
@@ -3018,15 +3656,18 @@
     "commonName": "Epsilon Nor",
     "bayer": "Epsilon Nor",
     "con": "Nor",
-    "ra": 246.77,
-    "dec": -47.55,
+    "ra": 246.7959273667639,
+    "dec": -47.55488377313997,
     "mag": 4.46,
     "spec": "B4V",
-    "dist": 400.0,
+    "dist": 622.5536345374019,
     "bv": -0.16,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 5942012246713512704 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -12.04872921189692,
+    "pmDec": -20.277820468465563,
+    "plx": 5.239008490286231
   },
   {
     "id": "HIP 39429",
@@ -3040,9 +3681,16 @@
     "spec": "O4If",
     "dist": 1080.0,
     "bv": -0.27,
-    "aliases": null,
+    "aliases": [
+      "HD 66811",
+      "HIC 39429",
+      "HIP 39429",
+      "HR 3165",
+      "SAO 198752",
+      "* zet Pup"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 72370",
@@ -3050,15 +3698,18 @@
     "commonName": "Alpha Aps",
     "bayer": "Alpha Aps",
     "con": "Aps",
-    "ra": 221.97,
-    "dec": -79.044,
+    "ra": 221.96534284573215,
+    "dec": -79.04482599328387,
     "mag": 3.83,
     "spec": "K5III",
-    "dist": 430.0,
+    "dist": 497.8788559107814,
     "bv": 1.52,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 5773473920382493440 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -5.133333389198627,
+    "pmDec": -16.29870273569667,
+    "plx": 6.550918437846783
   },
   {
     "id": "HIP 3419",
@@ -3072,9 +3723,17 @@
     "spec": "K0III",
     "dist": 96.0,
     "bv": 1.02,
-    "aliases": null,
+    "aliases": [
+      "GJ 31",
+      "HD 4128",
+      "HIC 3419",
+      "HIP 3419",
+      "HR 188",
+      "SAO 147420",
+      "* bet Cet"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 13410",
@@ -3082,15 +3741,18 @@
     "commonName": "Beta For",
     "bayer": "Beta For",
     "con": "For",
-    "ra": 42.14,
-    "dec": -32.404,
+    "ra": 43.165709186489785,
+    "dec": 5.715947444180452,
     "mag": 4.45,
     "spec": "G8III",
-    "dist": 169.0,
+    "dist": 149.93589145221355,
     "bv": 0.98,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 6346041813693824 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -77.62576959679171,
+    "pmDec": -299.51582281455734,
+    "plx": 21.753055558678565
   },
   {
     "id": "HIP 112122",
@@ -3104,9 +3766,16 @@
     "spec": "M5III",
     "dist": 170.0,
     "bv": 1.62,
-    "aliases": null,
+    "aliases": [
+      "HD 214952",
+      "HIC 112122",
+      "HIP 112122",
+      "HR 8636",
+      "SAO 231258",
+      "* bet Gru"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 87833",
@@ -3120,9 +3789,16 @@
     "spec": "K5III",
     "dist": 148.0,
     "bv": 1.52,
-    "aliases": null,
+    "aliases": [
+      "HD 164058",
+      "HIC 87833",
+      "HIP 87833",
+      "HR 6705",
+      "SAO 30653",
+      "* gam Dra"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 84379",
@@ -3130,15 +3806,18 @@
     "commonName": "Delta Her",
     "bayer": "Delta Her",
     "con": "Her",
-    "ra": 258.82,
-    "dec": 24.84,
+    "ra": 258.7578570009893,
+    "dec": 24.83850638924531,
     "mag": 3.12,
     "spec": "A3IV",
-    "dist": 78.0,
+    "dist": 76.7772803557987,
     "bv": 0.08,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 4573412435280434560 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -20.95395629310213,
+    "pmDec": -156.76715982654696,
+    "plx": 42.48084539964649
   },
   {
     "id": "HIP 8645",
@@ -3178,15 +3857,18 @@
     "commonName": "Xi Dra",
     "bayer": "Xi Dra",
     "con": "Dra",
-    "ra": 268.36,
-    "dec": 56.87,
+    "ra": 262.6080575941285,
+    "dec": 52.301443329615346,
     "mag": 3.75,
     "spec": "K2III",
-    "dist": 111.0,
+    "dist": 365.65368568390534,
     "bv": 1.18,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1415230383034813824 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -16.12587706896328,
+    "pmDec": 11.357536206993439,
+    "plx": 8.919816494942994
   },
   {
     "id": "HIP 111169",
@@ -3194,15 +3876,18 @@
     "commonName": "Alpha Lac",
     "bayer": "Alpha Lac",
     "con": "Lac",
-    "ra": 337.82,
-    "dec": 50.28,
+    "ra": 337.82387715226025,
+    "dec": 50.28256960268281,
     "mag": 3.76,
     "spec": "A1V",
-    "dist": 102.0,
+    "dist": 103.56036364972591,
     "bv": 0.04,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1988193348344678656 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 137.2429643990291,
+    "pmDec": 17.54015664561455,
+    "plx": 31.494325261657497
   },
   {
     "id": "HIP 29997",
@@ -3226,15 +3911,18 @@
     "commonName": "Alpha Men",
     "bayer": "Alpha Men",
     "con": "Men",
-    "ra": 94.22,
-    "dec": -74.76,
+    "ra": 92.56235755341913,
+    "dec": -74.75398809344104,
     "mag": 5.08,
     "spec": "G5V",
-    "dist": 33.0,
+    "dist": 33.309884376745174,
     "bv": 0.72,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 5264749303462961280 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 121.59582336868253,
+    "pmDec": -212.41087853342987,
+    "plx": 97.9157940060883
   },
   {
     "id": "HIP 56829",
@@ -3242,15 +3930,18 @@
     "commonName": "Gamma Crt",
     "bayer": "Gamma Crt",
     "con": "Crt",
-    "ra": 171.21,
-    "dec": -17.68,
+    "ra": 174.7480431708499,
+    "dec": 42.33073845966741,
     "mag": 4.06,
     "spec": "A9V",
-    "dist": 84.0,
+    "dist": 62.95513747868925,
     "bv": 0.28,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 772395274857111552 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -129.26438438756563,
+    "pmDec": 435.47357687047196,
+    "plx": 51.807746081152814
   },
   {
     "id": "HIP 51131",
@@ -3258,15 +3949,18 @@
     "commonName": "Alpha Ant",
     "bayer": "Alpha Ant",
     "con": "Ant",
-    "ra": 156.866,
-    "dec": -31.0678,
+    "ra": 156.68493552043427,
+    "dec": -64.35164944471305,
     "mag": 4.25,
     "spec": "K4III",
-    "dist": 320.0,
+    "dist": 501.6276742640653,
     "bv": 1.45,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 5251663495883800448 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -16.01126103744624,
+    "pmDec": 11.801825670451032,
+    "plx": 6.5019614035151045
   },
   {
     "id": "HIP 45455",
@@ -3274,15 +3968,18 @@
     "commonName": "38 Lyn",
     "bayer": "38 Lyn",
     "con": "Lyn",
-    "ra": 139.69,
-    "dec": 36.8,
+    "ra": 138.95722409192788,
+    "dec": 56.741279076326805,
     "mag": 3.82,
     "spec": "A1V",
-    "dist": 122.0,
+    "dist": 726.2342928343709,
     "bv": 0.06,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1024535246979166080 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -24.606646868162493,
+    "pmDec": -28.808321051312646,
+    "plx": 4.4910627454270475
   },
   {
     "id": "HIP 13268",
@@ -3290,15 +3987,18 @@
     "commonName": "Eta Per",
     "bayer": "Eta Per",
     "con": "Per",
-    "ra": 42.75,
-    "dec": 55.89,
+    "ra": 42.67433778950114,
+    "dec": 55.89543428763181,
     "mag": 3.77,
     "spec": "K3Ib",
-    "dist": 1330.0,
+    "dist": 998.7197574148648,
     "bv": 1.68,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 454491381981202944 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 16.34593379861261,
+    "pmDec": -13.51791178717059,
+    "plx": 3.265744722465881
   },
   {
     "id": "HIP 101769",
@@ -3354,15 +4054,18 @@
     "commonName": "Beta Boo",
     "bayer": "Beta Boo",
     "con": "Boo",
-    "ra": 228.14,
-    "dec": 40.39,
+    "ra": 228.87612720122996,
+    "dec": 33.31433528392251,
     "mag": 3.49,
     "spec": "G8IIIa",
-    "dist": 225.0,
+    "dist": 120.46561135578249,
     "bv": 0.94,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1278391075717325312 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 84.38252627225717,
+    "pmDec": -111.5907867978561,
+    "plx": 27.074645953253125
   },
   {
     "id": "HIP 40702",
@@ -3370,15 +4073,18 @@
     "commonName": "Alpha Cha",
     "bayer": "Alpha Cha",
     "con": "Cha",
-    "ra": 124.62,
-    "dec": -76.92,
+    "ra": 124.63363893110254,
+    "dec": -76.9192479593938,
     "mag": 4.05,
     "spec": "F5III",
-    "dist": 63.5,
+    "dist": 63.556963003385555,
     "bv": 0.44,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 5210240327318434304 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 110.51480172689814,
+    "pmDec": 107.12500961635023,
+    "plx": 51.31717474962205
   },
   {
     "id": "HIP 104521",
@@ -3386,15 +4092,18 @@
     "commonName": "Delta Equ",
     "bayer": "Delta Equ",
     "con": "Equ",
-    "ra": 318.02,
-    "dec": 10.006,
+    "ra": 317.58562219320083,
+    "dec": 10.130905033190228,
     "mag": 4.47,
     "spec": "F5V",
-    "dist": 60.0,
+    "dist": 115.48095368337573,
     "bv": 0.44,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1744662586614707072 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 45.455810998074284,
+    "pmDec": -152.11553324208637,
+    "plx": 28.243304830530892
   },
   {
     "id": "HIP 8832",
@@ -3402,15 +4111,18 @@
     "commonName": "Mesarthim",
     "bayer": "Gamma Ari",
     "con": "Ari",
-    "ra": 28.4,
-    "dec": 19.293,
+    "ra": 28.38291710673696,
+    "dec": 19.293423012157074,
     "mag": 3.88,
     "spec": "A1pSi",
-    "dist": 164.0,
+    "dist": 166.17918990174513,
     "bv": 0.0,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 93806419367308544 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 77.13842849910289,
+    "pmDec": -97.321044112294,
+    "plx": 19.62678828154372
   },
   {
     "id": "HIP 16908",
@@ -3466,15 +4178,18 @@
     "commonName": "Gamma Cae",
     "bayer": "Gamma Cae",
     "con": "Cae",
-    "ra": 72.63,
-    "dec": -35.482,
+    "ra": 72.5673952487179,
+    "dec": -41.320555068603625,
     "mag": 4.55,
     "spec": "K3III",
-    "dist": 185.0,
+    "dist": 160.91286193908834,
     "bv": 1.25,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 4815173945347069056 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -3.846474242851068,
+    "pmDec": 66.08962664376551,
+    "plx": 20.26913037091234
   },
   {
     "id": "HIP 94160",
@@ -3498,15 +4213,18 @@
     "commonName": "Beta Psc",
     "bayer": "Beta Psc",
     "con": "Psc",
-    "ra": 18.96,
-    "dec": 3.82,
+    "ra": 18.9397448362388,
+    "dec": -39.95280196544727,
     "mag": 4.48,
     "spec": "B6Ve",
-    "dist": 492.0,
+    "dist": 641.9928613770935,
     "bv": -0.12,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 4985316669595952128 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 41.892930787775065,
+    "pmDec": 11.278127875154066,
+    "plx": 5.0803739001144805
   },
   {
     "id": "HIP 5447",
@@ -3520,9 +4238,18 @@
     "spec": "M0III",
     "dist": 197.0,
     "bv": 1.58,
-    "aliases": null,
+    "aliases": [
+      "GJ 53.3",
+      "GJ 9044",
+      "HD 6860",
+      "HIC 5447",
+      "HIP 5447",
+      "HR 337",
+      "SAO 54471",
+      "* bet And"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 68756",
@@ -3546,15 +4273,18 @@
     "commonName": "Beta Lac",
     "bayer": "Beta Lac",
     "con": "Lac",
-    "ra": 339.75,
-    "dec": 52.22,
+    "ra": 340.21724149798314,
+    "dec": 56.829455737985164,
     "mag": 4.42,
     "spec": "G8.5IIIb",
-    "dist": 170.0,
+    "dist": 6702.841360697518,
     "bv": 0.94,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 2007201567928631296 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -3.9718506995387624,
+    "pmDec": -2.6948572388958363,
+    "plx": 0.4865942070663286
   },
   {
     "id": "HIP 14328",
@@ -3578,15 +4308,18 @@
     "commonName": "Beta Com",
     "bayer": "Beta Com",
     "con": "Com",
-    "ra": 199.69,
-    "dec": 27.88,
+    "ra": 197.9642816133702,
+    "dec": 27.882105372524595,
     "mag": 4.23,
     "spec": "G0V",
-    "dist": 30.0,
+    "dist": 29.998284671035204,
     "bv": 0.58,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1460229442589223424 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -800.7201020745798,
+    "pmDec": 882.3013237846035,
+    "plx": 108.72500920524958
   },
   {
     "id": "HIP 102281",
@@ -3594,15 +4327,18 @@
     "commonName": "Gamma Del",
     "bayer": "Gamma Del",
     "con": "Del",
-    "ra": 311.67,
-    "dec": 16.12,
+    "ra": 310.86462803135805,
+    "dec": 15.074387647430187,
     "mag": 3.87,
     "spec": "K1IV+F7V",
-    "dist": 101.0,
+    "dist": 220.66073262847004,
     "bv": 0.9,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1762513222314906752 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -20.66291280820284,
+    "pmDec": -42.98342305090627,
+    "plx": 14.780897979213847
   },
   {
     "id": "HIP 51056",
@@ -3610,15 +4346,18 @@
     "commonName": "46 LMi",
     "bayer": "46 LMi",
     "con": "LMi",
-    "ra": 163.26,
-    "dec": 34.21,
+    "ra": 156.47800139920705,
+    "dec": 33.79585502679851,
     "mag": 3.79,
     "spec": "K0+III-IV",
-    "dist": 98.0,
+    "dist": 242.22534777021295,
     "bv": 0.96,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 749214855324239232 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -73.71129463666128,
+    "pmDec": -59.4390341488871,
+    "plx": 13.464997808957971
   },
   {
     "id": "HIP 63125",
@@ -3626,15 +4365,18 @@
     "commonName": "Alpha-2 CVn",
     "bayer": "Alpha CVn",
     "con": "CVn",
-    "ra": 194.0,
-    "dec": 38.318,
+    "ra": 194.0056156711975,
+    "dec": 38.31862104268021,
     "mag": 2.89,
     "spec": "A0spe",
-    "dist": 110.0,
+    "dist": 99.67270456620619,
     "bv": -0.11,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1517698716348324992 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -233.7755313345049,
+    "pmDec": 55.034770927991445,
+    "plx": 32.722737796620656
   },
   {
     "id": "HIP 53975",
@@ -3642,15 +4384,18 @@
     "commonName": "Alpha Crt",
     "bayer": "Alpha Crt",
     "con": "Crt",
-    "ra": 164.99,
-    "dec": -18.298,
+    "ra": 165.63005190722333,
+    "dec": -9.994877348252524,
     "mag": 4.08,
     "spec": "K1III",
-    "dist": 174.0,
+    "dist": 1066.492463989953,
     "bv": 1.1,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 3758780009650379264 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -31.800230680636346,
+    "pmDec": -5.920616853501629,
+    "plx": 3.0582154934296146
   },
   {
     "id": "HIP 74824",
@@ -3658,15 +4403,18 @@
     "commonName": "Beta Cir",
     "bayer": "Beta Cir",
     "con": "Cir",
-    "ra": 229.74,
-    "dec": -58.8,
+    "ra": 229.37770557486672,
+    "dec": -58.80181171208593,
     "mag": 4.07,
     "spec": "A3V",
-    "dist": 97.0,
+    "dist": 96.43761091587231,
     "bv": 0.11,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 5877059048308526720 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -97.1820914912137,
+    "pmDec": -136.0554316111487,
+    "plx": 33.820453928967986
   },
   {
     "id": "HIP 9884",
@@ -3680,9 +4428,18 @@
     "spec": "K2III",
     "dist": 66.0,
     "bv": 1.15,
-    "aliases": null,
+    "aliases": [
+      "GJ 84.3",
+      "GJ 9072",
+      "HD 12929",
+      "HIC 9884",
+      "HIP 9884",
+      "HR 617",
+      "SAO 75151",
+      "* alf Ari"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 61910",
@@ -3690,15 +4447,18 @@
     "commonName": "Epsilon Crv",
     "bayer": "Epsilon Crv",
     "con": "Crv",
-    "ra": 182.58,
-    "dec": -22.62,
+    "ra": 190.3159322484771,
+    "dec": -13.013862793568546,
     "mag": 3.02,
     "spec": "K2III",
-    "dist": 303.0,
+    "dist": 265.8411675163375,
     "bv": 1.34,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 3528976341368900096 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -117.67132457215102,
+    "pmDec": 8.138165994164638,
+    "plx": 12.26884386444608
   },
   {
     "id": "HIP 112724",
@@ -3706,15 +4466,18 @@
     "commonName": "Iota Cep",
     "bayer": "Iota Cep",
     "con": "Cep",
-    "ra": 342.31,
-    "dec": 66.2,
+    "ra": 342.41934656416254,
+    "dec": 66.19984964631519,
     "mag": 3.5,
     "spec": "K0III",
-    "dist": 115.0,
+    "dist": 119.52856361143985,
     "bv": 1.01,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 2211820991085587584 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": -65.94656790624168,
+    "pmDec": -124.96706267589808,
+    "plx": 27.286898448831035
   },
   {
     "id": "HIP 71908",
@@ -3738,15 +4501,18 @@
     "commonName": "Delta Del",
     "bayer": "Delta Del",
     "con": "Del",
-    "ra": 310.87,
-    "dec": 15.07,
+    "ra": 310.3000017018635,
+    "dec": 6.17221158540214,
     "mag": 4.43,
     "spec": "A7IIIp",
-    "dist": 203.0,
+    "dist": 417.60438405034,
     "bv": 0.3,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1747652296170947200 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 9.70675459762045,
+    "pmDec": -40.39827219433721,
+    "plx": 7.810176093857375
   },
   {
     "id": "HIP 77055",
@@ -3754,15 +4520,18 @@
     "commonName": "Gamma CrB",
     "bayer": "Gamma CrB",
     "con": "CrB",
-    "ra": 235.79,
-    "dec": 26.3,
+    "ra": 236.01507917362505,
+    "dec": 77.79448391626615,
     "mag": 3.81,
     "spec": "A0V",
-    "dist": 145.0,
+    "dist": 359.0945552910399,
     "bv": -0.02,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 1707399209837352064 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 19.906188124438586,
+    "pmDec": -2.0719935146815613,
+    "plx": 9.082743608731574
   },
   {
     "id": "HIP 17678",
@@ -3770,15 +4539,18 @@
     "commonName": "Gamma Hyi",
     "bayer": "Gamma Hyi",
     "con": "Hyi",
-    "ra": 58.78,
-    "dec": -74.24,
+    "ra": 56.810583950214635,
+    "dec": -74.23845269276111,
     "mag": 3.26,
     "spec": "M1III",
-    "dist": 214.0,
+    "dist": 216.29343963157876,
     "bv": 1.58,
     "aliases": null,
-    "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "epoch": 2016.0,
+    "source": "Gaia DR3 source_id 4629125170492116224 astrometry; names and photometry retained from Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0",
+    "pmRa": 50.79864554281097,
+    "pmDec": 114.79143876879375,
+    "plx": 15.07934675483247
   },
   {
     "id": "HIP 82273",
@@ -3792,9 +4564,16 @@
     "spec": "K2IIb-IIIa",
     "dist": 415.0,
     "bv": 1.44,
-    "aliases": null,
+    "aliases": [
+      "HD 150798",
+      "HIC 82273",
+      "HIP 82273",
+      "HR 6217",
+      "SAO 253700",
+      "* alf TrA"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 66657",
@@ -3811,9 +4590,16 @@
     "pmRa": -32.5,
     "pmDec": -10.2,
     "bv": -0.22,
-    "aliases": null,
+    "aliases": [
+      "HD 118716",
+      "HIC 66657",
+      "HIP 66657",
+      "HR 5132",
+      "SAO 241047",
+      "* eps Cen"
+    ],
     "epoch": 2000,
-    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0"
+    "source": "Hipparcos / Yale Bright Star Catalogue curated subset; J2000.0; SIMBAD identifiers via CDS Sesame"
   },
   {
     "id": "HIP 68002",
@@ -3862,14 +4648,14 @@
     "commonName": "Proxima Centauri",
     "bayer": "Alpha Cen C",
     "con": "Cen",
-    "ra": 217.428942,
-    "dec": -62.67949,
+    "ra": 217.39232147200883,
+    "dec": -62.67607511676666,
     "mag": 11.13,
     "spec": "M5.5Ve",
-    "dist": 4.246,
-    "plx": 768.0665,
-    "pmRa": -3781.741,
-    "pmDec": 769.465,
+    "dist": 4.246459923186935,
+    "plx": 768.0665391873573,
+    "pmRa": -3781.741008265163,
+    "pmDec": 769.4650146478623,
     "bv": 1.97,
     "aliases": [
       "Proxima Cen",
@@ -3877,8 +4663,8 @@
       "HIP 70890"
     ],
     "description": "The nearest known star to the Sun; a faint red dwarf with very large proper motion.",
-    "source": "SIMBAD; Gaia DR3 (2020yCat.1350....0G)",
-    "epoch": 2000
+    "source": "Gaia DR3 source_id 5853498713190525696 astrometry; names and photometry retained from SIMBAD; Gaia DR3 (2020yCat.1350....0G)",
+    "epoch": 2016.0
   },
   {
     "id": "HIP 32349 B",
@@ -3910,14 +4696,14 @@
     "commonName": "Barnard's Star",
     "bayer": null,
     "con": "Oph",
-    "ra": 269.452077,
-    "dec": 4.693365,
+    "ra": 269.44850252543836,
+    "dec": 4.739420051112412,
     "mag": 9.511,
     "spec": "M4V",
-    "dist": 5.963,
-    "plx": 546.9759,
-    "pmRa": -801.551,
-    "pmDec": 10362.394,
+    "dist": 5.962901729469729,
+    "plx": 546.975939730948,
+    "pmRa": -801.5509783684709,
+    "pmDec": 10362.394206546573,
     "bv": 1.57,
     "aliases": [
       "Barnard Star",
@@ -3925,8 +4711,8 @@
       "GJ 699"
     ],
     "description": "A nearby red dwarf with exceptionally high proper motion.",
-    "source": "SIMBAD; Gaia DR3 (2020yCat.1350....0G)",
-    "epoch": 2000
+    "source": "Gaia DR3 source_id 4472832130942575872 astrometry; names and photometry retained from SIMBAD; Gaia DR3 (2020yCat.1350....0G)",
+    "epoch": 2016.0
   },
   {
     "id": "HIP 110991",
@@ -3934,14 +4720,14 @@
     "commonName": "Delta Cephei",
     "bayer": "Delta Cep",
     "con": "Cep",
-    "ra": 337.2927611,
-    "dec": 58.41519378,
+    "ra": 337.2928846512036,
+    "dec": 58.41520817273959,
     "mag": 3.95,
     "spec": "F5Ib",
-    "dist": null,
-    "plx": null,
-    "pmRa": null,
-    "pmDec": null,
+    "dist": 917.4415883418378,
+    "plx": 3.5550642334569473,
+    "pmRa": 14.559642753326361,
+    "pmDec": 3.2375195232330003,
     "bv": 0.6,
     "aliases": [
       "Delta Cep",
@@ -3949,8 +4735,8 @@
       "HIP 110991"
     ],
     "description": "A classical Cepheid variable used to calibrate the cosmic distance scale.",
-    "source": "SIMBAD; Gaia DR3 J2000",
-    "epoch": 2000
+    "source": "Gaia DR3 source_id 2200153454733285248 astrometry; names and photometry retained from SIMBAD; Gaia DR3 J2000",
+    "epoch": 2016.0
   },
   {
     "id": "HIP 86032",
@@ -3969,10 +4755,17 @@
     "bv": 0.155,
     "aliases": [
       "Alpha Ophiuchi",
-      "Alpha Oph"
+      "Alpha Oph",
+      "GJ 681",
+      "HD 159561",
+      "HIC 86032",
+      "HIP 86032",
+      "HR 6556",
+      "SAO 102932",
+      "* alf Oph"
     ],
     "description": "The brightest star in Ophiuchus.",
-    "source": "SIMBAD; Hipparcos J2000",
+    "source": "SIMBAD; Hipparcos J2000; SIMBAD identifiers via CDS Sesame",
     "epoch": 2000
   },
   {
@@ -3981,14 +4774,14 @@
     "commonName": "Algenib",
     "bayer": "Gamma Peg",
     "con": "Peg",
-    "ra": 3.30895828,
-    "dec": 15.18361593,
+    "ra": 3.3089703843753013,
+    "dec": 15.183550741446307,
     "mag": 2.84,
     "spec": "B2IV",
-    "dist": 469,
-    "plx": 6.9474,
-    "pmRa": 0.492,
-    "pmDec": -10.73,
+    "dist": 469.4638909397475,
+    "plx": 6.947422027434692,
+    "pmRa": 0.4915025684300727,
+    "pmDec": -10.72983322504956,
     "bv": -0.19,
     "aliases": [
       "Gamma Pegasi",
@@ -3997,8 +4790,8 @@
       "HIP 1067"
     ],
     "description": "Beta Cephei variable star marking the southeast corner of the Great Square of Pegasus.",
-    "source": "SIMBAD; Gaia DR3 J2000",
-    "epoch": 2000
+    "source": "Gaia DR3 source_id 2769202742740232960 astrometry; names and photometry retained from SIMBAD; Gaia DR3 J2000",
+    "epoch": 2016.0
   },
   {
     "id": "HIP 93506",
@@ -4078,14 +4871,14 @@
     "commonName": "Rasalas",
     "bayer": "Mu Leo",
     "con": "Leo",
-    "ra": 148.19090225,
-    "dec": 26.00695331,
+    "ra": 148.18983474754336,
+    "dec": 26.006706191116002,
     "mag": 3.88,
     "spec": "K2III",
-    "dist": 124,
-    "plx": 26.28,
-    "pmRa": -217.31,
-    "pmDec": -54.26,
+    "dist": 124.97814112547437,
+    "plx": 26.097073837299966,
+    "pmRa": -216.26591002805844,
+    "pmDec": -55.12475418283337,
     "bv": 1.23,
     "aliases": [
       "Mu Leonis",
@@ -4094,7 +4887,7 @@
       "Alshemali"
     ],
     "description": "An orange giant in Leo, also known as Mu Leonis.",
-    "source": "SIMBAD; Hipparcos J2000",
-    "epoch": 2000
+    "source": "Gaia DR3 source_id 643819484617141504 astrometry; names and photometry retained from SIMBAD; Hipparcos J2000",
+    "epoch": 2016.0
   }
 ]

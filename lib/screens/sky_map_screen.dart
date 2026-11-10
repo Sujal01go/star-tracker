@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import '../app/theme.dart';
 import '../astronomy/astronomy_engine.dart';
@@ -20,6 +21,7 @@ import '../rendering/star_map_painter.dart';
 import '../rendering/star_rendering_style.dart';
 import '../sensors/device_orientation_service.dart';
 import '../services/constellation_asset_service.dart';
+import '../services/jpl_horizons_service.dart';
 import '../services/location_service.dart';
 import '../services/planet_data_service.dart';
 import '../services/preferences_service.dart';
@@ -69,11 +71,17 @@ class SkyMapScreenState extends State<SkyMapScreen> {
   String? _selectedStarId;
   final DeepSkyCatalogueRepository _deepSkyRepository =
       DeepSkyCatalogueRepository();
+  final JplHorizonsService _jplHorizonsService = JplHorizonsService();
+  DateTime? _lastHorizonsAttemptAt;
+  DateTime? _lastHorizonsObservationTime;
+  bool _horizonsRequestInProgress = false;
+  Timer? _horizonsRefreshTimer;
   Map<String, Offset> _renderedStarOffsets = {};
 
   // Cached calculated sky positions
   Map<String, SkyPosition> _computedPositions = {};
   Map<String, SkyPosition> _computedConstellationPositions = {};
+  List<List<SkyPosition>> _computedConstellationBoundaryPositions = [];
   Map<String, SkyPosition> _computedDeepSkyPositions = {};
   Map<String, SkyPosition> _computedMeteorPositions = {};
   List<MeteorShower> _activeMeteorShowers = [];
@@ -97,6 +105,7 @@ class SkyMapScreenState extends State<SkyMapScreen> {
 
     // Initial astronomical computation
     _recomputeSkyPositions();
+    _refreshHorizonsCoordinatesIfNeeded();
 
     // Setup 1-second real-time observation clock
     _realTimeClockTimer = Timer.periodic(const Duration(seconds: 1), (_) {
@@ -324,7 +333,68 @@ class SkyMapScreenState extends State<SkyMapScreen> {
   void _onAstronomyUpdated() {
     if (mounted) {
       _recomputeSkyPositions();
+      _refreshHorizonsCoordinatesIfNeeded();
     }
+  }
+
+  void _refreshHorizonsCoordinatesIfNeeded() {
+    // JPL does not currently allow browser cross-origin requests. The local
+    // ephemeris remains active on web and whenever the network is unavailable.
+    if (kIsWeb || !mounted || _horizonsRequestInProgress) return;
+
+    final now = DateTime.now().toUtc();
+    final observationTime = widget.astronomyEngine.time.utcDateTime;
+    final manualTimeChanged =
+        !widget.astronomyEngine.time.isRealTime &&
+        _lastHorizonsObservationTime != null &&
+        observationTime.difference(_lastHorizonsObservationTime!).abs() >
+            const Duration(minutes: 1);
+    final lastAttemptAt = _lastHorizonsAttemptAt;
+    final periodicRefreshDue =
+        lastAttemptAt == null ||
+        now.difference(lastAttemptAt) >= const Duration(minutes: 10);
+    if (manualTimeChanged &&
+        !periodicRefreshDue &&
+        now.difference(lastAttemptAt) < const Duration(minutes: 2)) {
+      _horizonsRefreshTimer?.cancel();
+      final remaining =
+          const Duration(minutes: 2) - now.difference(lastAttemptAt);
+      _horizonsRefreshTimer = Timer(remaining, () {
+        if (mounted) _refreshHorizonsCoordinatesIfNeeded();
+      });
+      return;
+    }
+    final refreshDue = periodicRefreshDue || manualTimeChanged;
+    if (!refreshDue) return;
+
+    _lastHorizonsAttemptAt = now;
+    _lastHorizonsObservationTime = observationTime;
+    _horizonsRequestInProgress = true;
+
+    _jplHorizonsService
+        .fetchSolarSystemCoordinates(
+          observationTime,
+          allowRecentCache: widget.astronomyEngine.time.isRealTime,
+        )
+        .then((snapshot) {
+          if (!mounted || snapshot.coordinates.isEmpty) return;
+          final currentTime = widget.astronomyEngine.time.utcDateTime;
+          if (currentTime.difference(observationTime).abs() >
+              const Duration(minutes: 2)) {
+            return;
+          }
+          widget.astronomyEngine.applyHorizonsCoordinates(
+            snapshot.coordinates,
+            observationTime: snapshot.observationTime,
+          );
+        })
+        .catchError((Object error) {
+          debugPrint('JPL Horizons update unavailable: $error');
+        })
+        .whenComplete(() {
+          _horizonsRequestInProgress = false;
+          if (mounted) _refreshHorizonsCoordinatesIfNeeded();
+        });
   }
 
   void _recomputeSkyPositions() {
@@ -334,6 +404,10 @@ class SkyMapScreenState extends State<SkyMapScreen> {
     _computedConstellationPositions = widget.astronomyEngine
         .computeConstellationPositions(
           widget.constellationRepository.allConstellations,
+        );
+    _computedConstellationBoundaryPositions = widget.astronomyEngine
+        .computeConstellationBoundaryPositions(
+          widget.constellationRepository.boundaries,
         );
     _computedDeepSkyPositions = {
       for (final object in _deepSkyRepository.allObjects)
@@ -364,6 +438,7 @@ class SkyMapScreenState extends State<SkyMapScreen> {
   @override
   void dispose() {
     _realTimeClockTimer?.cancel();
+    _horizonsRefreshTimer?.cancel();
     widget.orientationService.removeListener(_onOrientationUpdated);
     widget.astronomyEngine.removeListener(_onAstronomyUpdated);
     super.dispose();
@@ -995,6 +1070,8 @@ class SkyMapScreenState extends State<SkyMapScreen> {
                     constellations:
                         widget.constellationRepository.allConstellations,
                     constellationPositions: _computedConstellationPositions,
+                    constellationBoundaryPositions:
+                        _computedConstellationBoundaryPositions,
                     constellationImages: ConstellationAssetService.uiImages,
                     deepSkyObjects: _deepSkyRepository.allObjects,
                     deepSkyPositions: _computedDeepSkyPositions,
@@ -1020,13 +1097,15 @@ class SkyMapScreenState extends State<SkyMapScreen> {
                 child: Row(
                   children: [
                     // Location Chip
-                    LocationIndicator(
-                      location: widget.astronomyEngine.location,
-                      style: _style,
-                      onTap: _showLocationSelectionSheet,
+                    Expanded(
+                      child: LocationIndicator(
+                        location: widget.astronomyEngine.location,
+                        style: _style,
+                        onTap: _showLocationSelectionSheet,
+                      ),
                     ),
 
-                    const Spacer(),
+                    const SizedBox(width: 8),
 
                     // Time Chip
                     InkWell(

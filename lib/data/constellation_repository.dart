@@ -1,15 +1,18 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import '../models/constellation.dart';
+import '../models/constellation_boundary.dart';
 import 'default_constellations_data.dart';
 
 /// Repository for managing constellation asterisms and outlines.
 class ConstellationRepository {
   List<Constellation> _constellations = _initAll88Constellations();
-  bool _isLoaded = true;
+  List<ConstellationBoundary> _boundaries = const [];
+  bool _isLoaded = false;
 
   bool get isLoaded => _isLoaded;
   List<Constellation> get allConstellations => _constellations;
+  List<ConstellationBoundary> get boundaries => _boundaries;
 
   static List<Constellation> _initAll88Constellations() {
     try {
@@ -33,11 +36,25 @@ class ConstellationRepository {
       _constellations = jsonList
           .map((item) => Constellation.fromJson(item as Map<String, dynamic>))
           .toList();
-      _isLoaded = true;
-    } catch (e) {
+    } catch (_) {
       // Retain the initialized 88 constellations
-      _isLoaded = true;
     }
+    try {
+      final jsonString = await rootBundle.loadString(
+        'assets/constellations/iau_boundaries.json',
+      );
+      final List<dynamic> jsonList = jsonDecode(jsonString) as List<dynamic>;
+      _boundaries = jsonList
+          .map(
+            (item) =>
+                ConstellationBoundary.fromJson(item as Map<String, dynamic>),
+          )
+          .toList(growable: false);
+    } catch (_) {
+      // The constellation line art remains available if the optional overlay
+      // asset cannot be loaded.
+    }
+    _isLoaded = true;
   }
 
   Constellation? getConstellationById(String id) {

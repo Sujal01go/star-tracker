@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import '../models/constellation.dart';
+import '../models/constellation_boundary.dart';
 import '../models/observer_location.dart';
 import '../models/observation_time.dart';
 import '../models/planet.dart';
@@ -14,6 +15,31 @@ import 'star_position_calculator.dart';
 /// Central astronomy engine for AstroTrack.
 /// Manages time, location, sidereal calculation, planetary ephemerides, and coordinate transformations.
 class AstronomyEngine extends ChangeNotifier {
+  static const Set<String> _horizonsTargetIds = {
+    'SUN',
+    'MOON',
+    'MER',
+    'VEN',
+    'MAR',
+    'JUP',
+    'SAT',
+    'URA',
+    'NEP',
+    'PLU',
+    'CER',
+    'VES',
+    'PAL',
+    'JUN',
+    'ERI',
+    'HAU',
+    'MAK',
+    'HALLEY',
+    'IO',
+    'EUROPA',
+    'GANYMEDE',
+    'CALLISTO',
+  };
+
   ObserverLocation _location;
   ObservationTime _time;
   bool _applyPrecession = true;
@@ -21,6 +47,9 @@ class AstronomyEngine extends ChangeNotifier {
 
   List<Planet> _planets = [];
   List<Planet> _additionalBodies = [];
+  Map<String, ({double rightAscension, double declination})>
+  _horizonsCoordinates = {};
+  DateTime? _horizonsCoordinatesTime;
   Map<String, SkyPosition> _planetPositions = {};
   Map<String, SkyPosition> _additionalBodyPositions = {};
 
@@ -67,28 +96,85 @@ class AstronomyEngine extends ChangeNotifier {
   }
 
   void _recomputePlanets() {
-    _planets = PlanetaryEphemeris.computeAllPlanets(_time.utcDateTime);
+    bool hasRecentHorizonsCoordinates(Planet planet) {
+      final fetchedAt = _horizonsCoordinatesTime;
+      if (fetchedAt == null) return false;
+      final maxAge = switch (planet.id) {
+        'MOON' => const Duration(minutes: 2),
+        'IO' ||
+        'EUROPA' ||
+        'GANYMEDE' ||
+        'CALLISTO' => const Duration(minutes: 5),
+        _ => const Duration(minutes: 30),
+      };
+      return _time.utcDateTime.difference(fetchedAt).abs() <= maxAge;
+    }
+
+    Planet applyRecentHorizonsCoordinates(Planet planet) {
+      final coordinates = hasRecentHorizonsCoordinates(planet)
+          ? _horizonsCoordinates[planet.id]
+          : null;
+      if (coordinates == null) return planet;
+      return Planet(
+        id: planet.id,
+        name: planet.name,
+        type: planet.type,
+        symbol: planet.symbol,
+        rightAscension: coordinates.rightAscension,
+        declination: coordinates.declination,
+        apparentMagnitude: planet.apparentMagnitude,
+        eclipticLongitude: planet.eclipticLongitude,
+        eclipticLatitude: planet.eclipticLatitude,
+        distanceAu: planet.distanceAu,
+        illuminatedFraction: planet.illuminatedFraction,
+        phaseName: planet.phaseName,
+        angularDiameterArcsec: planet.angularDiameterArcsec,
+        baseColor: planet.baseColor,
+        ephemerisSource: 'JPL Horizons',
+        description: planet.description,
+      );
+    }
+
+    _planets = PlanetaryEphemeris.computeAllPlanets(
+      _time.utcDateTime,
+    ).map(applyRecentHorizonsCoordinates).toList(growable: false);
     _additionalBodies = PlanetaryEphemeris.computeAdditionalBodies(
       _time.utcDateTime,
-    );
+    ).map(applyRecentHorizonsCoordinates).toList(growable: false);
     final lst = currentLst;
     final lat = _location.latitude;
 
     final Map<String, SkyPosition> majorPositions = {};
     final Map<String, SkyPosition> additionalPositions = {};
     for (final p in _planets) {
+      final topocentric = CoordinateTransform.geocentricToTopocentricEquatorial(
+        rightAscensionDeg: p.rightAscension,
+        declinationDeg: p.declination,
+        distanceAu: p.distanceAu,
+        latitudeDeg: lat,
+        altitudeMeters: _location.altitudeMeters,
+        lstDeg: lst,
+      );
       majorPositions[p.id] = CoordinateTransform.equatorialToHorizontal(
-        raDeg: p.rightAscension,
-        decDeg: p.declination,
+        raDeg: topocentric.rightAscension,
+        decDeg: topocentric.declination,
         latitudeDeg: lat,
         lstDeg: lst,
         applyRefraction: _applyRefraction,
       );
     }
     for (final p in _additionalBodies) {
+      final topocentric = CoordinateTransform.geocentricToTopocentricEquatorial(
+        rightAscensionDeg: p.rightAscension,
+        declinationDeg: p.declination,
+        distanceAu: p.distanceAu,
+        latitudeDeg: lat,
+        altitudeMeters: _location.altitudeMeters,
+        lstDeg: lst,
+      );
       additionalPositions[p.id] = CoordinateTransform.equatorialToHorizontal(
-        raDeg: p.rightAscension,
-        decDeg: p.declination,
+        raDeg: topocentric.rightAscension,
+        decDeg: topocentric.declination,
         latitudeDeg: lat,
         lstDeg: lst,
         applyRefraction: _applyRefraction,
@@ -96,6 +182,24 @@ class AstronomyEngine extends ChangeNotifier {
     }
     _planetPositions = majorPositions;
     _additionalBodyPositions = additionalPositions;
+  }
+
+  /// Applies recent JPL apparent coordinates while retaining the local
+  /// ephemeris for offline use and for times outside the API result's window.
+  void applyHorizonsCoordinates(
+    Map<String, ({double rightAscension, double declination})> coordinates, {
+    required DateTime observationTime,
+  }) {
+    _horizonsCoordinates = {
+      for (final entry in coordinates.entries)
+        if (_horizonsTargetIds.contains(entry.key) &&
+            entry.value.rightAscension.isFinite &&
+            entry.value.declination.isFinite)
+          entry.key: entry.value,
+    };
+    _horizonsCoordinatesTime = observationTime.toUtc();
+    _recomputePlanets();
+    notifyListeners();
   }
 
   Planet? getPlanetById(String id) {
@@ -247,5 +351,40 @@ class AstronomyEngine extends ChangeNotifier {
       );
     }
     return result;
+  }
+
+  /// Computes horizontal paths for the bundled IAU shared boundaries.
+  List<List<SkyPosition>> computeConstellationBoundaryPositions(
+    List<ConstellationBoundary> boundaries,
+  ) {
+    final t = AstronomicalTime.julianCenturiesJ2000(currentJulianDate);
+    final lst = currentLst;
+    final latitude = _location.latitude;
+    return [
+      for (final boundary in boundaries)
+        [
+          for (final point in boundary.points)
+            () {
+              var ra = point.rightAscension;
+              var dec = point.declination;
+              if (_applyPrecession && t.abs() > 0.0001) {
+                final precessed = CoordinateTransform.applyPrecessionJ2000(
+                  raDeg: ra,
+                  decDeg: dec,
+                  tCenturies: t,
+                );
+                ra = precessed.rightAscension;
+                dec = precessed.declination;
+              }
+              return CoordinateTransform.equatorialToHorizontal(
+                raDeg: ra,
+                decDeg: dec,
+                latitudeDeg: latitude,
+                lstDeg: lst,
+                applyRefraction: false,
+              );
+            }(),
+        ],
+    ];
   }
 }

@@ -14,6 +14,7 @@ import 'sky_map_screen.dart';
 import 'solar_system_home_screen.dart';
 import 'telescope_setup_screen.dart';
 import '../rendering/star_rendering_style.dart';
+import '../models/star.dart';
 
 /// Central navigation shell for AstroTrack Cosmic UI.
 class CosmicMainScreen extends StatefulWidget {
@@ -68,13 +69,12 @@ class _CosmicMainScreenState extends State<CosmicMainScreen> {
     });
   }
 
-  void _trackConstellationInSkyMap(String constellationId) {
+  void _trackStarInSkyMap(Star star) {
     setState(() {
       _currentIndex = 1; // Switch to Sky Map tab
     });
-    // Center Sky Map camera on constellation
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _skyMapKey.currentState?.centerOnConstellationById(constellationId);
+      _skyMapKey.currentState?.centerOnStar(star);
     });
   }
 
@@ -107,14 +107,14 @@ class _CosmicMainScreenState extends State<CosmicMainScreen> {
         child: IndexedStack(
           index: _currentIndex,
           children: [
-            // Tab 0: Solar System Dashboard (Screen 3 in photo)
+            // Tab 0: live sky dashboard and observing session planner
             SolarSystemHomeScreen(
               astronomyEngine: widget.astronomyEngine,
               starRepository: widget.starRepository,
-              constellationRepository: widget.constellationRepository,
+              isActive: _currentIndex == 0,
               onOpenSkyMap: () => _navigateToTab(1),
               onTrackPlanet: _trackPlanetInSkyMap,
-              onTrackConstellation: _trackConstellationInSkyMap,
+              onTrackStar: _trackStarInSkyMap,
               onOpenTelescope: () => _navigateToTab(3),
               onOpenDrawer: () => _scaffoldKey.currentState?.openDrawer(),
             ),
@@ -160,9 +160,9 @@ class _CosmicMainScreenState extends State<CosmicMainScreen> {
         onTap: _navigateToTab,
         items: const [
           CosmicNavItem(
-            icon: Icons.public_outlined,
-            activeIcon: Icons.public,
-            label: 'Solar System',
+            icon: Icons.nights_stay_outlined,
+            activeIcon: Icons.nights_stay,
+            label: 'Tonight',
           ),
           CosmicNavItem(
             icon: Icons.radar_outlined,
@@ -177,7 +177,7 @@ class _CosmicMainScreenState extends State<CosmicMainScreen> {
           CosmicNavItem(
             icon: Icons.explore_outlined,
             activeIcon: Icons.explore,
-            label: 'Telescope',
+            label: 'Setup',
           ),
         ],
       ),

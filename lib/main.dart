@@ -47,12 +47,17 @@ void main() async {
 
   // Load saved calibration offset and sensor preferences
   if (preferencesService != null) {
-    orientationService.setManualCalibrationOffset(
-      preferencesService.loadHeadingOffset(),
-    );
-    orientationService.setInvertPitch(
-      preferencesService.loadInvertPitch(),
-    );
+    final savedHeadingOffset = preferencesService.loadHeadingOffset();
+    // A 90°+ app trim is not a plausible local magnetic correction and can
+    // rotate the tracked sky to the opposite direction. Discard legacy large
+    // offsets so the device's north-referenced compass starts at its own heading.
+    if (savedHeadingOffset.abs() < 90.0) {
+      orientationService.setManualCalibrationOffset(savedHeadingOffset);
+    } else {
+      orientationService.setManualCalibrationOffset(0.0);
+      await preferencesService.saveHeadingOffset(0.0);
+    }
+    orientationService.setInvertPitch(preferencesService.loadInvertPitch());
   }
 
   runApp(

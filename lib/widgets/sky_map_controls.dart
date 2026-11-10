@@ -200,12 +200,12 @@ class SkyMapControls extends StatelessWidget {
       child: Material(
         color: backgroundColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.0),
+          borderRadius: BorderRadius.circular(28.0),
           side: BorderSide(color: borderColor, width: 1.0),
         ),
         elevation: 0.0,
         child: InkWell(
-          borderRadius: BorderRadius.circular(12.0),
+          borderRadius: BorderRadius.circular(28.0),
           onTap: onPressed,
           child: Container(
             width: 48,

@@ -98,9 +98,12 @@ class _GalileanOrbit {
   });
 }
 
-/// Rigorous analytical ephemeris for the Sun, Moon, and 8 major planets based on
-/// NASA JPL Keplerian orbital elements (Standish 1992) and Meeus lunar ephemerides.
+/// Offline ephemeris for the Sun, Moon, and major planets based on JPL's
+/// approximate Keplerian elements (Standish 1992) and Meeus lunar terms.
 class PlanetaryEphemeris {
+  // One-way light travel time per AU, expressed in Julian days.
+  static const double _lightTimeDaysPerAu = 499.004783836 / 86400.0;
+
   /// Solves Kepler's equation for Eccentric Anomaly: M = E - e*sin(E).
   /// Uses Newton-Raphson iteration, converging to 1e-9 within 3-4 steps.
   static double _solveKepler(double meanAnomalyRad, double eccentricity) {
@@ -524,14 +527,37 @@ class PlanetaryEphemeris {
     ];
 
     for (final p in planets) {
-      final elem = _getElements(p.type, t);
-      final pPos = _heliocentricCoordinates(elem, type: p.type, tCenturies: t);
+      // The visible planet is where it was when its light left, not where the
+      // orbit model places it at the instant the light reaches Earth. Iterate
+      // the distance delay so inner planets receive the larger correction.
+      var emissionCenturies = t;
+      late ({double x, double y, double z}) pPos;
+      late double gX;
+      late double gY;
+      late double gZ;
+      late double distAu;
+      for (var iteration = 0; iteration < 4; iteration++) {
+        final elem = _getElements(p.type, emissionCenturies);
+        pPos = _heliocentricCoordinates(
+          elem,
+          type: p.type,
+          tCenturies: emissionCenturies,
+        );
 
-      // Geocentric vector = PlanetPos - EarthPos
-      final gX = pPos.x - earthPos.x;
-      final gY = pPos.y - earthPos.y;
-      final gZ = pPos.z - earthPos.z;
-      final distAu = math.sqrt(gX * gX + gY * gY + gZ * gZ);
+        // Geocentric vector joins Earth at observation time to the retarded
+        // planet position.
+        gX = pPos.x - earthPos.x;
+        gY = pPos.y - earthPos.y;
+        gZ = pPos.z - earthPos.z;
+        distAu = math.sqrt(gX * gX + gY * gY + gZ * gZ);
+
+        final correctedEmissionCenturies =
+            t - (distAu * _lightTimeDaysPerAu / 36525.0);
+        if ((correctedEmissionCenturies - emissionCenturies).abs() < 1e-12) {
+          break;
+        }
+        emissionCenturies = correctedEmissionCenturies;
+      }
       final rHelio = math.sqrt(
         pPos.x * pPos.x + pPos.y * pPos.y + pPos.z * pPos.z,
       );

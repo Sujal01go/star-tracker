@@ -22,6 +22,7 @@ class StarMapPainter extends CustomPainter {
   final Map<PlanetType, ui.Image>? planetImages;
   final List<Constellation> constellations;
   final Map<String, SkyPosition> constellationPositions;
+  final List<List<SkyPosition>> constellationBoundaryPositions;
   final Map<String, ui.Image>? constellationImages;
   final List<DeepSkyObject> deepSkyObjects;
   final Map<String, SkyPosition> deepSkyPositions;
@@ -44,6 +45,7 @@ class StarMapPainter extends CustomPainter {
     this.planetImages,
     required this.constellations,
     this.constellationPositions = const {},
+    this.constellationBoundaryPositions = const [],
     this.constellationImages,
     this.deepSkyObjects = const [],
     this.deepSkyPositions = const {},
@@ -76,6 +78,11 @@ class StarMapPainter extends CustomPainter {
     // 3. Draw horizon and cardinal directions
     if (style.showHorizon) {
       _drawHorizonAndCardinals(canvas, size);
+    }
+
+    if (style.showConstellationLines &&
+        constellationBoundaryPositions.isNotEmpty) {
+      _drawConstellationBoundaries(canvas);
     }
 
     // Map to collect screen coordinates of rendered objects (for hit-testing / taps)
@@ -481,6 +488,33 @@ class StarMapPainter extends CustomPainter {
           }
         }
       }
+    }
+  }
+
+  void _drawConstellationBoundaries(Canvas canvas) {
+    final paint = Paint()
+      ..color = style.nightMode
+          ? const Color(0x42FF3333)
+          : AstroTrackColors.secondary.withValues(alpha: 0.16)
+      ..strokeWidth = 0.75
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke;
+
+    for (final boundary in constellationBoundaryPositions) {
+      final path = Path();
+      var drawing = false;
+      for (final position in boundary) {
+        final point = projection.projectSkyPosition(position);
+        if (point == null) {
+          drawing = false;
+        } else if (!drawing) {
+          path.moveTo(point.dx, point.dy);
+          drawing = true;
+        } else {
+          path.lineTo(point.dx, point.dy);
+        }
+      }
+      canvas.drawPath(path, paint);
     }
   }
 
@@ -1052,6 +1086,8 @@ class StarMapPainter extends CustomPainter {
         oldDelegate.planets != planets ||
         oldDelegate.planetPositions != planetPositions ||
         oldDelegate.constellationPositions != constellationPositions ||
+        oldDelegate.constellationBoundaryPositions !=
+            constellationBoundaryPositions ||
         oldDelegate.deepSkyObjects != deepSkyObjects ||
         oldDelegate.deepSkyPositions != deepSkyPositions ||
         oldDelegate.asterisms != asterisms ||

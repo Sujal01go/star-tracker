@@ -3,20 +3,21 @@ version: alpha
 name: AstroTrack Observing System
 description: A quiet, space-inspired interface for exploring the sky and preparing telescope observations.
 colors:
-  primary: "#0B1420"
-  secondary: "#ADB8CE"
-  tertiary: "#9CCBC4"
-  neutral: "#121F2B"
-  surface-raised: "#1A2A38"
-  surface-muted: "#162633"
-  border: "#2B3D4B"
-  text-primary: "#F1F4F2"
-  text-secondary: "#B2BEC5"
-  text-muted: "#8796A0"
-  action: "#426E69"
-  accent-soft: "#213A39"
-  warm: "#D9BC88"
-  danger: "#D98282"
+  primary: "#22162B"
+  secondary: "#724E91"
+  tertiary: "#E54F6D"
+  neutral: "#2F1F37"
+  surface-raised: "#451F55"
+  surface-muted: "#35223E"
+  border: "#8C739B"
+  text-primary: "#FFF8FD"
+  text-secondary: "#D9C9E0"
+  text-muted: "#C6B6CD"
+  accent-text: "#F16C85"
+  action: "#E54F6D"
+  accent-soft: "#50334F"
+  warm: "#F8C630"
+  danger: "#E54F6D"
   night-background: "#0F0202"
   night-theme-background: "#0D0202"
   night-surface: "#1B0404"
@@ -90,34 +91,41 @@ components:
     padding: "{spacing.lg}"
   primary-action:
     backgroundColor: "{colors.action}"
-    textColor: "{colors.text-primary}"
+    textColor: "{colors.primary}"
     typography: "{typography.button}"
-    rounded: "{rounded.sm}"
+    rounded: "{rounded.full}"
     height: 48px
   secondary-action:
     backgroundColor: "{colors.neutral}"
-    textColor: "{colors.tertiary}"
+    textColor: "{colors.text-primary}"
     typography: "{typography.button}"
-    rounded: "{rounded.sm}"
+    rounded: "{rounded.full}"
+    height: 48px
+  text-action:
+    backgroundColor: "{colors.neutral}"
+    textColor: "{colors.accent-text}"
+    typography: "{typography.button}"
+    rounded: "{rounded.full}"
     height: 48px
   search-field:
     backgroundColor: "{colors.surface-muted}"
     textColor: "{colors.text-secondary}"
     typography: "{typography.body}"
-    rounded: "{rounded.sm}"
+    rounded: "{rounded.full}"
     height: 48px
   bottom-navigation:
     backgroundColor: "{colors.neutral}"
     textColor: "{colors.text-muted}"
     typography: "{typography.label}"
-    height: 80px
+    rounded: "{rounded.full}"
+    height: 64px
   selected-navigation-item:
-    backgroundColor: "{colors.accent-soft}"
-    textColor: "{colors.text-primary}"
+    backgroundColor: "{colors.tertiary}"
+    textColor: "{colors.primary}"
     rounded: "{rounded.full}"
   selected-filter:
     backgroundColor: "{colors.accent-soft}"
-    textColor: "{colors.tertiary}"
+    textColor: "{colors.text-primary}"
     rounded: "{rounded.full}"
   instrument-panel:
     backgroundColor: "{colors.neutral}"
@@ -125,8 +133,8 @@ components:
     rounded: "{rounded.lg}"
     padding: "{spacing.lg}"
   positive-status:
-    backgroundColor: "{colors.accent-soft}"
-    textColor: "{colors.tertiary}"
+    backgroundColor: "{colors.surface-raised}"
+    textColor: "{colors.warm}"
   caution-status:
     backgroundColor: "{colors.surface-raised}"
     textColor: "{colors.warm}"
@@ -135,7 +143,7 @@ components:
     textColor: "{colors.danger}"
   information-status:
     backgroundColor: "{colors.surface-raised}"
-    textColor: "{colors.secondary}"
+    textColor: "{colors.text-secondary}"
   divider:
     backgroundColor: "{colors.border}"
     height: 1px
@@ -176,11 +184,12 @@ into cockpit or science-fiction props.
 
 ## Colors
 
-The default interface uses deep blue-black for the page, blue-tinted charcoal for
-surfaces, soft sea-glass teal for selection and guidance, and muted amber for
-caution states. Primary actions use a darker teal with light text for readable
-contrast. Text uses warm near-white for primary information and cool pale slate
-for supporting details.
+The default interface uses Midnight Violet for the page, Dark Amethyst for raised
+surfaces, Dusty Grape for secondary accents and outlines, Blush Rose for primary
+actions and selection, and Saffron for caution and observing emphasis. Primary
+actions use dark violet text on rose. A lighter rose tint carries small accent
+labels and icons on amethyst surfaces. Supporting text is a light violet neutral
+rather than a generic gray.
 
 The red night-vision palette is a deliberate observing mode. It replaces the
 default accents while active and must remain available for preserving dark
@@ -213,15 +222,18 @@ general interface controls.
 
 ## Shapes
 
-Use 12px corners for buttons and inputs, 16px corners for compact selections, and
-18px corners for larger cards and instrument panels. Pills are reserved for
-filters and selected navigation states. Keep borders thin and low contrast.
+Use capsule shapes for primary actions, search fields, compact map controls, and
+the connected bottom navigation. Keep cards and instrument panels at 18px corners.
+Use the brighter grape outline sparingly to define interactive edges.
 
 ## Components
 
-- **Navigation:** Material 3 bottom navigation with four labeled destinations.
-- **Primary action:** A solid filled button with a clear verb and a 48px minimum
-  height.
+- **Navigation:** An outlined capsule with four icon destinations; the active tab
+  expands into a rose pill with its short label.
+- **Primary action:** A solid rose capsule with dark-violet text, a clear verb, and
+  a 48px minimum height.
+- **Map controls:** Compact circular controls with a thin grape outline and a
+  darker amethyst fill for active states.
 - **Search:** A single-line field followed by compact filters and readable result
   rows.
 - **Observing suggestions:** Explain why a target is recommended using altitude,
@@ -230,14 +242,14 @@ filters and selected navigation states. Keep borders thin and low contrast.
   concise sensor status. Keep the live values more prominent than decorative
   instrument markings.
 - **Night vision:** Preserve the red-on-dark palette as an explicit mode rather
-  than blending it into the default teal palette.
+  than blending it into the default violet palette.
 
 ## Do's and Don'ts
 
 - Do keep the star map accurate, interactive, and visually distinct from ordinary
   content screens.
-- Do use teal for selected and active states, amber for caution, and red for
-  night-vision or errors.
+- Do use rose for selected and active states, saffron for caution and observing
+  emphasis, and red for the dedicated night-vision mode.
 - Do keep measurement units beside their values and use accessible touch targets.
 - Don't add gradients or glow to buttons, cards, navigation, or thumbnails.
 - Don't use the nebula image as a full-screen UI texture.

@@ -54,29 +54,33 @@ class LocationIndicator extends StatelessWidget {
                 color: isNight ? Colors.redAccent : AstroTrackColors.accent,
               ),
               const SizedBox(width: 6.0),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    location.name,
-                    style: TextStyle(
-                      color: textPrimary,
-                      fontSize: 11.5,
-                      fontWeight: FontWeight.w600,
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      location.name,
+                      style: TextStyle(
+                        color: textPrimary,
+                        fontSize: 11.5,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(
-                    '$latStr, $lonStr',
-                    style: TextStyle(
-                      color: textSecondary,
-                      fontSize: 9.5,
-                      fontFamily: 'monospace',
+                    Text(
+                      '$latStr, $lonStr',
+                      style: TextStyle(
+                        color: textSecondary,
+                        fontSize: 9.5,
+                        fontFamily: 'monospace',
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               const SizedBox(width: 4.0),
               Icon(Icons.arrow_drop_down, size: 16.0, color: textSecondary),
