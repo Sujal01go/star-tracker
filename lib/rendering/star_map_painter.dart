@@ -106,7 +106,7 @@ class StarMapPainter extends CustomPainter {
     // 5. Draw stars and glows
     _drawStars(canvas, renderedOffsets);
 
-    // 6. Draw major Solar System planets, Sun, and Moon
+    // 6. Draw every Solar System body inside the current view.
     _drawPlanets(canvas, renderedOffsets);
 
     _drawDeepSkyObjects(canvas, renderedOffsets);
@@ -777,25 +777,22 @@ class StarMapPainter extends CustomPainter {
           planet.type == PlanetType.asteroid ||
           planet.type == PlanetType.dwarfPlanet ||
           planet.type == PlanetType.comet;
-      if (isMinorBody && projection.fieldOfView > 50.0 && !isSelected) {
-        continue;
-      }
-      if (planet.isGalileanMoon &&
-          projection.fieldOfView > 30.0 &&
-          !isSelected) {
-        continue;
-      }
       final pos = planetPositions[planet.id];
       if (pos == null) continue;
-
-      final pt = projection.projectSkyPosition(pos);
-      if (pt == null) continue;
-
-      offsetCache[planet.id] = pt;
 
       final color = style.nightMode
           ? const Color(0xFFFF3333)
           : planet.baseColor;
+      final pt = projection.projectSkyPosition(pos);
+      if (pt == null ||
+          pt.dx < 0.0 ||
+          pt.dx > _paintSize.width ||
+          pt.dy < 0.0 ||
+          pt.dy > _paintSize.height) {
+        continue;
+      }
+
+      offsetCache[planet.id] = pt;
 
       final img = planetImages?[planet.type];
       if (img != null) {

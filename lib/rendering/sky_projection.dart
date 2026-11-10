@@ -13,6 +13,10 @@ import '../models/sky_position.dart';
 /// - Automatic clipping of objects behind or beyond the camera field of view.
 /// - Seamless 360° azimuth wrapping and zenith handling without edge distortion.
 class SkyProjection {
+  static final Expando<Vector3> _skyDirectionCache = Expando<Vector3>(
+    'sky map unit direction',
+  );
+
   final double centerAzimuth; // in degrees [0, 360)
   final double centerAltitude; // in degrees [-90, +90]
   final double rollAngle; // in degrees
@@ -45,12 +49,12 @@ class SkyProjection {
     // 2. Reference zenith direction
     final zenith = Vector3(0.0, 0.0, 1.0);
 
-    // If looking directly at zenith or nadir, use the exact continuous azimuth horizontal limit
+    // Use the same azimuth basis at zenith and nadir. The negative sign at the
+    // nadir used to flip the entire view by 180 degrees near the lower pole.
     final azRad = SphericalGeometry.toRadians(centerAzimuth);
     Vector3 right;
     if (_forwardVector.z.abs() > 0.999) {
-      final sign = _forwardVector.z >= 0 ? 1.0 : -1.0;
-      right = Vector3(sign * math.cos(azRad), -sign * math.sin(azRad), 0.0);
+      right = Vector3(math.cos(azRad), -math.sin(azRad), 0.0);
     } else {
       right = _forwardVector.cross(zenith).normalized();
     }
@@ -81,16 +85,24 @@ class SkyProjection {
   /// Projects a horizontal sky coordinate (azimuth, altitude) onto screen pixels.
   /// Returns `null` if the object is behind the camera or outside the projection cone.
   Offset? projectSkyPosition(SkyPosition skyPos) {
-    return projectCoordinates(skyPos.azimuth, skyPos.altitude);
+    final direction = _skyDirectionCache[skyPos] ??=
+        SphericalGeometry.horizontalToUnitVector(
+          skyPos.azimuth,
+          skyPos.altitude,
+        ).normalized();
+    return _projectDirection(direction);
   }
 
   /// Projects azimuth and altitude in degrees directly onto screen pixels.
   Offset? projectCoordinates(double azimuthDeg, double altitudeDeg) {
-    final starVec = SphericalGeometry.horizontalToUnitVector(
+    final direction = SphericalGeometry.horizontalToUnitVector(
       azimuthDeg,
       altitudeDeg,
     );
+    return _projectDirection(direction);
+  }
 
+  Offset? _projectDirection(Vector3 starVec) {
     // Coordinate decomposition along camera axes
     final zCam = starVec.dot(_forwardVector);
 
@@ -163,11 +175,10 @@ class SkyProjection {
     // poles, retain the same azimuth-based basis used by the projection.
     Vector3 horizonRight;
     if (forward.z.abs() > 0.999) {
-      final sign = forward.z >= 0 ? 1.0 : -1.0;
       final azimuthRadians = SphericalGeometry.toRadians(azimuth);
       horizonRight = Vector3(
-        sign * math.cos(azimuthRadians),
-        -sign * math.sin(azimuthRadians),
+        math.cos(azimuthRadians),
+        -math.sin(azimuthRadians),
         0.0,
       );
     } else {

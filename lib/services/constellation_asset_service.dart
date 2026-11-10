@@ -62,44 +62,52 @@ class ConstellationAssetService {
 
   // Preloaded ui.Image cache for Canvas painting
   static final Map<String, ui.Image> _uiImageCache = {};
-  static bool _isLoading = false;
+  static Future<void>? _loadingImages;
 
   static Map<String, ui.Image> get uiImages => _uiImageCache;
 
   /// Loads constellation artwork into memory as dart:ui.Image objects.
-  static Future<void> preloadUiImages() async {
-    if (_uiImageCache.isNotEmpty || _isLoading) return;
-    _isLoading = true;
+  static Future<void> preloadUiImages() {
+    if (_uiImageCache.containsKey('default')) return Future.value();
+    return _loadingImages ??= _loadUiImages();
+  }
 
-    final distinctPaths = {
-      ..._constellationArtMap.values,
-      defaultArtwork,
-    };
+  static Future<void> _loadUiImages() async {
+    final distinctPaths = {..._constellationArtMap.values, defaultArtwork};
 
-    for (final path in distinctPaths) {
-      try {
-        final data = await rootBundle.load(path);
-        final codec = await ui.instantiateImageCodec(data.buffer.asUint8List());
-        final frameInfo = await codec.getNextFrame();
-        _uiImageCache[path] = frameInfo.image;
-      } catch (e) {
-        debugPrint('Could not load constellation ui.Image for $path: $e');
+    try {
+      final loadedImages = <String, ui.Image>{};
+      await Future.wait(
+        distinctPaths.map((path) async {
+          try {
+            final data = await rootBundle.load(path);
+            final codec = await ui.instantiateImageCodec(
+              data.buffer.asUint8List(),
+            );
+            final frameInfo = await codec.getNextFrame();
+            loadedImages[path] = frameInfo.image;
+          } catch (e) {
+            debugPrint('Could not load constellation ui.Image for $path: $e');
+          }
+        }),
+      );
+
+      _uiImageCache.addAll(loadedImages);
+
+      // Populate aliases only after the complete artwork batch has loaded.
+      for (final entry in _constellationArtMap.entries) {
+        final img = loadedImages[entry.value];
+        if (img != null) {
+          _uiImageCache[entry.key] = img;
+        }
       }
-    }
-
-    // Populate keys (e.g. 'ori', 'orion', 'uma', 'default') so StarMapPainter can look up directly
-    for (final entry in _constellationArtMap.entries) {
-      final img = _uiImageCache[entry.value];
-      if (img != null) {
-        _uiImageCache[entry.key] = img;
+      final defaultImg = loadedImages[defaultArtwork];
+      if (defaultImg != null) {
+        _uiImageCache['default'] = defaultImg;
       }
+    } finally {
+      _loadingImages = null;
     }
-    final defaultImg = _uiImageCache[defaultArtwork];
-    if (defaultImg != null) {
-      _uiImageCache['default'] = defaultImg;
-    }
-
-    _isLoading = false;
   }
 
   static ui.Image? getUiImage(String? idOrName) {
@@ -107,4 +115,3 @@ class ConstellationAssetService {
     return _uiImageCache[path] ?? _uiImageCache[defaultArtwork];
   }
 }
-

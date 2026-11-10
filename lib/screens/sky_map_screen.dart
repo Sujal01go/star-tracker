@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:math' as math;
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import '../app/theme.dart';
 import '../astronomy/astronomy_engine.dart';
 import '../data/asterism_catalogue.dart';
@@ -55,7 +57,8 @@ class SkyMapScreen extends StatefulWidget {
   State<SkyMapScreen> createState() => SkyMapScreenState();
 }
 
-class SkyMapScreenState extends State<SkyMapScreen> {
+class SkyMapScreenState extends State<SkyMapScreen>
+    with SingleTickerProviderStateMixin {
   // Rendering & Camera parameters
   double _fieldOfView = 65.0; // degrees
   double _previousScaleFov = 65.0;
@@ -63,6 +66,10 @@ class SkyMapScreenState extends State<SkyMapScreen> {
   int _lastGesturePointerCount = 1;
   Offset? _lastPanFocalPoint;
   Size _gestureViewportSize = Size.zero;
+  bool _gestureHadMultiplePointers = false;
+  late final Ticker _inertiaTicker;
+  Offset _inertiaVelocity = Offset.zero;
+  Duration? _lastInertiaTick;
 
   // Visual style state
   late StarRenderingStyle _style;
@@ -89,10 +96,12 @@ class SkyMapScreenState extends State<SkyMapScreen> {
 
   // Timers
   Timer? _realTimeClockTimer;
+  bool _mapAssetsReady = false;
 
   @override
   void initState() {
     super.initState();
+    _inertiaTicker = createTicker(_stepInertia);
     _style =
         widget.preferencesService?.loadRenderingStyle() ??
         const StarRenderingStyle();
@@ -114,16 +123,9 @@ class SkyMapScreenState extends State<SkyMapScreen> {
       }
     });
 
-    // Load async catalogue assets if not yet loaded
-    _loadCatalogues();
-
-    // Preload photorealistic 3D planet images and constellation artwork for Canvas rendering
-    PlanetDataService.preloadUiImages().then((_) {
-      if (mounted) setState(() {});
-    });
-    ConstellationAssetService.preloadUiImages().then((_) {
-      if (mounted) setState(() {});
-    });
+    // Load catalogues and image assets together so the map switches from its
+    // vector fallbacks to the complete sprite set in one frame.
+    _prepareSkyMap();
 
     // Auto-acquire device GPS fix if location is still default Greenwich
     _initGpsLocation();
@@ -308,20 +310,25 @@ class SkyMapScreenState extends State<SkyMapScreen> {
   }
 
   Future<void> _loadCatalogues() async {
+    final loads = <Future<void>>[];
     if (!widget.starRepository.isLoaded) {
-      await widget.starRepository.loadCatalogue();
-      if (mounted) {
-        _recomputeSkyPositions();
-      }
+      loads.add(widget.starRepository.loadCatalogue());
     }
     if (!widget.constellationRepository.isLoaded) {
-      await widget.constellationRepository.loadConstellations();
-      if (mounted) {
-        _recomputeSkyPositions();
-      }
+      loads.add(widget.constellationRepository.loadConstellations());
     }
-    await _deepSkyRepository.loadCatalogue();
+    loads.add(_deepSkyRepository.loadCatalogue());
+    await Future.wait(loads);
     if (mounted) _recomputeSkyPositions();
+  }
+
+  Future<void> _prepareSkyMap() async {
+    await Future.wait([
+      _loadCatalogues(),
+      PlanetDataService.preloadUiImages(),
+      ConstellationAssetService.preloadUiImages(),
+    ]);
+    if (mounted) setState(() => _mapAssetsReady = true);
   }
 
   void _onOrientationUpdated() {
@@ -439,6 +446,7 @@ class SkyMapScreenState extends State<SkyMapScreen> {
   void dispose() {
     _realTimeClockTimer?.cancel();
     _horizonsRefreshTimer?.cancel();
+    _inertiaTicker.dispose();
     widget.orientationService.removeListener(_onOrientationUpdated);
     widget.astronomyEngine.removeListener(_onAstronomyUpdated);
     super.dispose();
@@ -446,11 +454,13 @@ class SkyMapScreenState extends State<SkyMapScreen> {
 
   // Touch Gesture Handling
   void _onScaleStart(ScaleStartDetails details, Size viewportSize) {
+    _stopInertia();
     _gestureViewportSize = viewportSize;
     _lastPanFocalPoint = details.localFocalPoint;
     _previousScaleFov = _fieldOfView;
     _previousGestureScale = 1.0;
     _lastGesturePointerCount = details.pointerCount;
+    _gestureHadMultiplePointers = details.pointerCount >= 2;
   }
 
   void _onScaleUpdate(ScaleUpdateDetails details) {
@@ -461,10 +471,13 @@ class SkyMapScreenState extends State<SkyMapScreen> {
       _lastPanFocalPoint = details.localFocalPoint;
       _previousScaleFov = _fieldOfView;
       _previousGestureScale = details.scale;
+      _gestureHadMultiplePointers =
+          _gestureHadMultiplePointers || details.pointerCount >= 2;
       return;
     }
 
     if (details.pointerCount >= 2) {
+      _gestureHadMultiplePointers = true;
       // 2-finger pinch zoom
       _lastPanFocalPoint = details.localFocalPoint;
       final scaleSinceAnchor = details.scale / _previousGestureScale;
@@ -495,6 +508,63 @@ class SkyMapScreenState extends State<SkyMapScreen> {
         );
       }
     }
+  }
+
+  void _onScaleEnd(ScaleEndDetails details) {
+    if (_gestureHadMultiplePointers) return;
+
+    final velocity = details.velocity.pixelsPerSecond;
+    final speed = velocity.distance;
+    if (speed < 100.0) return;
+
+    final cappedSpeed = math.min(speed, 1400.0);
+    _inertiaVelocity = velocity * (cappedSpeed / speed);
+    _lastInertiaTick = null;
+    _inertiaTicker.start();
+  }
+
+  void _stepInertia(Duration elapsed) {
+    final previousTick = _lastInertiaTick;
+    _lastInertiaTick = elapsed;
+    if (previousTick == null || _gestureViewportSize.isEmpty) return;
+
+    final deltaSeconds = ((elapsed - previousTick).inMicroseconds / 1000000.0)
+        .clamp(0.0, 0.05)
+        .toDouble();
+    if (deltaSeconds <= 0.0) return;
+
+    final center = Offset(
+      _gestureViewportSize.width / 2.0,
+      _gestureViewportSize.height / 2.0,
+    );
+    var displacement = _inertiaVelocity * deltaSeconds;
+    if (displacement.distance > 40.0) {
+      displacement = displacement * (40.0 / displacement.distance);
+    }
+    final projection = SkyProjection(
+      centerAzimuth: widget.orientationService.azimuth,
+      centerAltitude: widget.orientationService.altitude,
+      rollAngle: widget.orientationService.roll,
+      fieldOfView: _fieldOfView,
+      viewportSize: _gestureViewportSize,
+    );
+    final pose = projection.panByScreenDrag(center, center + displacement);
+    if (pose != null) {
+      widget.orientationService.setManualViewPose(
+        azimuth: pose.azimuth,
+        altitude: pose.altitude,
+        roll: pose.roll,
+      );
+    }
+
+    _inertiaVelocity = _inertiaVelocity * math.exp(-deltaSeconds / 0.38);
+    if (_inertiaVelocity.distance < 16.0) _stopInertia();
+  }
+
+  void _stopInertia() {
+    if (_inertiaTicker.isActive) _inertiaTicker.stop();
+    _inertiaVelocity = Offset.zero;
+    _lastInertiaTick = null;
   }
 
   void _onTapUp(TapUpDetails details) {
@@ -1057,6 +1127,7 @@ class SkyMapScreenState extends State<SkyMapScreen> {
               GestureDetector(
                 onScaleStart: (details) => _onScaleStart(details, viewportSize),
                 onScaleUpdate: _onScaleUpdate,
+                onScaleEnd: _onScaleEnd,
                 onTapUp: _onTapUp,
                 child: CustomPaint(
                   size: viewportSize,
@@ -1066,13 +1137,17 @@ class SkyMapScreenState extends State<SkyMapScreen> {
                     planets: widget.astronomyEngine.solarSystemObjects,
                     planetPositions:
                         widget.astronomyEngine.solarSystemPositions,
-                    planetImages: PlanetDataService.uiImages,
+                    planetImages: _mapAssetsReady
+                        ? PlanetDataService.uiImages
+                        : null,
                     constellations:
                         widget.constellationRepository.allConstellations,
                     constellationPositions: _computedConstellationPositions,
                     constellationBoundaryPositions:
                         _computedConstellationBoundaryPositions,
-                    constellationImages: ConstellationAssetService.uiImages,
+                    constellationImages: _mapAssetsReady
+                        ? ConstellationAssetService.uiImages
+                        : null,
                     deepSkyObjects: _deepSkyRepository.allObjects,
                     deepSkyPositions: _computedDeepSkyPositions,
                     asterisms: famousAsterisms,

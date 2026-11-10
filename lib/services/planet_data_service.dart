@@ -198,25 +198,36 @@ class PlanetDataService {
 
   // Preloaded ui.Image cache for Canvas painting
   static final Map<PlanetType, ui.Image> _uiImageCache = {};
-  static bool _isLoadingImages = false;
+  static Future<void>? _loadingImages;
 
   static Map<PlanetType, ui.Image> get uiImages => _uiImageCache;
 
   /// Loads all planet PNG assets into memory as dart:ui.Image objects.
-  static Future<void> preloadUiImages() async {
-    if (_uiImageCache.length >= assetPaths.length || _isLoadingImages) return;
-    _isLoadingImages = true;
+  static Future<void> preloadUiImages() {
+    if (_uiImageCache.length >= assetPaths.length) return Future.value();
+    return _loadingImages ??= _loadUiImages();
+  }
 
-    for (final entry in assetPaths.entries) {
-      try {
-        final data = await rootBundle.load(entry.value);
-        final codec = await ui.instantiateImageCodec(data.buffer.asUint8List());
-        final frameInfo = await codec.getNextFrame();
-        _uiImageCache[entry.key] = frameInfo.image;
-      } catch (e) {
-        debugPrint('Could not load planet ui.Image for ${entry.key}: $e');
-      }
+  static Future<void> _loadUiImages() async {
+    try {
+      final loadedImages = <PlanetType, ui.Image>{};
+      await Future.wait(
+        assetPaths.entries.map((entry) async {
+          try {
+            final data = await rootBundle.load(entry.value);
+            final codec = await ui.instantiateImageCodec(
+              data.buffer.asUint8List(),
+            );
+            final frameInfo = await codec.getNextFrame();
+            loadedImages[entry.key] = frameInfo.image;
+          } catch (e) {
+            debugPrint('Could not load planet ui.Image for ${entry.key}: $e');
+          }
+        }),
+      );
+      _uiImageCache.addAll(loadedImages);
+    } finally {
+      _loadingImages = null;
     }
-    _isLoadingImages = false;
   }
 }
