@@ -1,32 +1,31 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart';
+
 import '../astronomy/spherical_geometry.dart';
 import '../models/sky_position.dart';
 
-/// Camera-perspective spherical projection from horizontal sky coordinates (Az, Alt)
-/// to 2D screen coordinates.
+/// Projects fixed directions on the celestial sphere onto the observer's view.
 ///
-/// Features:
-/// - Mathematically correct 3D perspective projection onto the viewport.
-/// - Unbroken Great Circle lines (ideal for constellation outlines and coordinate grids).
-/// - Automatic clipping of objects behind or beyond the camera field of view.
-/// - Seamless 360° azimuth wrapping and zenith handling without edge distortion.
+/// Angular distance from the view direction maps linearly to screen distance,
+/// which avoids the severe stretching near the edge of a pinhole projection.
+/// The camera itself remains a 3D trackball, so the sky moves as one sphere.
 class SkyProjection {
   static final Expando<Vector3> _skyDirectionCache = Expando<Vector3>(
     'sky map unit direction',
   );
 
-  final double centerAzimuth; // in degrees [0, 360)
-  final double centerAltitude; // in degrees [-90, +90]
-  final double rollAngle; // in degrees
-  final double fieldOfView; // in degrees (e.g. 60° to 90°)
+  final double centerAzimuth;
+  final double centerAltitude;
+  final double rollAngle;
+  final double fieldOfView;
   final Size viewportSize;
 
   late final Vector3 _forwardVector;
   late final Vector3 _rightVector;
   late final Vector3 _upVector;
-  late final double _focalLength;
+  late final double _pixelsPerRadian;
 
   SkyProjection({
     required this.centerAzimuth,
@@ -39,51 +38,45 @@ class SkyProjection {
   }
 
   void _initProjectionMatrix() {
-    // 1. Forward unit vector (camera gaze direction)
-    // Topocentric: X = East, Y = North, Z = Zenith
+    // Topocentric axes: X = East, Y = North, Z = Zenith.
     _forwardVector = SphericalGeometry.horizontalToUnitVector(
       centerAzimuth,
       centerAltitude,
     ).normalized();
 
-    // 2. Reference zenith direction
-    final zenith = Vector3(0.0, 0.0, 1.0);
+    // Keep a stable horizon basis at both poles. The view's azimuth supplies
+    // the otherwise undefined direction at zenith and nadir.
+    final azimuthRadians = SphericalGeometry.toRadians(centerAzimuth);
+    var right = Vector3(
+      math.cos(azimuthRadians),
+      -math.sin(azimuthRadians),
+      0.0,
+    ).normalized();
+    var up = right.cross(_forwardVector).normalized();
 
-    // Use the same azimuth basis at zenith and nadir. The negative sign at the
-    // nadir used to flip the entire view by 180 degrees near the lower pole.
-    final azRad = SphericalGeometry.toRadians(centerAzimuth);
-    Vector3 right;
-    if (_forwardVector.z.abs() > 0.999) {
-      right = Vector3(math.cos(azRad), -math.sin(azRad), 0.0);
-    } else {
-      right = _forwardVector.cross(zenith).normalized();
-    }
-
-    // Camera Up vector perpendicular to Forward and Right
-    Vector3 up = right.cross(_forwardVector).normalized();
-
-    // 3. Apply camera roll if present
     if (rollAngle.abs() > 0.001) {
-      final rollRad = SphericalGeometry.toRadians(rollAngle);
-      final cosRoll = math.cos(rollRad);
-      final sinRoll = math.sin(rollRad);
-      final rotatedRight = (right * cosRoll) + (up * sinRoll);
-      final rotatedUp = (up * cosRoll) - (right * sinRoll);
-      right = rotatedRight.normalized();
-      up = rotatedUp.normalized();
+      final rollRadians = SphericalGeometry.toRadians(rollAngle);
+      final cosRoll = math.cos(rollRadians);
+      final sinRoll = math.sin(rollRadians);
+      final rolledRight = (right * cosRoll) + (up * sinRoll);
+      final rolledUp = (up * cosRoll) - (right * sinRoll);
+      right = rolledRight.normalized();
+      up = rolledUp.normalized();
     }
 
     _rightVector = right;
     _upVector = up;
 
-    // 4. Perspective focal length: screen pixels corresponding to 1 radian
-    final fovRad = SphericalGeometry.toRadians(fieldOfView);
-    final minDim = math.min(viewportSize.width, viewportSize.height);
-    _focalLength = (minDim / 2.0) / math.tan(fovRad / 2.0);
+    // Keep the existing FOV convention: the smaller viewport dimension spans
+    // the requested field of view. Clamp malformed values away from singulars.
+    final safeFov = fieldOfView.clamp(1.0, 179.0);
+    final halfFovRadians = SphericalGeometry.toRadians(safeFov / 2.0);
+    final minDimension = math.min(viewportSize.width, viewportSize.height);
+    _pixelsPerRadian = minDimension / (2.0 * halfFovRadians);
   }
 
-  /// Projects a horizontal sky coordinate (azimuth, altitude) onto screen pixels.
-  /// Returns `null` if the object is behind the camera or outside the projection cone.
+  /// Projects a horizontal sky coordinate (azimuth, altitude) onto screen.
+  /// Returns `null` when the direction is outside the visible viewport margin.
   Offset? projectSkyPosition(SkyPosition skyPos) {
     final direction = _skyDirectionCache[skyPos] ??=
         SphericalGeometry.horizontalToUnitVector(
@@ -98,27 +91,38 @@ class SkyProjection {
     final direction = SphericalGeometry.horizontalToUnitVector(
       azimuthDeg,
       altitudeDeg,
-    );
+    ).normalized();
     return _projectDirection(direction);
   }
 
-  Offset? _projectDirection(Vector3 starVec) {
-    // Coordinate decomposition along camera axes
-    final zCam = starVec.dot(_forwardVector);
+  Offset? _projectDirection(Vector3 direction) {
+    final xCamera = direction.dot(_rightVector);
+    final yCamera = direction.dot(_upVector);
+    final zCamera = direction.dot(_forwardVector).clamp(-1.0, 1.0);
+    final sinTheta = math.sqrt(xCamera * xCamera + yCamera * yCamera);
 
-    // Behind camera or too close to 90° clip plane
-    if (zCam <= 0.08) {
-      return null;
+    double xScreenOffset;
+    double yScreenOffset;
+    if (sinTheta < 1e-9) {
+      if (zCamera >= 0.0) {
+        xScreenOffset = 0.0;
+        yScreenOffset = 0.0;
+      } else {
+        // The antipode has no unique bearing. Give it a stable seam direction;
+        // with the app's FOV it will be outside the viewport in normal use.
+        xScreenOffset = math.pi * _pixelsPerRadian;
+        yScreenOffset = 0.0;
+      }
+    } else {
+      final angularDistance = math.atan2(sinTheta, zCamera);
+      final radialDistance = angularDistance * _pixelsPerRadian;
+      xScreenOffset = radialDistance * (xCamera / sinTheta);
+      yScreenOffset = radialDistance * (yCamera / sinTheta);
     }
 
-    final xCam = starVec.dot(_rightVector);
-    final yCam = starVec.dot(_upVector);
+    final xScreen = (viewportSize.width / 2.0) + xScreenOffset;
+    final yScreen = (viewportSize.height / 2.0) - yScreenOffset;
 
-    final xScreen = (viewportSize.width / 2.0) + (_focalLength * (xCam / zCam));
-    final yScreen =
-        (viewportSize.height / 2.0) - (_focalLength * (yCam / zCam));
-
-    // Optional margin check for fast viewport culling
     const margin = 80.0;
     if (xScreen < -margin ||
         xScreen > viewportSize.width + margin ||
@@ -130,18 +134,18 @@ class SkyProjection {
     return Offset(xScreen, yScreen);
   }
 
-  /// Inverse projection: Converts screen pixel coordinates (x, y) back into
-  /// horizontal sky coordinates (azimuth, altitude) in degrees.
+  /// Converts a screen point back to its direction on the celestial sphere.
   SkyPosition? unprojectScreenCoordinates(Offset screenPos) {
     final direction = _directionThroughScreenPoint(screenPos);
-    final res = SphericalGeometry.unitVectorToHorizontal(direction);
-    return SkyPosition(azimuth: res.azimuth, altitude: res.altitude);
+    final horizontal = SphericalGeometry.unitVectorToHorizontal(direction);
+    return SkyPosition(
+      azimuth: horizontal.azimuth,
+      altitude: horizontal.altitude,
+    );
   }
 
-  /// Rotates the camera in 3D so the point under [previousPosition] follows
-  /// the finger to [currentPosition]. The returned roll is part of the
-  /// trackball motion, so dragging near the edge of the sky naturally rolls
-  /// the view instead of forcing everything into horizontal/vertical axes.
+  /// Rotates the camera in 3D so the sky point under [previousPosition]
+  /// follows the finger to [currentPosition].
   ({double azimuth, double altitude, double roll})? panByScreenDrag(
     Offset previousPosition,
     Offset currentPosition,
@@ -150,7 +154,6 @@ class SkyProjection {
     final draggedDirection = _directionThroughScreenPoint(currentPosition);
     final cross = draggedDirection.cross(anchoredDirection);
     final sinAngle = cross.length;
-
     if (sinAngle < 1e-9) return null;
 
     final axis = cross / sinAngle;
@@ -166,40 +169,49 @@ class SkyProjection {
 
     final forward = rotate(_forwardVector).normalized();
     final right = rotate(_rightVector).normalized();
-    final horizontal = SphericalGeometry.unitVectorToHorizontal(forward);
-    final azimuth = forward.x.abs() + forward.y.abs() < 1e-6
-        ? centerAzimuth
-        : horizontal.azimuth;
+    final horizontalLength = math.sqrt(
+      forward.x * forward.x + forward.y * forward.y,
+    );
+    final azimuth = horizontalLength > 1e-6
+        ? SphericalGeometry.normalizeDegrees360(
+            SphericalGeometry.toDegrees(math.atan2(forward.x, forward.y)),
+          )
+        : centerAzimuth;
+    final altitude = SphericalGeometry.toDegrees(
+      math.atan2(forward.z, horizontalLength),
+    );
 
-    // Recover the camera's roll against the local horizon basis. Near the
-    // poles, retain the same azimuth-based basis used by the projection.
-    Vector3 horizonRight;
-    if (forward.z.abs() > 0.999) {
-      final azimuthRadians = SphericalGeometry.toRadians(azimuth);
-      horizonRight = Vector3(
-        math.cos(azimuthRadians),
-        -math.sin(azimuthRadians),
-        0.0,
-      );
-    } else {
-      horizonRight = forward.cross(Vector3(0.0, 0.0, 1.0)).normalized();
-    }
+    // Reconstruct roll against a stable local horizon frame on both poles.
+    final azimuthRadians = SphericalGeometry.toRadians(azimuth);
+    final horizonRight = Vector3(
+      math.cos(azimuthRadians),
+      -math.sin(azimuthRadians),
+      0.0,
+    ).normalized();
     final horizonUp = horizonRight.cross(forward).normalized();
     final roll = SphericalGeometry.toDegrees(
       math.atan2(right.dot(horizonUp), right.dot(horizonRight)),
     );
 
-    return (azimuth: azimuth, altitude: horizontal.altitude, roll: roll);
+    return (azimuth: azimuth, altitude: altitude, roll: roll);
   }
 
   Vector3 _directionThroughScreenPoint(Offset screenPos) {
     final xScreen = screenPos.dx - (viewportSize.width / 2.0);
     final yScreen = (viewportSize.height / 2.0) - screenPos.dy;
+    final radius = math.sqrt(xScreen * xScreen + yScreen * yScreen);
 
-    final ray =
-        (_forwardVector * _focalLength) +
-        (_rightVector * xScreen) +
-        (_upVector * yScreen);
-    return ray.normalized();
+    if (radius < 1e-9) return _forwardVector.clone();
+
+    final angularDistance = radius / _pixelsPerRadian;
+    final sinTheta = math.sin(angularDistance);
+    final cosTheta = math.cos(angularDistance);
+    final xBearing = xScreen / radius;
+    final yBearing = yScreen / radius;
+
+    return ((_forwardVector * cosTheta) +
+            (_rightVector * (xBearing * sinTheta)) +
+            (_upVector * (yBearing * sinTheta)))
+        .normalized();
   }
 }

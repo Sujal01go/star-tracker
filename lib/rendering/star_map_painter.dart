@@ -90,7 +90,7 @@ class StarMapPainter extends CustomPainter {
 
     // 3.5. Draw glowing celestial constellation artwork figures
     if (style.showConstellationArt &&
-        (projection.fieldOfView <= 50.0 || selectedStarId != null) &&
+        (projection.fieldOfView <= 70.0 || selectedStarId != null) &&
         constellationImages != null &&
         constellationImages!.isNotEmpty) {
       _drawConstellationArtwork(canvas, renderedOffsets);
@@ -121,7 +121,6 @@ class StarMapPainter extends CustomPainter {
     if (selectedStarId != null) {
       _drawSelectionReticle(canvas, renderedOffsets);
     }
-
     // Report object screen offsets for hit testing
     if (onRenderedPositions != null) {
       onRenderedPositions!(renderedOffsets);
@@ -295,6 +294,7 @@ class StarMapPainter extends CustomPainter {
     TextStyle textStyle, {
     bool centered = false,
     bool force = false,
+    bool avoidOverlap = true,
   }) {
     if (text.isEmpty) return false;
     final painter = TextPainter(
@@ -318,6 +318,13 @@ class StarMapPainter extends CustomPainter {
             anchor + Offset(-w / 2, -h - 7),
             anchor + Offset(-w / 2, 7),
           ];
+
+    if (!avoidOverlap) {
+      // Keep object labels at one stable offset while the map moves. Dynamic
+      // collision-based candidate selection makes labels hop between sides.
+      painter.paint(canvas, candidates.first);
+      return true;
+    }
 
     Rect? chosen;
     for (final topLeft in candidates) {
@@ -345,14 +352,8 @@ class StarMapPainter extends CustomPainter {
     if (milkyWayPlanePositions.length < 2 || projection.fieldOfView > 95) {
       return;
     }
-    final paint = Paint()
-      ..color = (style.nightMode
-          ? const Color(0x26FF4444)
-          : const Color(0x385A83A8))
-      ..strokeWidth = 8.0
-      ..strokeCap = StrokeCap.round
-      ..style = PaintingStyle.stroke
-      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 10.0);
+
+    final shortestSide = projection.viewportSize.shortestSide;
     final path = Path();
     bool drawing = false;
     for (final position in milkyWayPlanePositions) {
@@ -366,7 +367,87 @@ class StarMapPainter extends CustomPainter {
         path.lineTo(point.dx, point.dy);
       }
     }
-    canvas.drawPath(path, paint);
+
+    // Build the galaxy from its projected galactic plane, keeping the cloud
+    // shape anchored to the same sky coordinates as the stars and objects.
+    final outerBand = Paint()
+      ..color =
+          (style.nightMode ? const Color(0xFFFF3333) : const Color(0xFF75628F))
+              .withValues(alpha: style.nightMode ? 0.10 : 0.17)
+      ..strokeWidth = shortestSide * 0.16
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke
+      ..maskFilter = MaskFilter.blur(BlurStyle.normal, shortestSide * 0.045);
+    final innerBand = Paint()
+      ..color =
+          (style.nightMode ? const Color(0xFFFF5555) : const Color(0xFFB17AA8))
+              .withValues(alpha: style.nightMode ? 0.07 : 0.10)
+      ..strokeWidth = shortestSide * 0.07
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke
+      ..maskFilter = MaskFilter.blur(BlurStyle.normal, shortestSide * 0.022);
+    final coreBand = Paint()
+      ..color =
+          (style.nightMode ? const Color(0xFFFF7777) : const Color(0xFFD6B9D8))
+              .withValues(alpha: style.nightMode ? 0.035 : 0.055)
+      ..strokeWidth = shortestSide * 0.018
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke
+      ..maskFilter = MaskFilter.blur(BlurStyle.normal, shortestSide * 0.009);
+    canvas.drawPath(path, outerBand);
+    canvas.drawPath(path, innerBand);
+    canvas.drawPath(path, coreBand);
+
+    // A few soft clouds add depth without using a screen-sized image texture.
+    const cloudFractions = [0.16, 0.39, 0.63, 0.86];
+    const cloudColors = [
+      Color(0xFF8E78C4),
+      Color(0xFFE08094),
+      Color(0xFF8E76B7),
+      Color(0xFFE3B47B),
+    ];
+    for (var cloudIndex = 0; cloudIndex < cloudFractions.length; cloudIndex++) {
+      final index =
+          ((milkyWayPlanePositions.length - 1) * cloudFractions[cloudIndex])
+              .round();
+      final center = projection.projectSkyPosition(
+        milkyWayPlanePositions[index],
+      );
+      final before = projection.projectSkyPosition(
+        milkyWayPlanePositions[math.max(0, index - 1)],
+      );
+      final after = projection.projectSkyPosition(
+        milkyWayPlanePositions[math.min(
+          milkyWayPlanePositions.length - 1,
+          index + 1,
+        )],
+      );
+      if (center == null || before == null || after == null) continue;
+
+      final cloudColor = style.nightMode
+          ? const Color(0xFFFF3333)
+          : cloudColors[cloudIndex];
+      final cloudRect = Rect.fromCenter(
+        center: Offset.zero,
+        width: shortestSide * 0.24,
+        height: shortestSide * 0.13,
+      );
+      final cloudPaint = Paint()
+        ..shader = RadialGradient(
+          colors: [
+            cloudColor.withValues(alpha: style.nightMode ? 0.065 : 0.16),
+            cloudColor.withValues(alpha: style.nightMode ? 0.025 : 0.06),
+            Colors.transparent,
+          ],
+          stops: const [0.0, 0.48, 1.0],
+        ).createShader(cloudRect);
+
+      canvas.save();
+      canvas.translate(center.dx, center.dy);
+      canvas.rotate(math.atan2(after.dy - before.dy, after.dx - before.dx));
+      canvas.drawOval(cloudRect, cloudPaint);
+      canvas.restore();
+    }
   }
 
   void _drawConstellationArtwork(
@@ -392,7 +473,7 @@ class StarMapPainter extends CustomPainter {
           (selectedStarId!.toLowerCase() == con.id.toLowerCase() ||
               selectedStarId!.toLowerCase() == con.name.toLowerCase());
 
-      if (!isSelected && projection.fieldOfView > 50.0) continue;
+      if (!isSelected && projection.fieldOfView > 70.0) continue;
 
       // Only draw dedicated artwork for constellations that have it,
       // or default artwork if explicitly selected by the user.
@@ -402,13 +483,13 @@ class StarMapPainter extends CustomPainter {
       if (img == null) continue;
 
       // Ethereal mythological glow opacity
-      final alpha = isSelected ? 0.92 : (style.nightMode ? 0.35 : 0.65);
+      final alpha = isSelected ? 0.88 : (style.nightMode ? 0.18 : 0.34);
 
       final artSize =
           (projection.viewportSize.shortestSide *
-                  0.48 *
+                  0.40 *
                   (65.0 / projection.fieldOfView))
-              .clamp(160.0, 480.0);
+              .clamp(125.0, 420.0);
 
       // Ethereal backing nebula aura behind the mythological figure
       final auraPaint = Paint()
@@ -418,9 +499,9 @@ class StarMapPainter extends CustomPainter {
                     : (isSelected
                           ? AstroTrackColors.accent
                           : const Color(0xFF589BFF)))
-                .withValues(alpha: isSelected ? 0.28 : 0.14)
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 22.0);
-      canvas.drawCircle(pt, artSize * 0.38, auraPaint);
+                .withValues(alpha: isSelected ? 0.16 : 0.045)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 16.0);
+      canvas.drawCircle(pt, artSize * 0.34, auraPaint);
 
       final paint = Paint()..color = Colors.white.withValues(alpha: alpha);
 
@@ -746,6 +827,24 @@ class StarMapPainter extends CustomPainter {
         canvas.drawCircle(pt, glowRadius, glowPaint);
       }
 
+      // Keep diffraction flares for only the brightest landmark stars.
+      if (star.apparentMagnitude <= 0.8) {
+        final flareLength = star.apparentMagnitude <= 0.0 ? 12.0 : 7.0;
+        final flarePaint = Paint()
+          ..color = starColor.withValues(alpha: alpha * 0.24)
+          ..strokeWidth = star.apparentMagnitude <= 0.0 ? 0.9 : 0.65;
+        canvas.drawLine(
+          pt + Offset(-flareLength, 0),
+          pt + Offset(flareLength, 0),
+          flarePaint,
+        );
+        canvas.drawLine(
+          pt + Offset(0, -flareLength),
+          pt + Offset(0, flareLength),
+          flarePaint,
+        );
+      }
+
       // Star core
       final corePaint = Paint()
         ..color = starColor.withValues(alpha: alpha)
@@ -795,6 +894,7 @@ class StarMapPainter extends CustomPainter {
       offsetCache[planet.id] = pt;
 
       final img = planetImages?[planet.type];
+      var markerRadius = 10.0;
       if (img != null) {
         // Render photorealistic 3D planet image instead of a dot!
         double renderSize;
@@ -817,6 +917,7 @@ class StarMapPainter extends CustomPainter {
         } else {
           renderSize = 26.0; // Uranus, Neptune
         }
+        markerRadius = renderSize / 2.0;
 
         // Atmosphere halo glow behind planet
         final haloPaint = Paint()
@@ -853,6 +954,7 @@ class StarMapPainter extends CustomPainter {
         canvas.drawImageRect(img, srcRect, dstRect, imgPaint);
       } else if (planet.isSun) {
         // Fallback: Radiant golden corona & disk
+        markerRadius = 24.0;
         final coronaPaint = Paint()
           ..color = color.withValues(alpha: 0.25)
           ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 12.0);
@@ -867,6 +969,7 @@ class StarMapPainter extends CustomPainter {
         canvas.drawCircle(pt, 11.0, corePaint);
       } else if (planet.isMoon) {
         // Fallback: Lunar disk with phase illumination
+        markerRadius = 15.0;
         final moonGlow = Paint()
           ..color = color.withValues(alpha: 0.2)
           ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8.0);
@@ -890,6 +993,7 @@ class StarMapPainter extends CustomPainter {
         }
       } else if (planet.type == PlanetType.saturn) {
         // Fallback Saturn: Disk with dual ring system
+        markerRadius = 16.0;
         final ringGlow = Paint()
           ..color = color.withValues(alpha: 0.25)
           ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5.0);
@@ -914,6 +1018,7 @@ class StarMapPainter extends CustomPainter {
         final saturnPaint = Paint()..color = color;
         canvas.drawCircle(pt, 6.5, saturnPaint);
       } else if (planet.type == PlanetType.jupiter) {
+        markerRadius = 16.0;
         final outerAura = Paint()
           ..color = color.withValues(alpha: 0.3)
           ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 10.0);
@@ -942,6 +1047,7 @@ class StarMapPainter extends CustomPainter {
           bandPaint,
         );
       } else if (planet.type == PlanetType.pluto) {
+        markerRadius = 5.0;
         final glowPaint = Paint()
           ..color = color.withValues(alpha: 0.3)
           ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 3.0);
@@ -950,6 +1056,7 @@ class StarMapPainter extends CustomPainter {
         final corePaint = Paint()..color = color;
         canvas.drawCircle(pt, 3.5, corePaint);
       } else {
+        markerRadius = 9.0;
         final glowPaint = Paint()
           ..color = color.withValues(alpha: 0.35)
           ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4.0);
@@ -970,7 +1077,7 @@ class StarMapPainter extends CustomPainter {
         _drawLabel(
           canvas,
           labelText,
-          pt + const Offset(11.0, -5.0),
+          pt + Offset(markerRadius - 4.0, -5.0),
           TextStyle(
             color: style.nightMode
                 ? Colors.redAccent
@@ -980,6 +1087,7 @@ class StarMapPainter extends CustomPainter {
             shadows: const [Shadow(color: Colors.black, blurRadius: 4.0)],
           ),
           force: isSelected,
+          avoidOverlap: false,
         );
       }
     }
@@ -988,9 +1096,9 @@ class StarMapPainter extends CustomPainter {
   void _drawConstellationNames(Canvas canvas, Map<String, Offset> offsetCache) {
     final conTextStyle = TextStyle(
       color: style.secondaryTextColor,
-      fontSize: 11.0,
-      letterSpacing: 1.5,
-      fontWeight: FontWeight.w600,
+      fontSize: projection.fieldOfView <= 50.0 ? 13.0 : 12.0,
+      letterSpacing: 0.15,
+      fontWeight: FontWeight.w700,
       shadows: const [Shadow(color: Colors.black, blurRadius: 4.0)],
     );
 
@@ -1014,7 +1122,7 @@ class StarMapPainter extends CustomPainter {
             ? conTextStyle.copyWith(
                 color: style.selectionColor,
                 fontWeight: FontWeight.bold,
-                fontSize: 12.5,
+                fontSize: 14.5,
                 shadows: [
                   Shadow(
                     color: style.selectionColor.withValues(alpha: 0.8),
@@ -1027,7 +1135,7 @@ class StarMapPainter extends CustomPainter {
 
         _drawLabel(
           canvas,
-          con.name.toUpperCase(),
+          con.name,
           pt,
           styleToUse,
           centered: true,

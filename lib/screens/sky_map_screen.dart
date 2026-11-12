@@ -3,8 +3,10 @@ import 'dart:math' as math;
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:vector_math/vector_math_64.dart' show Vector3;
 import '../app/theme.dart';
 import '../astronomy/astronomy_engine.dart';
+import '../astronomy/spherical_geometry.dart';
 import '../data/asterism_catalogue.dart';
 import '../data/constellation_repository.dart';
 import '../data/deep_sky_catalogue_repository.dart';
@@ -36,6 +38,8 @@ import 'settings_screen.dart';
 import 'star_details_screen.dart';
 import 'time_selection_screen.dart';
 
+typedef _SkyViewPose = ({double azimuth, double altitude, double roll});
+
 /// Primary interactive star-tracking canvas screen.
 class SkyMapScreen extends StatefulWidget {
   final StarCatalogueRepository starRepository;
@@ -58,7 +62,7 @@ class SkyMapScreen extends StatefulWidget {
 }
 
 class SkyMapScreenState extends State<SkyMapScreen>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   // Rendering & Camera parameters
   double _fieldOfView = 65.0; // degrees
   double _previousScaleFov = 65.0;
@@ -68,8 +72,25 @@ class SkyMapScreenState extends State<SkyMapScreen>
   Size _gestureViewportSize = Size.zero;
   bool _gestureHadMultiplePointers = false;
   late final Ticker _inertiaTicker;
+  late final Ticker _cameraPoseTicker;
+  late final Ticker _planetPositionTicker;
+  late final ValueNotifier<_SkyViewPose> _displayedPoseNotifier;
+  late final ValueNotifier<Map<String, SkyPosition>>
+  _displayedPlanetPositionsNotifier;
+  late final Listenable _mapRenderListenable;
+  late _SkyViewPose _displayedPose;
+  _SkyViewPose? _cameraTargetPose;
+  Map<String, SkyPosition> _displayedPlanetPositions = {};
+  Map<String, SkyPosition>? _planetTransitionStart;
+  Map<String, SkyPosition>? _planetTransitionTarget;
+  Duration? _planetTransitionStartedAt;
   Offset _inertiaVelocity = Offset.zero;
   Duration? _lastInertiaTick;
+  Duration? _lastCameraPoseTick;
+  static const double _trackingPoseTimeConstant = 0.09;
+  static const Duration _planetPositionTransitionDuration = Duration(
+    milliseconds: 550,
+  );
 
   // Visual style state
   late StarRenderingStyle _style;
@@ -102,6 +123,18 @@ class SkyMapScreenState extends State<SkyMapScreen>
   void initState() {
     super.initState();
     _inertiaTicker = createTicker(_stepInertia);
+    _cameraPoseTicker = createTicker(_stepCameraPose);
+    _planetPositionTicker = createTicker(_stepPlanetPositionTransition);
+    _displayedPose = _readOrientationPose();
+    _cameraTargetPose = _displayedPose;
+    _displayedPoseNotifier = ValueNotifier(_displayedPose);
+    _displayedPlanetPositionsNotifier = ValueNotifier(
+      _displayedPlanetPositions,
+    );
+    _mapRenderListenable = Listenable.merge([
+      _displayedPoseNotifier,
+      _displayedPlanetPositionsNotifier,
+    ]);
     _style =
         widget.preferencesService?.loadRenderingStyle() ??
         const StarRenderingStyle();
@@ -332,9 +365,240 @@ class SkyMapScreenState extends State<SkyMapScreen>
   }
 
   void _onOrientationUpdated() {
-    if (mounted) {
-      setState(() {});
+    if (!mounted) return;
+
+    _cameraTargetPose = _readOrientationPose();
+    if (!_cameraPoseTicker.isActive) {
+      _lastCameraPoseTick = null;
+      _cameraPoseTicker.start();
     }
+  }
+
+  _SkyViewPose _readOrientationPose() => (
+    azimuth: widget.orientationService.azimuth,
+    altitude: widget.orientationService.altitude,
+    roll: widget.orientationService.roll,
+  );
+
+  void _setDisplayedPose(_SkyViewPose pose) {
+    _displayedPose = pose;
+    _displayedPoseNotifier.value = pose;
+  }
+
+  void _setDisplayedPlanetPositions(Map<String, SkyPosition> positions) {
+    _displayedPlanetPositions = positions;
+    _displayedPlanetPositionsNotifier.value = positions;
+  }
+
+  void _stepCameraPose(Duration elapsed) {
+    if (!mounted) return;
+
+    final previousTick = _lastCameraPoseTick;
+    _lastCameraPoseTick = elapsed;
+    if (previousTick == null) return;
+
+    final target = _cameraTargetPose;
+    if (target == null) return;
+
+    final deltaSeconds = ((elapsed - previousTick).inMicroseconds / 1000000.0)
+        .clamp(0.0, 0.05)
+        .toDouble();
+    if (deltaSeconds <= 0.0) return;
+
+    final timeConstant = widget.orientationService.isTrackingActive
+        ? _trackingPoseTimeConstant
+        : 0.035;
+    final alpha = 1.0 - math.exp(-deltaSeconds / timeConstant);
+    final currentForward = _forwardForPose(_displayedPose);
+    final targetForward = _forwardForPose(target);
+    final forward = ((currentForward * (1.0 - alpha)) + (targetForward * alpha))
+        .normalized();
+    final currentRight = _rightForPose(_displayedPose);
+    final targetRight = _rightForPose(target);
+    final blendedRight = (currentRight * (1.0 - alpha)) + (targetRight * alpha);
+    final right = (blendedRight - (forward * blendedRight.dot(forward)))
+        .normalized();
+
+    final horizontalLength = math.sqrt(
+      forward.x * forward.x + forward.y * forward.y,
+    );
+    final azimuth = horizontalLength > 1e-6
+        ? SphericalGeometry.normalizeDegrees360(
+            SphericalGeometry.toDegrees(math.atan2(forward.x, forward.y)),
+          )
+        : _displayedPose.azimuth;
+    final altitude = SphericalGeometry.toDegrees(
+      math.atan2(forward.z, horizontalLength),
+    );
+    final azimuthRadians = SphericalGeometry.toRadians(azimuth);
+    final horizonRight = Vector3(
+      math.cos(azimuthRadians),
+      -math.sin(azimuthRadians),
+      0.0,
+    );
+    final horizonUp = horizonRight.cross(forward).normalized();
+    final roll = SphericalGeometry.toDegrees(
+      math.atan2(right.dot(horizonUp), right.dot(horizonRight)),
+    );
+
+    final remainingAngle = math.max(
+      SphericalGeometry.toDegrees(
+        math.acos(forward.dot(targetForward).clamp(-1.0, 1.0)),
+      ),
+      SphericalGeometry.toDegrees(
+        math.acos(right.dot(targetRight).clamp(-1.0, 1.0)),
+      ),
+    );
+    if (remainingAngle < 0.005) {
+      _setDisplayedPose(target);
+      _cameraPoseTicker.stop();
+      _lastCameraPoseTick = null;
+    } else {
+      _setDisplayedPose((azimuth: azimuth, altitude: altitude, roll: roll));
+    }
+  }
+
+  Vector3 _forwardForPose(_SkyViewPose pose) =>
+      SphericalGeometry.horizontalToUnitVector(
+        pose.azimuth,
+        pose.altitude,
+      ).normalized();
+
+  Vector3 _rightForPose(_SkyViewPose pose) {
+    final azimuthRadians = SphericalGeometry.toRadians(pose.azimuth);
+    final horizonRight = Vector3(
+      math.cos(azimuthRadians),
+      -math.sin(azimuthRadians),
+      0.0,
+    );
+    final forward = _forwardForPose(pose);
+    final horizonUp = horizonRight.cross(forward).normalized();
+    final rollRadians = SphericalGeometry.toRadians(pose.roll);
+    return ((horizonRight * math.cos(rollRadians)) +
+            (horizonUp * math.sin(rollRadians)))
+        .normalized();
+  }
+
+  void _syncDisplayedPlanetPositions() {
+    final target = Map<String, SkyPosition>.of(
+      widget.astronomyEngine.solarSystemPositions,
+    );
+    if (_displayedPlanetPositions.isEmpty) {
+      _setDisplayedPlanetPositions(target);
+      return;
+    }
+
+    if (_planetPositionTicker.isActive) {
+      _planetTransitionTarget = target;
+      return;
+    }
+
+    var largestShift = 0.0;
+    for (final entry in target.entries) {
+      final current = _displayedPlanetPositions[entry.key];
+      if (current == null) continue;
+      largestShift = math.max(
+        largestShift,
+        SphericalGeometry.angularDistance(
+          current.azimuth,
+          current.altitude,
+          entry.value.azimuth,
+          entry.value.altitude,
+        ),
+      );
+    }
+
+    // Ordinary time progression is imperceptible. Blend larger corrections,
+    // such as a fresh Horizons result replacing the offline ephemeris, instead
+    // of making a planet jump to a new coordinate in one frame.
+    if (largestShift <= 0.08) {
+      _setDisplayedPlanetPositions(target);
+      return;
+    }
+
+    _planetTransitionStart = Map<String, SkyPosition>.of(
+      _displayedPlanetPositions,
+    );
+    _planetTransitionTarget = target;
+    _planetTransitionStartedAt = null;
+    _planetPositionTicker.start();
+  }
+
+  void _stepPlanetPositionTransition(Duration elapsed) {
+    if (!mounted) return;
+    final start = _planetTransitionStart;
+    final target = _planetTransitionTarget;
+    if (start == null || target == null) {
+      _planetPositionTicker.stop();
+      return;
+    }
+
+    _planetTransitionStartedAt ??= elapsed;
+    final progress =
+        ((elapsed - _planetTransitionStartedAt!).inMicroseconds /
+                _planetPositionTransitionDuration.inMicroseconds)
+            .clamp(0.0, 1.0)
+            .toDouble();
+    final easedProgress = progress * progress * (3.0 - 2.0 * progress);
+    _setDisplayedPlanetPositions({
+      for (final entry in target.entries)
+        entry.key: _interpolateSkyPosition(
+          start[entry.key] ?? entry.value,
+          entry.value,
+          easedProgress,
+        ),
+    });
+
+    if (progress >= 1.0) {
+      _setDisplayedPlanetPositions(target);
+      _planetTransitionStart = null;
+      _planetTransitionTarget = null;
+      _planetTransitionStartedAt = null;
+      _planetPositionTicker.stop();
+    }
+  }
+
+  SkyPosition _interpolateSkyPosition(
+    SkyPosition from,
+    SkyPosition to,
+    double progress,
+  ) {
+    final fromVector = SphericalGeometry.horizontalToUnitVector(
+      from.azimuth,
+      from.altitude,
+    ).normalized();
+    final toVector = SphericalGeometry.horizontalToUnitVector(
+      to.azimuth,
+      to.altitude,
+    ).normalized();
+    final dot = fromVector.dot(toVector).clamp(-1.0, 1.0);
+
+    Vector3 interpolated;
+    if (dot > 0.9995) {
+      interpolated = (fromVector * (1.0 - progress)) + (toVector * progress);
+    } else if (dot < -0.9995) {
+      final referenceAxis = fromVector.x.abs() < 0.8
+          ? Vector3(1.0, 0.0, 0.0)
+          : Vector3(0.0, 1.0, 0.0);
+      final tangent = fromVector.cross(referenceAxis).normalized();
+      final angle = math.pi * progress;
+      interpolated =
+          (fromVector * math.cos(angle)) + (tangent * math.sin(angle));
+    } else {
+      final angle = math.acos(dot);
+      final sinAngle = math.sin(angle);
+      interpolated =
+          (fromVector * (math.sin((1.0 - progress) * angle) / sinAngle)) +
+          (toVector * (math.sin(progress * angle) / sinAngle));
+    }
+
+    final horizontal = SphericalGeometry.unitVectorToHorizontal(
+      interpolated.normalized(),
+    );
+    return SkyPosition(
+      azimuth: horizontal.azimuth,
+      altitude: horizontal.altitude,
+    );
   }
 
   void _onAstronomyUpdated() {
@@ -405,6 +669,7 @@ class SkyMapScreenState extends State<SkyMapScreen>
   }
 
   void _recomputeSkyPositions() {
+    _syncDisplayedPlanetPositions();
     _computedPositions = widget.astronomyEngine.computeBatch(
       widget.starRepository.allStars,
     );
@@ -447,6 +712,10 @@ class SkyMapScreenState extends State<SkyMapScreen>
     _realTimeClockTimer?.cancel();
     _horizonsRefreshTimer?.cancel();
     _inertiaTicker.dispose();
+    _cameraPoseTicker.dispose();
+    _planetPositionTicker.dispose();
+    _displayedPoseNotifier.dispose();
+    _displayedPlanetPositionsNotifier.dispose();
     widget.orientationService.removeListener(_onOrientationUpdated);
     widget.astronomyEngine.removeListener(_onAstronomyUpdated);
     super.dispose();
@@ -486,16 +755,16 @@ class SkyMapScreenState extends State<SkyMapScreen>
         _fieldOfView = newFov;
       });
     } else if (details.pointerCount == 1 && _lastPanFocalPoint != null) {
-      // Rotate the perspective camera like a trackball, keeping the patch of
+      // Rotate the spherical camera like a trackball, keeping the patch of
       // sky under the finger attached to it throughout the drag.
       final previousPoint = _lastPanFocalPoint!;
       final currentPoint = details.localFocalPoint;
       _lastPanFocalPoint = currentPoint;
 
       final projection = SkyProjection(
-        centerAzimuth: widget.orientationService.azimuth,
-        centerAltitude: widget.orientationService.altitude,
-        rollAngle: widget.orientationService.roll,
+        centerAzimuth: _displayedPose.azimuth,
+        centerAltitude: _displayedPose.altitude,
+        rollAngle: _displayedPose.roll,
         fieldOfView: _fieldOfView,
         viewportSize: _gestureViewportSize,
       );
@@ -542,9 +811,9 @@ class SkyMapScreenState extends State<SkyMapScreen>
       displacement = displacement * (40.0 / displacement.distance);
     }
     final projection = SkyProjection(
-      centerAzimuth: widget.orientationService.azimuth,
-      centerAltitude: widget.orientationService.altitude,
-      rollAngle: widget.orientationService.roll,
+      centerAzimuth: _displayedPose.azimuth,
+      centerAltitude: _displayedPose.altitude,
+      rollAngle: _displayedPose.roll,
       fieldOfView: _fieldOfView,
       viewportSize: _gestureViewportSize,
     );
@@ -1111,15 +1380,6 @@ class SkyMapScreenState extends State<SkyMapScreen>
             constraints.maxHeight,
           );
 
-          // Construct projection matrix for current frame
-          final projection = SkyProjection(
-            centerAzimuth: widget.orientationService.azimuth,
-            centerAltitude: widget.orientationService.altitude,
-            rollAngle: widget.orientationService.roll,
-            fieldOfView: _fieldOfView,
-            viewportSize: viewportSize,
-          );
-
           return Stack(
             fit: StackFit.expand,
             children: [
@@ -1129,38 +1389,54 @@ class SkyMapScreenState extends State<SkyMapScreen>
                 onScaleUpdate: _onScaleUpdate,
                 onScaleEnd: _onScaleEnd,
                 onTapUp: _onTapUp,
-                child: CustomPaint(
-                  size: viewportSize,
-                  painter: StarMapPainter(
-                    stars: widget.starRepository.allStars,
-                    starPositions: _computedPositions,
-                    planets: widget.astronomyEngine.solarSystemObjects,
-                    planetPositions:
-                        widget.astronomyEngine.solarSystemPositions,
-                    planetImages: _mapAssetsReady
-                        ? PlanetDataService.uiImages
-                        : null,
-                    constellations:
-                        widget.constellationRepository.allConstellations,
-                    constellationPositions: _computedConstellationPositions,
-                    constellationBoundaryPositions:
-                        _computedConstellationBoundaryPositions,
-                    constellationImages: _mapAssetsReady
-                        ? ConstellationAssetService.uiImages
-                        : null,
-                    deepSkyObjects: _deepSkyRepository.allObjects,
-                    deepSkyPositions: _computedDeepSkyPositions,
-                    asterisms: famousAsterisms,
-                    activeMeteorShowers: _activeMeteorShowers,
-                    meteorShowerPositions: _computedMeteorPositions,
-                    milkyWayPlanePositions: _computedMilkyWayPlane,
-                    projection: projection,
-                    style: _style,
-                    selectedStarId: _selectedStarId,
-                    onRenderedPositions: (positions) {
-                      _renderedStarOffsets = positions;
-                    },
-                  ),
+                child: AnimatedBuilder(
+                  animation: _mapRenderListenable,
+                  builder: (context, _) {
+                    final pose = _displayedPoseNotifier.value;
+                    final projection = SkyProjection(
+                      centerAzimuth: pose.azimuth,
+                      centerAltitude: pose.altitude,
+                      rollAngle: pose.roll,
+                      fieldOfView: _fieldOfView,
+                      viewportSize: viewportSize,
+                    );
+                    return RepaintBoundary(
+                      child: CustomPaint(
+                        size: viewportSize,
+                        painter: StarMapPainter(
+                          stars: widget.starRepository.allStars,
+                          starPositions: _computedPositions,
+                          planets: widget.astronomyEngine.solarSystemObjects,
+                          planetPositions:
+                              _displayedPlanetPositionsNotifier.value,
+                          planetImages: _mapAssetsReady
+                              ? PlanetDataService.uiImages
+                              : null,
+                          constellations:
+                              widget.constellationRepository.allConstellations,
+                          constellationPositions:
+                              _computedConstellationPositions,
+                          constellationBoundaryPositions:
+                              _computedConstellationBoundaryPositions,
+                          constellationImages: _mapAssetsReady
+                              ? ConstellationAssetService.uiImages
+                              : null,
+                          deepSkyObjects: _deepSkyRepository.allObjects,
+                          deepSkyPositions: _computedDeepSkyPositions,
+                          asterisms: famousAsterisms,
+                          activeMeteorShowers: _activeMeteorShowers,
+                          meteorShowerPositions: _computedMeteorPositions,
+                          milkyWayPlanePositions: _computedMilkyWayPlane,
+                          projection: projection,
+                          style: _style,
+                          selectedStarId: _selectedStarId,
+                          onRenderedPositions: (positions) {
+                            _renderedStarOffsets = positions;
+                          },
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
 
@@ -1258,13 +1534,19 @@ class SkyMapScreenState extends State<SkyMapScreen>
               Positioned(
                 top: MediaQuery.of(context).padding.top + 54.0,
                 left: 14.0,
-                child: OrientationIndicator(
-                  azimuth: widget.orientationService.azimuth,
-                  altitude: widget.orientationService.altitude,
-                  isTracking: widget.orientationService.isTrackingActive,
-                  accuracy: widget.orientationService.calibration.accuracy,
-                  style: _style,
-                  onTap: _showHeadingCalibrationSheet,
+                child: AnimatedBuilder(
+                  animation: _displayedPoseNotifier,
+                  builder: (context, _) => AnimatedBuilder(
+                    animation: widget.orientationService,
+                    builder: (context, _) => OrientationIndicator(
+                      azimuth: _displayedPoseNotifier.value.azimuth,
+                      altitude: _displayedPoseNotifier.value.altitude,
+                      isTracking: widget.orientationService.isTrackingActive,
+                      accuracy: widget.orientationService.calibration.accuracy,
+                      style: _style,
+                      onTap: _showHeadingCalibrationSheet,
+                    ),
+                  ),
                 ),
               ),
 
@@ -1272,87 +1554,92 @@ class SkyMapScreenState extends State<SkyMapScreen>
               Positioned(
                 right: 14.0,
                 top: MediaQuery.of(context).padding.top + 90.0,
-                child: SkyMapControls(
-                  style: _style,
-                  isTrackingActive: widget.orientationService.isTrackingActive,
-                  hasSensors: widget.orientationService.hasSensors,
-                  onToggleTracking: () {
-                    widget.orientationService.toggleTracking();
-                    final isNowTracking =
-                        widget.orientationService.isTrackingActive;
-                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          isNowTracking
-                              ? 'Device Orientation Tracking Active (AR Mode)'
-                              : 'Manual Touch Pan Mode Active',
+                child: AnimatedBuilder(
+                  animation: widget.orientationService,
+                  builder: (context, _) => SkyMapControls(
+                    style: _style,
+                    isTrackingActive:
+                        widget.orientationService.isTrackingActive,
+                    hasSensors: widget.orientationService.hasSensors,
+                    onToggleTracking: () {
+                      widget.orientationService.toggleTracking();
+                      final isNowTracking =
+                          widget.orientationService.isTrackingActive;
+                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            isNowTracking
+                                ? 'Device Orientation Tracking Active (AR Mode)'
+                                : 'Manual Touch Pan Mode Active',
+                          ),
+                          duration: const Duration(seconds: 1),
+                          backgroundColor: isNowTracking
+                              ? AstroTrackColors.accentStrong
+                              : AstroTrackColors.surfaceRaised,
                         ),
-                        duration: const Duration(seconds: 1),
-                        backgroundColor: isNowTracking
-                            ? AstroTrackColors.accentStrong
-                            : AstroTrackColors.surfaceRaised,
-                      ),
-                    );
-                  },
-                  onZoomIn: _zoomIn,
-                  onZoomOut: _zoomOut,
-                  onToggleConstellations: () {
-                    setState(() {
-                      _style = _style.copyWith(
-                        showConstellationLines: !_style.showConstellationLines,
                       );
-                    });
-                    widget.preferencesService?.saveRenderingStyle(_style);
-                  },
-                  onToggleConstellationArt: () {
-                    setState(() {
-                      _style = _style.copyWith(
-                        showConstellationArt: !_style.showConstellationArt,
-                      );
-                    });
-                    widget.preferencesService?.saveRenderingStyle(_style);
-                  },
-                  onToggleDeclutter: () {
-                    setState(() {
-                      _style = _style.copyWith(
-                        hideLeastFamousStars: !_style.hideLeastFamousStars,
-                      );
-                    });
-                    widget.preferencesService?.saveRenderingStyle(_style);
-                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          _style.hideLeastFamousStars
-                              ? 'Declutter mode: Showing famous stars only'
-                              : 'Detailed mode: Showing all stars',
+                    },
+                    onZoomIn: _zoomIn,
+                    onZoomOut: _zoomOut,
+                    onToggleConstellations: () {
+                      setState(() {
+                        _style = _style.copyWith(
+                          showConstellationLines:
+                              !_style.showConstellationLines,
+                        );
+                      });
+                      widget.preferencesService?.saveRenderingStyle(_style);
+                    },
+                    onToggleConstellationArt: () {
+                      setState(() {
+                        _style = _style.copyWith(
+                          showConstellationArt: !_style.showConstellationArt,
+                        );
+                      });
+                      widget.preferencesService?.saveRenderingStyle(_style);
+                    },
+                    onToggleDeclutter: () {
+                      setState(() {
+                        _style = _style.copyWith(
+                          hideLeastFamousStars: !_style.hideLeastFamousStars,
+                        );
+                      });
+                      widget.preferencesService?.saveRenderingStyle(_style);
+                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            _style.hideLeastFamousStars
+                                ? 'Declutter mode: Showing famous stars only'
+                                : 'Detailed mode: Showing all stars',
+                          ),
+                          duration: const Duration(seconds: 1),
+                          backgroundColor: AstroTrackColors.accentStrong,
                         ),
-                        duration: const Duration(seconds: 1),
-                        backgroundColor: AstroTrackColors.accentStrong,
-                      ),
-                    );
-                  },
-                  onToggleGrid: () {
-                    setState(() {
-                      _style = _style.copyWith(
-                        showCelestialGrid: !_style.showCelestialGrid,
                       );
-                    });
-                    widget.preferencesService?.saveRenderingStyle(_style);
-                  },
-                  onToggleNightMode: () {
-                    setState(() {
-                      _style = _style.copyWith(nightMode: !_style.nightMode);
-                    });
-                    widget.preferencesService?.saveRenderingStyle(_style);
-                  },
-                  onResetView: () {
-                    widget.orientationService.lookAt(
-                      azimuth: widget.orientationService.azimuth,
-                      altitude: 85.0, // Look up at zenith
-                    );
-                  },
+                    },
+                    onToggleGrid: () {
+                      setState(() {
+                        _style = _style.copyWith(
+                          showCelestialGrid: !_style.showCelestialGrid,
+                        );
+                      });
+                      widget.preferencesService?.saveRenderingStyle(_style);
+                    },
+                    onToggleNightMode: () {
+                      setState(() {
+                        _style = _style.copyWith(nightMode: !_style.nightMode);
+                      });
+                      widget.preferencesService?.saveRenderingStyle(_style);
+                    },
+                    onResetView: () {
+                      widget.orientationService.lookAt(
+                        azimuth: _displayedPose.azimuth,
+                        altitude: 85.0, // Look up at zenith
+                      );
+                    },
+                  ),
                 ),
               ),
 

@@ -39,7 +39,7 @@ class StarRenderingStyle {
   // Line elements
   Color get constellationLineColor => nightMode
       ? const Color(0xAAFF3333)
-      : AstroTrackColors.secondary.withValues(alpha: 0.72);
+      : AstroTrackColors.accent.withValues(alpha: 0.68);
   Color get gridLineColor =>
       nightMode ? const Color(0x28FF2222) : const Color(0x2088AAFF);
   Color get horizonLineColor => nightMode

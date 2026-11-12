@@ -397,7 +397,7 @@ class DeviceOrientationService extends ChangeNotifier {
     }
   }
 
-  /// Applies a camera pose produced by a perspective trackball drag.
+  /// Applies a camera pose produced by a spherical trackball drag.
   void setManualViewPose({
     required double azimuth,
     required double altitude,
